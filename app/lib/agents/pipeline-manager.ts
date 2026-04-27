@@ -47,11 +47,11 @@ Reply rate: ${replyRate}%`;
   await db
     .update(schema.users)
     .set({
-      liveContext: sql`json_set(coalesce(live_context, '{}'),
-        '$.activeConversations', ${targets.filter((t) => t.status === "engaged" || t.status === "warm" || t.status === "hot").length},
-        '$.meetingsBooked', ${targets.filter((t) => t.status === "meeting_booked").length},
-        '$.lastTickAt', ${Date.now()}
-      )`
+      liveContext: sql`jsonb_set(jsonb_set(jsonb_set(
+        coalesce(live_context, '{}'::jsonb),
+        '{activeConversations}', to_jsonb(${targets.filter((t) => t.status === "engaged" || t.status === "warm" || t.status === "hot").length}::int)),
+        '{meetingsBooked}', to_jsonb(${targets.filter((t) => t.status === "meeting_booked").length}::int)),
+        '{lastTickAt}', to_jsonb(${Date.now()}::bigint))`
     })
     .where(eq(schema.users.id, userId));
 

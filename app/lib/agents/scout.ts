@@ -89,7 +89,7 @@ export async function runScout(userId: string, opts: { limit?: number } = {}) {
   await db
     .update(schema.users)
     .set({
-      liveContext: sql`json_set(coalesce(live_context, '{}'), '$.lastTickAt', ${Date.now()})`
+      liveContext: sql`jsonb_set(coalesce(live_context, '{}'::jsonb), '{lastTickAt}', to_jsonb(${Date.now()}::bigint))`
     })
     .where(eq(schema.users.id, userId));
 
