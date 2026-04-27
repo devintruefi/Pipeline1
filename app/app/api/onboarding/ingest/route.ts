@@ -53,7 +53,7 @@ export async function POST(req: Request) {
       id: userId,
       email: parsed.data.email,
       name: parsed.data.name,
-      tier: "solo",
+      tier: "pro",
       status: "onboarding",
       identity: {
         resume,

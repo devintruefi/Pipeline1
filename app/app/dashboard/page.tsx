@@ -10,6 +10,7 @@ import { UpcomingMeetings } from "@/components/dashboard/UpcomingMeetings";
 import { CampaignScoreboard } from "@/components/dashboard/CampaignScoreboard";
 import { VoiceQuality } from "@/components/dashboard/VoiceQuality";
 import { ApprovalQueuePreview } from "@/components/dashboard/ApprovalQueuePreview";
+import { TopCompanies } from "@/components/dashboard/TopCompanies";
 import { SundayMemo } from "@/components/dashboard/SundayMemo";
 import { TickButton } from "@/components/dashboard/TickButton";
 import { relativeTime } from "@/lib/utils";
@@ -163,6 +164,8 @@ export default async function ControlCenterPage() {
           pipelineValue={pipelineValue}
           series={series}
         />
+
+        <TopCompanies targets={targets} drafts={[...drafts, ...allSentDrafts]} messages={messages} />
 
         <div className="grid lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1 space-y-6">

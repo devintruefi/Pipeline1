@@ -1,186 +1,191 @@
 import Link from "next/link";
+import { Check, ArrowRight, GraduationCap, Briefcase, Crown } from "lucide-react";
 import { PLANS } from "@/lib/billing/plans";
-import { Check, ArrowRight } from "lucide-react";
 
-const TIER_LABEL: Record<string, string> = {
-  solo: "Solo",
-  plus: "In transition",
-  concierge: "Job found"
-};
+const ICON_BY_PLAN = {
+  launch: GraduationCap,
+  pro: Briefcase,
+  max: Crown
+} as const;
 
 export default function PricingPage() {
   return (
-    <div className="mx-auto max-w-page px-6 py-16 md:py-24">
-      <header className="max-w-3xl">
-        <p className="eyebrow eyebrow-dot">Pricing</p>
-        <h1 className="mt-4 font-display text-[44px] md:text-[60px] tracking-tightest leading-[1.0] font-medium text-ink text-balance">
-          Aligned with the outcome you actually want.
-        </h1>
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-700 text-pretty">
-          Low monthly cost so it's a no-brainer for an executive in transition. Meaningful success fee
-          so Pipeline cares about quality of placement, not volume of activity. Total cost is roughly
-          0.5% of first-year compensation at a $300K target — one-sixtieth the cost of a retained
-          recruiter.
-        </p>
-      </header>
+    <div className="bg-paper">
+      <section className="border-b border-ink/10">
+        <div className="mx-auto max-w-page px-6 py-16">
+          <p className="eyebrow eyebrow-dot">Pricing · founding-cohort rates</p>
+          <h1 className="mt-4 font-display text-[44px] md:text-[64px] leading-[0.96] tracking-tightest text-ink">
+            Three tiers. One architecture.
+          </h1>
+          <p className="mt-6 max-w-[64ch] text-[17px] text-ink-700 leading-relaxed text-pretty">
+            The agents are the same. What changes is the cadence, the model tier, the volume cap,
+            and the kinds of signals worth chasing. Pick the tier that matches where you are now —
+            you can move up at any time without losing your context model.
+          </p>
+        </div>
+      </section>
 
-      <div className="mt-14 grid md:grid-cols-3 gap-4">
-        {PLANS.map((p) => {
-          const tierLabel = TIER_LABEL[p.id] ?? p.id;
-          const isHighlight = p.highlight;
-          return (
-            <article
-              key={p.id}
-              className={`relative rounded-xl p-7 ${
-                isHighlight
-                  ? "bg-ink text-paper border border-ink shadow-lift grain"
-                  : "bg-white border border-ink/10 shadow-card"
-              }`}
-            >
-              {isHighlight && (
-                <span className="absolute -top-3 left-7 pill pill-accent !bg-accent !text-paper">
-                  Most chosen
-                </span>
-              )}
-              <p className={`eyebrow ${isHighlight ? "!text-accent-200" : ""}`}>{tierLabel}</p>
-              <p
-                className={`mt-3 font-display text-[22px] tracking-tightish font-medium ${
-                  isHighlight ? "text-paper" : "text-ink"
-                }`}
-              >
-                {p.name}
-              </p>
-
-              <p
-                className={`mt-6 font-display tracking-tightest text-[56px] leading-none tabular ${
-                  isHighlight ? "text-paper" : "text-ink"
-                }`}
-              >
-                ${p.monthly || p.successFee.toLocaleString()}
-              </p>
-              <p className={`mt-2 text-[12.5px] ${isHighlight ? "text-paper-200" : "text-ink-500"}`}>
-                {p.monthly
-                  ? `/month + $${p.successFee.toLocaleString()} success fee`
-                  : "flat · on offer accepted"}
-              </p>
-
-              <ul
-                className={`mt-7 space-y-2.5 text-[13.5px] ${
-                  isHighlight ? "text-paper-200" : "text-ink-700"
-                }`}
-              >
-                {p.features.map((f) => (
-                  <li key={f} className="flex gap-2.5 items-start">
-                    <Check
-                      className={`h-3.5 w-3.5 mt-1 shrink-0 ${
-                        isHighlight ? "text-accent-200" : "text-accent"
+      <section className="border-b border-ink/10">
+        <div className="mx-auto max-w-page px-6 py-12">
+          <div className="grid lg:grid-cols-3 gap-5">
+            {PLANS.map((plan) => {
+              const Icon = ICON_BY_PLAN[plan.id];
+              return (
+                <article
+                  key={plan.id}
+                  className={
+                    plan.highlight
+                      ? "rounded-xl bg-ink text-paper p-7 grain shadow-lift"
+                      : "card p-7"
+                  }
+                >
+                  <div className="flex items-center gap-2.5">
+                    <Icon
+                      className={`h-5 w-5 ${
+                        plan.highlight ? "text-highlight-200" : "text-accent"
                       }`}
                     />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
+                    <p
+                      className={`eyebrow ${
+                        plan.highlight ? "!text-highlight-200" : ""
+                      }`}
+                    >
+                      {plan.tagline}
+                    </p>
+                  </div>
+                  <h2
+                    className={`mt-3 font-display text-[34px] tracking-tightest leading-tight ${
+                      plan.highlight ? "text-paper" : "text-ink"
+                    }`}
+                  >
+                    {plan.name}
+                  </h2>
+                  <p
+                    className={`mt-2 text-[14px] leading-relaxed ${
+                      plan.highlight ? "text-paper-200" : "text-ink-700"
+                    }`}
+                  >
+                    {plan.audience}
+                  </p>
 
-              <Link
-                href="/onboarding"
-                className={`mt-7 ${isHighlight ? "btn-accent" : "btn-secondary"} w-full text-[13.5px]`}
-              >
-                Choose {p.name} <ArrowRight className="h-4 w-4" />
-              </Link>
-            </article>
-          );
-        })}
-      </div>
+                  <div
+                    className={`mt-6 pt-6 border-t ${
+                      plan.highlight ? "border-paper/15" : "border-ink/8"
+                    }`}
+                  >
+                    <div className="flex items-baseline gap-2">
+                      <span
+                        className={`font-display text-[48px] tracking-tightest leading-none tabular ${
+                          plan.highlight ? "text-paper" : "text-ink"
+                        }`}
+                      >
+                        ${plan.monthly}
+                      </span>
+                      <span
+                        className={`text-[14px] ${
+                          plan.highlight ? "text-paper-200" : "text-ink-500"
+                        }`}
+                      >
+                        /month
+                      </span>
+                    </div>
+                    {plan.successFee > 0 && (
+                      <p
+                        className={`mt-2 text-[12.5px] ${
+                          plan.highlight ? "text-paper-200" : "text-ink-500"
+                        }`}
+                      >
+                        + ${plan.successFee.toLocaleString()} placement fee on accepted offer
+                      </p>
+                    )}
+                  </div>
 
-      {/* Unit economics + rationale */}
-      <section className="mt-20 grid lg:grid-cols-12 gap-10 items-start">
-        <div className="lg:col-span-7">
-          <p className="eyebrow-quiet">Unit economics</p>
-          <h2 className="mt-2 font-display text-[28px] md:text-[34px] tracking-tightest leading-[1.08] font-medium text-ink text-balance">
-            On a typical Pipeline+ user.
-          </h2>
-          <div className="mt-6 overflow-hidden rounded-xl border border-ink/10 bg-white">
-            <table className="w-full text-[14px]">
-              <tbody className="divide-y divide-ink/8">
-                <EconRow label="Subscription revenue" value="$1,494" sub="$249/mo × 6 months" />
-                <EconRow label="Success fee" value="$1,500" sub="On offer accepted" />
-                <EconRow label="Gross revenue per placed user" value="$2,994" emphasized />
-                <EconRow label="Variable costs" value="−$360" sub="LLM + email infra" />
-                <EconRow label="Payment processing" value="−$90" sub="Stripe ~3%" />
-                <EconRow label="Gross margin per placed user" value="$2,544" emphasized accent suffix="(85%)" />
-              </tbody>
-            </table>
+                  <ul className="mt-6 space-y-3">
+                    {plan.features.map((f) => (
+                      <li
+                        key={f}
+                        className={`flex gap-2.5 text-[13.5px] leading-relaxed ${
+                          plan.highlight ? "text-paper" : "text-ink-800"
+                        }`}
+                      >
+                        <Check
+                          className={`h-4 w-4 flex-none mt-0.5 ${
+                            plan.highlight ? "text-highlight-200" : "text-accent"
+                          }`}
+                        />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div
+                    className={`mt-6 pt-6 border-t text-[12px] space-y-1.5 ${
+                      plan.highlight
+                        ? "border-paper/15 text-paper-200"
+                        : "border-ink/8 text-ink-500"
+                    }`}
+                  >
+                    <p>
+                      <span className="font-medium">Cadence — </span>
+                      {plan.cadence}
+                    </p>
+                    <p>
+                      <span className="font-medium">Models — </span>
+                      {plan.modelTier}
+                    </p>
+                  </div>
+
+                  <Link
+                    href="/onboarding"
+                    className={
+                      plan.highlight
+                        ? "btn-accent btn-lg mt-7 w-full justify-center"
+                        : "btn-primary btn-lg mt-7 w-full justify-center"
+                    }
+                  >
+                    Start with {plan.name.replace("Pipeline ", "")}{" "}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </article>
+              );
+            })}
           </div>
         </div>
+      </section>
 
-        <aside className="lg:col-span-5 space-y-6">
-          <div className="rounded-xl border-l-2 border-accent bg-paper-50 p-6">
-            <p className="eyebrow">Why not pure subscription</p>
-            <p className="mt-3 text-[14.5px] leading-relaxed text-ink-700 text-pretty">
-              A flat $99/mo subscription would underprice the value of an offer. A flat $5K
-              success-only fee would create perverse incentives to claim attribution.
+      <section>
+        <div className="mx-auto max-w-page px-6 py-16">
+          <h3 className="h-section">A few notes on pricing.</h3>
+          <div className="mt-6 grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-[88ch] text-[15px] text-ink-700 leading-relaxed text-pretty">
+            <p>
+              <span className="font-medium text-ink">Founding-cohort lock-in.</span> The first 250
+              members of each tier keep their monthly rate forever. We're learning what each
+              audience actually needs, and we'd rather earn loyalty than test elasticity.
             </p>
-            <p className="mt-3 text-[14.5px] leading-relaxed text-ink-700 text-pretty">
-              Modest monthly + meaningful success fee produces the right incentives on both sides:
-              users only stay paying if they're getting real pipeline value, and Pipeline is
-              rewarded for actually closing.
+            <p>
+              <span className="font-medium text-ink">Move tiers without losing context.</span> Your
+              identity, thesis, target profile, constraints, and live context follow you up or down
+              the ladder. Graduating from Launch into a real role means the same model that helped
+              you find it can help you find the next one.
+            </p>
+            <p>
+              <span className="font-medium text-ink">Placement fee on Max.</span> We bet on the
+              outcome with you. Max charges $1,500 only on an offer you accept. If the search
+              doesn't land, you only paid for the months we worked together.
+            </p>
+            <p>
+              <span className="font-medium text-ink">No data sold, ever.</span> We don't share your
+              receipts, your dossier, or your outreach with anyone. Pipeline is a tool you wield —
+              not a marketplace someone wields against you.
             </p>
           </div>
-
-          <div className="rounded-xl bg-ink text-paper p-6">
-            <p className="eyebrow !text-accent-200">vs. a retained recruiter</p>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              <div>
-                <p className="font-display text-[36px] tracking-tightest leading-none tabular text-paper">
-                  $90k
-                </p>
-                <p className="mt-1 text-[12px] text-paper-200">Recruiter at $300k comp</p>
-              </div>
-              <div>
-                <p className="font-display text-[36px] tracking-tightest leading-none tabular text-accent-200">
-                  $3k
-                </p>
-                <p className="mt-1 text-[12px] text-paper-200">Pipeline+, fully placed</p>
-              </div>
-            </div>
-            <p className="mt-5 text-[12.5px] text-paper-200 leading-relaxed">
-              And a recruiter works for the company. Pipeline works for you.
-            </p>
+          <div className="mt-10">
+            <Link href="/onboarding" className="btn-accent btn-lg">
+              Start your search <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-        </aside>
+        </div>
       </section>
     </div>
-  );
-}
-
-function EconRow({
-  label,
-  value,
-  sub,
-  emphasized,
-  accent,
-  suffix
-}: {
-  label: string;
-  value: string;
-  sub?: string;
-  emphasized?: boolean;
-  accent?: boolean;
-  suffix?: string;
-}) {
-  return (
-    <tr className={accent ? "bg-accent/8" : emphasized ? "bg-paper-50" : ""}>
-      <td className={`py-3 px-4 ${emphasized ? "font-medium text-ink" : "text-ink-700"}`}>
-        <p>{label}</p>
-        {sub && <p className="text-[11.5px] text-ink-500 mt-0.5">{sub}</p>}
-      </td>
-      <td
-        className={`py-3 px-4 text-right tabular ${
-          emphasized ? "font-display text-[18px] tracking-tightish font-medium text-ink" : "text-ink-700"
-        }`}
-      >
-        {value} {suffix && <span className="text-ink-500 text-[12px]">{suffix}</span>}
-      </td>
-    </tr>
   );
 }

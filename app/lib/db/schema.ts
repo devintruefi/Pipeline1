@@ -27,7 +27,7 @@ export const users = pgTable("users", {
   id: pk(),
   email: text("email").notNull().unique(),
   name: text("name"),
-  tier: text("tier", { enum: ["solo", "plus", "concierge"] }).notNull().default("solo"),
+  tier: text("tier", { enum: ["launch", "pro", "max"] }).notNull().default("pro"),
   status: text("status", { enum: ["onboarding", "active", "paused", "placed"] })
     .notNull()
     .default("onboarding"),

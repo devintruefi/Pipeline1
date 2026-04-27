@@ -65,7 +65,7 @@ async function main() {
       id: userId,
       email,
       name: "Marcus Chen",
-      tier: "plus",
+      tier: "max",
       status: "active",
       identity: {
         resume,

@@ -9,37 +9,41 @@
 :root {
   color-scheme: light;
 
-  /* Surfaces (warm-tinted) */
-  --paper: 251 250 246;
-  --paper-50: 253 252 250;
-  --paper-100: 245 243 236;
-  --paper-200: 235 232 222;
+  /* Surfaces — clean cool near-white. Never yellow, never warm-cream. */
+  --paper: 250 251 252;
+  --paper-50: 255 255 255;
+  --paper-100: 241 244 248;
+  --paper-200: 227 232 238;
 
-  /* Ink (warm-tinted; never pure black) */
-  --ink: 14 14 16;
-  --ink-900: 17 17 20;
-  --ink-800: 27 27 31;
-  --ink-700: 42 42 48;
-  --ink-500: 92 92 102;
-  --ink-300: 155 155 165;
-  --ink-100: 226 226 230;
+  /* Ink — near-black with a subtle blue undertone. Never pure black. */
+  --ink: 11 18 32;
+  --ink-900: 15 23 42;
+  --ink-800: 30 41 59;
+  --ink-700: 51 65 85;
+  --ink-500: 100 116 139;
+  --ink-300: 203 213 225;
+  --ink-100: 237 241 246;
 
-  /* Accent (editorial orange-red) */
-  --accent: 216 69 31;
-  --accent-700: 166 46 17;
-  --accent-200: 246 194 178;
+  /* Accent — deep navy. Calm, premium, unmistakably professional. */
+  --accent: 30 64 175;
+  --accent-700: 21 40 126;
+  --accent-200: 166 183 224;
 
-  /* Cool secondary */
-  --cool: 59 89 115;
-  --cool-200: 179 194 208;
+  /* Highlight — warm amber. Reserved for high-importance moments. */
+  --highlight: 181 112 26;
+  --highlight-200: 239 205 126;
 
-  /* Editorial shadows */
+  /* Cool secondary — refined slate */
+  --cool: 71 85 105;
+  --cool-200: 203 213 225;
+
+  /* Editorial shadows — cool-tinted, never neutral gray */
   --shadow-card:
-    0 1px 0 0 rgb(14 14 16 / 0.03),
-    0 4px 14px -8px rgb(14 14 16 / 0.10);
+    0 1px 0 0 rgb(11 18 32 / 0.03),
+    0 4px 14px -8px rgb(11 18 32 / 0.10);
   --shadow-lift:
-    0 1px 0 0 rgb(14 14 16 / 0.04),
-    0 22px 50px -28px rgb(14 14 16 / 0.22);
+    0 1px 0 0 rgb(11 18 32 / 0.04),
+    0 22px 50px -28px rgb(11 18 32 / 0.22);
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -53,19 +57,21 @@
 
 .dark {
   color-scheme: dark;
-  --paper: 14 14 16;
-  --paper-50: 17 17 20;
-  --paper-100: 24 24 28;
-  --paper-200: 32 32 38;
-  --ink: 245 243 236;
-  --ink-900: 232 230 222;
-  --ink-800: 216 213 204;
-  --ink-700: 196 192 180;
-  --ink-500: 152 148 136;
-  --ink-300: 104 102 96;
-  --ink-100: 56 54 50;
-  --accent: 232 113 78;
-  --accent-200: 110 42 22;
+  --paper: 11 18 32;
+  --paper-50: 15 23 42;
+  --paper-100: 22 32 52;
+  --paper-200: 30 41 59;
+  --ink: 241 245 250;
+  --ink-900: 227 234 244;
+  --ink-800: 203 213 225;
+  --ink-700: 173 188 207;
+  --ink-500: 134 152 175;
+  --ink-300: 90 105 128;
+  --ink-100: 51 65 85;
+  --accent: 92 123 214;
+  --accent-200: 30 41 95;
+  --highlight: 224 171 66;
+  --highlight-200: 122 74 14;
   --shadow-card:
     0 1px 0 0 rgb(0 0 0 / 0.30),
     0 4px 14px -8px rgb(0 0 0 / 0.45);
@@ -228,13 +234,13 @@ body, p, li, td, th, label, blockquote, q {
 
   .btn-primary {
     @apply btn bg-ink text-paper;
-    box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.08) inset, 0 1px 2px 0 rgb(14 14 16 / 0.16);
+    box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.08) inset, 0 1px 2px 0 rgb(11 18 32 / 0.16);
   }
   .btn-primary:hover { background: rgb(var(--ink-800)); }
 
   .btn-accent {
     @apply btn bg-accent text-paper;
-    box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.16) inset, 0 1px 2px 0 rgb(166 46 17 / 0.30);
+    box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.16) inset, 0 1px 2px 0 rgb(21 40 126 / 0.30);
   }
   .btn-accent:hover { background: rgb(var(--accent-700)); }
 
@@ -254,9 +260,9 @@ body, p, li, td, th, label, blockquote, q {
 
   .btn-danger {
     @apply btn text-signal-red;
-    background: rgb(179 48 40 / 0.08);
+    background: rgb(185 28 28 / 0.08);
   }
-  .btn-danger:hover { background: rgb(179 48 40 / 0.14); }
+  .btn-danger:hover { background: rgb(185 28 28 / 0.14); }
 
   .btn-sm { padding: 6px 10px; font-size: 12.5px; }
   .btn-lg { padding: 11px 18px; font-size: 14.5px; }
@@ -282,19 +288,19 @@ body, p, li, td, th, label, blockquote, q {
   .pill-ink     { background: rgb(var(--ink)); color: rgb(var(--paper)); }
   .pill-accent  { background: rgb(var(--accent) / 0.10); color: rgb(var(--accent-700)); }
   .pill-cool    { background: rgb(var(--cool) / 0.10); color: rgb(var(--cool)); }
-  .pill-green   { background: rgb(31 122 58 / 0.12); color: rgb(31 122 58); }
-  .pill-amber   { background: rgb(176 122 26 / 0.14); color: rgb(176 122 26); }
-  .pill-red     { background: rgb(179 48 40 / 0.12); color: rgb(179 48 40); }
+  .pill-green   { background: rgb(4 120 87 / 0.12); color: rgb(4 120 87); }
+  .pill-amber   { background: rgb(180 83 9 / 0.14); color: rgb(180 83 9); }
+  .pill-red     { background: rgb(185 28 28 / 0.12); color: rgb(185 28 28); }
   .pill-outline { background: transparent; border-color: rgb(var(--ink) / 0.14); color: rgb(var(--ink-700)); }
 
   /* Status dot — used in dense lists where pills would be heavy */
   .dot { display: inline-block; width: 8px; height: 8px; border-radius: 9999px; flex: none; }
-  .dot-green { background: rgb(31 122 58); }
-  .dot-amber { background: rgb(176 122 26); }
-  .dot-red   { background: rgb(179 48 40); }
+  .dot-green { background: rgb(4 120 87); }
+  .dot-amber { background: rgb(180 83 9); }
+  .dot-red   { background: rgb(185 28 28); }
   .dot-cool  { background: rgb(var(--cool)); }
   .dot-ink   { background: rgb(var(--ink)); }
-  .dot-live  { background: rgb(31 122 58); box-shadow: 0 0 0 0 rgb(31 122 58 / 0.4); animation: pulse-dot 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+  .dot-live  { background: rgb(4 120 87); box-shadow: 0 0 0 0 rgb(4 120 87 / 0.4); animation: pulse-dot 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
 
   /* ─── Forms ───────────────────────────────────────────────────────────── */
   textarea, input, select { font-family: inherit; }
