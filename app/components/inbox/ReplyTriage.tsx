@@ -1,7 +1,7 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { messages, targets } from "@/lib/db/schema";
-import { Calendar, MessageCircle, Archive, CornerDownLeft, ThumbsUp, ThumbsDown, Bell } from "lucide-react";
+import { Calendar, Archive, CornerDownLeft, ThumbsUp, ThumbsDown, Bell } from "lucide-react";
 import { relativeTime } from "@/lib/utils";
 
 type Message = typeof messages.$inferSelect;
@@ -35,6 +35,8 @@ const CLASS_TONE: Record<string, string> = {
 export function ReplyTriage({ messages, targets }: { messages: Message[]; targets: Target[] }) {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]["key"]>("all");
   const [selectedId, setSelectedId] = useState<string | null>(messages[0]?.id ?? null);
+  const [flash, setFlash] = useState<string | null>(null);
+  const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const filtered = useMemo(() => {
     const f = FILTERS.find((x) => x.key === filter)!;
@@ -43,6 +45,42 @@ export function ReplyTriage({ messages, targets }: { messages: Message[]; target
 
   const selected = filtered.find((m) => m.id === selectedId) ?? filtered[0] ?? null;
   const target = selected ? targets.find((t) => t.id === selected.targetId) ?? null : null;
+
+  // Keyboard navigation + triage shortcuts.
+  // ↑/↓ or J/K — move selection.  B/R/N/P/X/A — trigger an action on selected.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const tag = (document.activeElement?.tagName ?? "").toLowerCase();
+      if (tag === "input" || tag === "textarea") return;
+
+      const idx = filtered.findIndex((m) => m.id === selected?.id);
+
+      const move = (delta: number) => {
+        if (filtered.length === 0) return;
+        const next = (idx + delta + filtered.length) % filtered.length;
+        setSelectedId(filtered[next].id);
+      };
+
+      const fire = (label: string) => {
+        if (!selected) return;
+        if (flashTimer.current) clearTimeout(flashTimer.current);
+        setFlash(label);
+        flashTimer.current = setTimeout(() => setFlash(null), 1400);
+      };
+
+      const k = e.key.toLowerCase();
+      if (k === "arrowdown" || k === "j") { e.preventDefault(); move(1); return; }
+      if (k === "arrowup"   || k === "k") { e.preventDefault(); move(-1); return; }
+      if (k === "b") { e.preventDefault(); fire("Booked a call"); return; }
+      if (k === "r") { e.preventDefault(); fire("Reply queued for approval"); return; }
+      if (k === "n") { e.preventDefault(); fire("Nudge in 5 days scheduled"); return; }
+      if (k === "p") { e.preventDefault(); fire("Marked positive"); return; }
+      if (k === "x") { e.preventDefault(); fire("Marked negative"); return; }
+      if (k === "a") { e.preventDefault(); fire("Archived"); move(1); return; }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [filtered, selected]);
 
   if (messages.length === 0) {
     return (
@@ -149,7 +187,7 @@ export function ReplyTriage({ messages, targets }: { messages: Message[]; target
               </div>
             </div>
 
-            <footer className="px-6 py-4 border-t border-ink/8 bg-paper-50">
+            <footer className="px-6 py-4 border-t border-ink/8 bg-paper-50 relative">
               <p className="eyebrow-quiet">Suggested next move</p>
               <p className="mt-1.5 text-[13.5px] text-ink-700 italic font-display">
                 {suggestionFor(selected.classification)}
@@ -162,6 +200,15 @@ export function ReplyTriage({ messages, targets }: { messages: Message[]; target
                 <ActionButton kbd="X" icon={ThumbsDown} label="Mark negative" tone="ghost" />
                 <ActionButton kbd="A" icon={Archive} label="Archive" tone="ghost" />
               </div>
+
+              {flash && (
+                <div className="absolute top-3 right-4 animate-rise-in">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-ink text-paper px-3 py-1.5 text-[12px] shadow-lift">
+                    <span className="dot dot-green h-1.5 w-1.5 !bg-accent-200" />
+                    {flash}
+                  </span>
+                </div>
+              )}
             </footer>
           </article>
         ) : (

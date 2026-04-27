@@ -82,7 +82,10 @@ export function Toolbar() {
             <>
               <button
                 type="button"
-                aria-label="Search"
+                aria-label="Open command palette"
+                onClick={() =>
+                  document.dispatchEvent(new CustomEvent("pipeline:open-command-palette"))
+                }
                 className="hidden sm:flex items-center gap-2 rounded-md border border-ink/10 bg-paper-50 hover:bg-paper-100 transition-colors px-2.5 py-1.5 text-[12.5px] text-ink-500"
               >
                 <Search className="h-3.5 w-3.5" />

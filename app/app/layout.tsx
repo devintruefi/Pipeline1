@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Manrope, JetBrains_Mono, Fraunces } from "next/font/google";
 import { Toolbar } from "@/components/chrome/Toolbar";
 import { Footer } from "@/components/chrome/Footer";
+import { CommandPalette } from "@/components/chrome/CommandPalette";
 
 /**
  * Editorial pairing.
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Toolbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CommandPalette />
       </body>
     </html>
   );
