@@ -63,8 +63,11 @@ export async function call(args: CallArgs): Promise<CallResult> {
     if (useMock.claude || !client) {
       result = runMock(args);
     } else {
+      // Note: we used to assistant-prefill `{` to force JSON, but newer
+      // Claude models reject prefill ("conversation must end with a user
+      // message"). safeJson() below tolerates surrounding prose, so we just
+      // ask the model to return JSON in the prompt and parse defensively.
       const messages: Anthropic.MessageParam[] = [{ role: "user", content: args.user }];
-      if (args.jsonMode) messages.push({ role: "assistant", content: "{" });
 
       // The SDK's `TextBlockParam` type in 0.32.x doesn't yet expose
       // `cache_control`, but the API accepts it. Build the cacheable block
@@ -95,7 +98,6 @@ export async function call(args: CallArgs): Promise<CallResult> {
         if (block.type === "text") text += block.text;
         if (block.type === "tool_use") toolCalls.push({ name: block.name, input: block.input as Record<string, unknown> });
       }
-      if (args.jsonMode) text = "{" + text;
 
       result = {
         text,
