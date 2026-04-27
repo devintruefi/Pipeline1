@@ -66,13 +66,17 @@ export async function call(args: CallArgs): Promise<CallResult> {
       const messages: Anthropic.MessageParam[] = [{ role: "user", content: args.user }];
       if (args.jsonMode) messages.push({ role: "assistant", content: "{" });
 
+      // The SDK's `TextBlockParam` type in 0.32.x doesn't yet expose
+      // `cache_control`, but the API accepts it. Build the cacheable block
+      // as a plain object and cast it through the same type so the request
+      // shape is correct without coupling to a private SDK symbol.
       const systemBlocks: Anthropic.TextBlockParam[] = [{ type: "text", text: args.system }];
       if (args.cacheable) {
         systemBlocks.push({
           type: "text",
           text: args.cacheable,
           cache_control: { type: "ephemeral" }
-        });
+        } as Anthropic.TextBlockParam);
       }
 
       const r = await client.messages.create({
