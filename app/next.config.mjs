@@ -2,11 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    serverComponentsExternalPackages: ["better-sqlite3"]
-  },
-  webpack: (config) => {
-    config.externals = [...(config.externals || []), { "better-sqlite3": "commonjs better-sqlite3" }];
-    return config;
+    // postgres-js is a pure-JS package; no native bindings to externalise.
+    serverComponentsExternalPackages: ["postgres"]
   }
 };
 

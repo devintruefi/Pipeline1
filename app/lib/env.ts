@@ -1,7 +1,21 @@
 /**
  * Centralized environment access. Every external integration in Pipeline must
  * be optional — the system runs end-to-end with mocks when keys are absent.
+ *
+ * The database is the one exception: Pipeline persists state to Postgres
+ * (Supabase in prod). DATABASE_URL is required for the app to boot.
+ *
+ * On Vercel, the Vercel↔Supabase integration injects POSTGRES_URL,
+ * POSTGRES_PRISMA_URL, and POSTGRES_URL_NON_POOLING automatically. We accept
+ * any of those as DATABASE_URL so deployments work out of the box.
  */
+const databaseUrl =
+  process.env.DATABASE_URL ??
+  process.env.POSTGRES_URL ??
+  process.env.POSTGRES_PRISMA_URL ??
+  process.env.POSTGRES_URL_NON_POOLING ??
+  "";
+
 export const env = {
   ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY ?? "",
   ANTHROPIC_MODEL_PREMIUM: process.env.ANTHROPIC_MODEL_PREMIUM ?? "claude-opus-4-7",
@@ -15,7 +29,7 @@ export const env = {
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY ?? "",
   STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET ?? "",
 
-  DATABASE_URL: process.env.DATABASE_URL ?? "file:./pipeline.db",
+  DATABASE_URL: databaseUrl,
   CRON_SECRET: process.env.CRON_SECRET ?? "dev-cron-secret",
 
   PUBLIC_URL: process.env.PUBLIC_URL ?? "http://localhost:3000"

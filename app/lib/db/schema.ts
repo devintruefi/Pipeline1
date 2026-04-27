@@ -6,22 +6,24 @@
  * row, with operational tables (signals, targets, plays, drafts, messages,
  * runs) hanging off it.
  *
- * Persisted as SQLite locally; portable to Postgres via `drizzle-kit`.
+ * Postgres-backed (Supabase in prod). Drizzle's `pgTable` API.
  */
-import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
+import { pgTable, text, integer, doublePrecision, jsonb, timestamp } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const pk = () => text("id").primaryKey();
 const ts = (name: string) =>
-  integer(name, { mode: "timestamp" }).notNull().default(sql`(unixepoch())`);
+  timestamp(name, { mode: "date", withTimezone: true }).notNull().defaultNow();
+const tsOptional = (name: string) =>
+  timestamp(name, { mode: "date", withTimezone: true });
 const json = <T>(name: string) =>
-  text(name, { mode: "json" }).$type<T>();
+  jsonb(name).$type<T>();
 
 // ─── Users / accounts ─────────────────────────────────────────────────────────
 
-export const users = sqliteTable("users", {
+export const users = pgTable("users", {
   id: pk(),
   email: text("email").notNull().unique(),
   name: text("name"),
@@ -117,7 +119,7 @@ export interface LiveContext {
 
 // ─── Signals (what Scout produces) ────────────────────────────────────────────
 
-export const signals = sqliteTable("signals", {
+export const signals = pgTable("signals", {
   id: pk(),
   userId: text("user_id").notNull(),
   kind: text("kind", {
@@ -129,10 +131,10 @@ export const signals = sqliteTable("signals", {
   body: text("body"),
   entityCompany: text("entity_company"),
   entityPerson: text("entity_person"),
-  relevance: real("relevance").notNull().default(0), // 0..1
-  freshness: real("freshness").notNull().default(0), // 0..1
-  actionability: real("actionability").notNull().default(0), // 0..1
-  score: real("score").notNull().default(0), // composite
+  relevance: doublePrecision("relevance").notNull().default(0), // 0..1
+  freshness: doublePrecision("freshness").notNull().default(0), // 0..1
+  actionability: doublePrecision("actionability").notNull().default(0), // 0..1
+  score: doublePrecision("score").notNull().default(0), // composite
   status: text("status", { enum: ["new", "shortlisted", "discarded", "actioned"] })
     .notNull()
     .default("new"),
@@ -141,14 +143,14 @@ export const signals = sqliteTable("signals", {
 
 // ─── Targets (people the user wants to reach) ─────────────────────────────────
 
-export const targets = sqliteTable("targets", {
+export const targets = pgTable("targets", {
   id: pk(),
   userId: text("user_id").notNull(),
   fullName: text("full_name").notNull(),
   title: text("title"),
   company: text("company"),
   email: text("email"),
-  emailConfidence: real("email_confidence").notNull().default(0),
+  emailConfidence: doublePrecision("email_confidence").notNull().default(0),
   linkedinUrl: text("linkedin_url"),
   status: text("status", {
     enum: ["watch", "warm", "hot", "engaged", "meeting_booked", "rejected", "won", "snoozed"]
@@ -158,7 +160,7 @@ export const targets = sqliteTable("targets", {
   archetype: text("archetype"),
   campaignId: text("campaign_id"),
   signalId: text("signal_id"),
-  riskFlags: json<string[]>("risk_flags").default([] as string[]),
+  riskFlags: json<string[]>("risk_flags").default(sql`'[]'::jsonb`),
   dossier: json<Dossier>("dossier"),
   createdAt: ts("created_at"),
   updatedAt: ts("updated_at")
@@ -177,7 +179,7 @@ export interface Dossier {
 
 // ─── Plays (the proprietary play library, instantiated per target) ────────────
 
-export const plays = sqliteTable("plays", {
+export const plays = pgTable("plays", {
   id: pk(),
   userId: text("user_id").notNull(),
   targetId: text("target_id").notNull(),
@@ -198,7 +200,7 @@ export const plays = sqliteTable("plays", {
     .notNull()
     .default("queued"),
   step: integer("step").notNull().default(0),
-  scheduledFor: integer("scheduled_for", { mode: "timestamp" }),
+  scheduledFor: tsOptional("scheduled_for"),
   notes: text("notes"),
   createdAt: ts("created_at"),
   updatedAt: ts("updated_at")
@@ -206,7 +208,7 @@ export const plays = sqliteTable("plays", {
 
 // ─── Drafts & messages ────────────────────────────────────────────────────────
 
-export const drafts = sqliteTable("drafts", {
+export const drafts = pgTable("drafts", {
   id: pk(),
   userId: text("user_id").notNull(),
   playId: text("play_id"),
@@ -216,7 +218,7 @@ export const drafts = sqliteTable("drafts", {
   body: text("body").notNull(),
   variant: integer("variant").notNull().default(1), // 1, 2, 3 for A/B variants
   groundingNote: text("grounding_note"), // What signal/dossier line is this grounded in?
-  voiceScore: real("voice_score").notNull().default(0), // 0..1 confidence it sounds like the user
+  voiceScore: doublePrecision("voice_score").notNull().default(0), // 0..1 confidence it sounds like the user
   riskLight: text("risk_light", { enum: ["green", "yellow", "red"] }).notNull().default("green"),
   riskNotes: text("risk_notes"),
   status: text("status", { enum: ["pending", "approved", "edited", "rejected", "sent"] })
@@ -225,7 +227,7 @@ export const drafts = sqliteTable("drafts", {
   createdAt: ts("created_at")
 });
 
-export const messages = sqliteTable("messages", {
+export const messages = pgTable("messages", {
   id: pk(),
   userId: text("user_id").notNull(),
   threadId: text("thread_id"),
@@ -235,8 +237,8 @@ export const messages = sqliteTable("messages", {
   channel: text("channel", { enum: ["email", "linkedin", "intro_request"] }).notNull(),
   subject: text("subject"),
   body: text("body").notNull(),
-  sentAt: integer("sent_at", { mode: "timestamp" }),
-  receivedAt: integer("received_at", { mode: "timestamp" }),
+  sentAt: tsOptional("sent_at"),
+  receivedAt: tsOptional("received_at"),
   classification: text("classification", {
     enum: ["positive", "negative", "scheduling", "info_request", "auto_reply", "unsubscribe", "neutral"]
   }),
@@ -245,11 +247,11 @@ export const messages = sqliteTable("messages", {
 
 // ─── Meetings ─────────────────────────────────────────────────────────────────
 
-export const meetings = sqliteTable("meetings", {
+export const meetings = pgTable("meetings", {
   id: pk(),
   userId: text("user_id").notNull(),
   targetId: text("target_id").notNull(),
-  scheduledFor: integer("scheduled_for", { mode: "timestamp" }).notNull(),
+  scheduledFor: timestamp("scheduled_for", { mode: "date", withTimezone: true }).notNull(),
   durationMinutes: integer("duration_minutes").notNull().default(30),
   briefMd: text("brief_md"),
   status: text("status", { enum: ["proposed", "confirmed", "completed", "cancelled"] })
@@ -260,7 +262,7 @@ export const meetings = sqliteTable("meetings", {
 
 // ─── Runs (each agent invocation, for observability) ──────────────────────────
 
-export const runs = sqliteTable("runs", {
+export const runs = pgTable("runs", {
   id: pk(),
   userId: text("user_id"),
   agent: text("agent", {
@@ -270,7 +272,7 @@ export const runs = sqliteTable("runs", {
   inputTokens: integer("input_tokens").default(0),
   outputTokens: integer("output_tokens").default(0),
   cachedTokens: integer("cached_tokens").default(0),
-  costUsd: real("cost_usd").default(0),
+  costUsd: doublePrecision("cost_usd").default(0),
   durationMs: integer("duration_ms").default(0),
   notes: text("notes"),
   payload: json<Record<string, unknown>>("payload"),
@@ -279,20 +281,20 @@ export const runs = sqliteTable("runs", {
 
 // ─── Approvals queue (denormalised view of pending drafts + actions) ──────────
 
-export const approvals = sqliteTable("approvals", {
+export const approvals = pgTable("approvals", {
   id: pk(),
   userId: text("user_id").notNull(),
   kind: text("kind", { enum: ["draft_send", "intro_request", "calendar_invite", "campaign_pivot"] }).notNull(),
   refId: text("ref_id").notNull(),
   summary: text("summary").notNull(),
-  decidedAt: integer("decided_at", { mode: "timestamp" }),
+  decidedAt: tsOptional("decided_at"),
   decision: text("decision", { enum: ["approved", "edited", "rejected"] }),
   createdAt: ts("created_at")
 });
 
 // ─── Waitlist (marketing) ─────────────────────────────────────────────────────
 
-export const waitlist = sqliteTable("waitlist", {
+export const waitlist = pgTable("waitlist", {
   id: pk(),
   email: text("email").notNull().unique(),
   name: text("name"),
@@ -304,7 +306,7 @@ export const waitlist = sqliteTable("waitlist", {
 
 // ─── Strategy conversation transcript ─────────────────────────────────────────
 
-export const strategyTurns = sqliteTable("strategy_turns", {
+export const strategyTurns = pgTable("strategy_turns", {
   id: pk(),
   userId: text("user_id").notNull(),
   role: text("role", { enum: ["agent", "user"] }).notNull(),

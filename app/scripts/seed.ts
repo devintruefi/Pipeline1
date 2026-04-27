@@ -54,7 +54,7 @@ If it's useful, happy to send a one-pager on how we made the same trade at Helix
 ];
 
 async function main() {
-  ensureSchema();
+  await ensureSchema();
   const email = "demo@pipeline.app";
   let user = await db.query.users.findFirst({ where: eq(schema.users.email, email) });
   if (!user) {
@@ -120,5 +120,4 @@ async function main() {
 
 main().catch((e) => {
   console.error("Seed failed:", e);
-  process.exit(1);
-});
+  process.exit(1)

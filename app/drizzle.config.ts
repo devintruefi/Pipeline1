@@ -1,10 +1,14 @@
 import type { Config } from "drizzle-kit";
 
+const url =
+  process.env.DATABASE_URL ??
+  process.env.POSTGRES_URL_NON_POOLING ??
+  process.env.POSTGRES_URL ??
+  "";
+
 export default {
   schema: "./lib/db/schema.ts",
   out: "./drizzle",
-  dialect: "sqlite",
-  dbCredentials: {
-    url: process.env.DATABASE_URL?.replace(/^file:/, "") ?? "./pipeline.db"
-  }
+  dialect: "postgresql",
+  dbCredentials: { url }
 } satisfies Config;
