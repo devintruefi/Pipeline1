@@ -46,16 +46,16 @@ export function Toolbar() {
 
   return (
     <header
-      className="sticky top-0 z-40 border-b border-ink/10 bg-paper/80 backdrop-blur-md supports-[backdrop-filter]:bg-paper/70"
+      className="sticky top-0 z-40 border-b border-ink/8 bg-paper/75 toolbar-blur supports-[backdrop-filter]:bg-paper/65"
     >
       <div className="mx-auto max-w-page px-6 h-14 flex items-center gap-6">
         <Link href={inApp ? "/dashboard" : "/"} className="flex items-center gap-2.5 group">
-          <Logo />
+          <span className="icon-spring inline-flex"><Logo /></span>
           <span className="font-display font-medium tracking-tighter text-ink text-[16px] leading-none">
             Pipeline
           </span>
           {!inApp && (
-            <span className="hidden sm:inline pill pill-outline ml-1">v1.1</span>
+            <span className="hidden sm:inline pill pill-outline ml-1">v1.6</span>
           )}
         </Link>
 

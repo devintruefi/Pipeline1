@@ -45,7 +45,7 @@ export function ApprovalQueuePreview({
               <li key={d.id}>
                 <Link
                   href={`/approvals#${d.id}`}
-                  className="group grid grid-cols-[12px_1fr_auto] items-center gap-3 py-3 hover:bg-paper-50 transition-colors duration-fast -mx-2 px-2 rounded-md"
+                  className="group grid grid-cols-[12px_1fr_auto] items-center gap-3 py-3 hover:bg-accent-50/50 transition-colors duration-fast -mx-2 px-2 rounded-md"
                 >
                   <span className={`dot ${riskTone}`} />
                   <div className="min-w-0">

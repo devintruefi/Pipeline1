@@ -26,12 +26,12 @@ export default function LandingPage() {
   return (
     <div>
       {/* ─── Hero ───────────────────────────────────────────────────── */}
-      <section className="relative border-b border-ink/10 grain">
+      <section className="relative border-b border-ink/10 grain mesh-soft">
         <div className="mx-auto max-w-page px-6 pt-16 md:pt-24 pb-16 grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
             <p className="eyebrow eyebrow-dot">Founding cohort. 250 seats. Now open.</p>
-            <h1 className="mt-6 font-display font-medium text-ink leading-[0.92] tracking-tightest text-[68px] md:text-[110px] lg:text-[128px]">
-              Pipeline.
+            <h1 className="mt-6 font-display font-medium leading-[0.92] tracking-tightest text-[68px] md:text-[110px] lg:text-[128px]">
+              <span className="text-grad-brand">Pipeline</span><span className="text-ink">.</span>
             </h1>
             <p className="mt-4 font-display italic text-[26px] md:text-[36px] text-ink-700 leading-[1.1] tracking-tightish max-w-[26ch]">
               The work happens without you. The decisions don't.
@@ -78,7 +78,7 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <p className="eyebrow !text-paper-200">Version</p>
-                  <p className="mt-1.5 text-[14px] font-medium text-paper">v1.5</p>
+                  <p className="mt-1.5 text-[14px] font-medium text-paper">v1.6</p>
                   <p className="text-[12px] text-paper-200">April 2026</p>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export default function LandingPage() {
                 line: "Real time signal alerts, custom thesis development, full Opus tier agent depth, and a live coach for the moments the model cannot handle alone."
               }
             ].map(({ icon: Icon, tier, price, who, line }) => (
-              <div key={tier} className="card p-6 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-smooth">
+              <div key={tier} className="card card-interactive p-6">
                 <div className="flex items-center gap-2.5 text-accent">
                   <Icon className="h-5 w-5" />
                   <span className="font-display text-[20px] text-ink leading-none">
@@ -199,7 +199,7 @@ export default function LandingPage() {
               { icon: Calendar, title: "Scheduler", body: "Negotiates time slots inside your send window and writes a pre meeting brief." },
               { icon: Users, title: "Pipeline Manager", body: "Surfaces bottlenecks each Sunday and recommends the pivots that compound." }
             ].map(({ icon: Icon, title, body }) => (
-              <div key={title} className="card p-5 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-smooth">
+              <div key={title} className="card card-interactive p-5">
                 <div className="text-accent">
                   <Icon className="h-5 w-5" />
                 </div>
@@ -246,7 +246,7 @@ export default function LandingPage() {
                 stat: "Two recruiters' workload, in one inbox."
               }
             ].map(({ tier, pull, attrib, stat }) => (
-              <figure key={tier} className="card p-6 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-smooth">
+              <figure key={tier} className="card card-interactive p-6">
                 <p className="eyebrow">{tier}</p>
                 <Quote className="h-5 w-5 mt-3 text-accent" />
                 <blockquote className="mt-3 font-display italic text-[20px] leading-snug text-ink text-balance">

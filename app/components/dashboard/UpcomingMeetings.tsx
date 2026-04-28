@@ -48,7 +48,7 @@ export function UpcomingMeetings({
             return (
               <li
                 key={m.id}
-                className={`group grid grid-cols-[64px_1fr_auto] gap-3 rounded-lg p-3 -mx-3 hover:bg-paper-50 transition-colors duration-fast ${
+                className={`group grid grid-cols-[64px_1fr_auto] gap-3 rounded-lg p-3 -mx-3 hover:bg-accent-50/50 transition-colors duration-fast ${
                   isToday ? "bg-accent/5" : ""
                 }`}
               >

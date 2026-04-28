@@ -1,16 +1,17 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Pipeline · Design tokens.
+ * Pipeline · Design tokens (v1.6).
  *
- * The palette is cool-tinted on the neutral axis (paper / ink). premium,
- * professional, calm. One editorial accent (deep navy) carries the brand;
- * one warm secondary (amber gold) is reserved for high-importance moments.
- * Signal colors stay reserved for status (green / amber / red) and never
- * appear decoratively.
+ * Palette refresh aimed at the sensibility a senior Stripe / Apple designer
+ * would bring: lighter, more breathable indigo as the lead accent (the dense
+ * indigo-700 reads heavy at scale and at small sizes); a violet companion
+ * for gradient depth; cool slate ink scale for editorial weight; refined
+ * highlight + signal palette; richer shadow stack for tactile elevation.
  *
- * The serif display family + tabular figures + generous spacing carry the
- * editorial DNA forward. Color is the only thing being refreshed.
+ * Motion: spring easing on interactive elements, refined durations. The
+ * underlying editorial DNA (display serif, oldstyle figures, tabular metrics)
+ * is unchanged.
  */
 const config: Config = {
   darkMode: "class",
@@ -22,7 +23,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Cool ink. near-black with a subtle blue undertone
         ink: {
           DEFAULT: "#0B1220",
           950: "#070A14",
@@ -34,42 +34,57 @@ const config: Config = {
           400: "#94A3B8",
           300: "#CBD5E1",
           200: "#E2E8F0",
-          100: "#EDF1F6",
-          50: "#F4F6FA"
+          100: "#F1F5F9",
+          50: "#F8FAFC"
         },
-        // Cool paper. clean near-white that reads premium, not yellow
         paper: {
           DEFAULT: "#FAFBFC",
           50: "#FFFFFF",
-          100: "#F1F4F8",
-          200: "#E3E8EE",
+          100: "#F4F6FA",
+          200: "#E5EAF2",
           300: "#C5CDD8"
         },
-        // Editorial accent. deep navy, calm and unmistakably professional
+        // Accent: breathable indigo (Tailwind indigo-500 family). The dense
+        // indigo-700 we used to lead with now lives at .700 / .800 for
+        // deep-mode surfaces and pressed states only.
         accent: {
-          DEFAULT: "#4338CA",
-          700: "#312E80",
-          600: "#3730A3",
-          500: "#4F46E5",
-          400: "#6366F1",
+          DEFAULT: "#6366F1",
+          900: "#312E81",
+          800: "#3730A3",
+          700: "#4338CA",
+          600: "#4F46E5",
+          500: "#6366F1",
+          400: "#818CF8",
           300: "#A5B4FC",
           200: "#C7D2FE",
           100: "#E0E7FF",
-          50: "#F0F1FE"
+          50: "#EEF2FF"
         },
-        // Warm amber highlight. used sparingly for "this matters now" moments
+        // Violet: companion for the brand gradient + secondary energy.
+        violet: {
+          DEFAULT: "#8B5CF6",
+          900: "#4C1D95",
+          800: "#5B21B6",
+          700: "#6D28D9",
+          600: "#7C3AED",
+          500: "#8B5CF6",
+          400: "#A78BFA",
+          300: "#C4B5FD",
+          200: "#DDD6FE",
+          100: "#EDE9FE",
+          50: "#F5F3FF"
+        },
         highlight: {
-          DEFAULT: "#B5701A",
-          700: "#8A540F",
-          600: "#A06314",
-          500: "#B5701A",
-          400: "#D08D2C",
-          300: "#E0AB42",
-          200: "#EFCD7E",
-          100: "#F8E6BB",
-          50: "#FCF5E5"
+          DEFAULT: "#D97A1F",
+          700: "#A0540F",
+          600: "#B86417",
+          500: "#D97A1F",
+          400: "#EFA255",
+          300: "#F4BD7E",
+          200: "#FAD7A8",
+          100: "#FCEACB",
+          50: "#FEF6E8"
         },
-        // Cool secondary. refined slate, used in data viz + informational UI
         cool: {
           DEFAULT: "#475569",
           700: "#334155",
@@ -89,9 +104,13 @@ const config: Config = {
           red: "#DC2626",
           "red-soft": "#FEE2E2"
         },
-        // Teal. used sparingly in data viz to add a complementary energy
-        // point against the indigo accent. Same role as 'highlight' but
-        // optimised for cool/calm contexts (charts, secondary metrics).
+        // Cyan accent for data-viz spark moments (rare).
+        cyan: {
+          DEFAULT: "#0891B2",
+          500: "#06B6D4",
+          200: "#A5F3FC",
+          100: "#CFFAFE"
+        },
         teal: {
           DEFAULT: "#0E9384",
           700: "#0A6E63",
@@ -166,17 +185,21 @@ const config: Config = {
         card: "0 1px 0 0 rgb(11 18 32 / 0.03), 0 4px 14px -8px rgb(11 18 32 / 0.10)",
         lift: "0 1px 0 0 rgb(11 18 32 / 0.04), 0 22px 50px -28px rgb(11 18 32 / 0.22)",
         focus:
-          "0 0 0 2px rgb(250 251 252 / 1), 0 0 0 4px rgb(67 56 202 / 0.55)",
+          "0 0 0 2px rgb(250 251 252 / 1), 0 0 0 4px rgb(99 102 241 / 0.45)",
         ring: "inset 0 0 0 1px rgb(11 18 32 / 0.08)",
-        // Soft accent halo. used on primary CTAs to add quiet energy.
-        glow: "0 0 0 1px rgb(67 56 202 / 0.12), 0 12px 32px -10px rgb(67 56 202 / 0.40)",
-        "glow-soft": "0 8px 22px -10px rgb(67 56 202 / 0.30)"
+        // Soft accent halo on primary CTAs. Indigo-500 tinted, not the heavier 700.
+        glow: "0 1px 0 0 rgb(255 255 255 / 0.10) inset, 0 12px 32px -10px rgb(99 102 241 / 0.45)",
+        "glow-soft": "0 8px 22px -10px rgb(99 102 241 / 0.34)",
+        // Deeper press shadow (used on .card-interactive active state)
+        press: "0 1px 0 0 rgb(11 18 32 / 0.06), 0 1px 4px -1px rgb(11 18 32 / 0.10)"
       },
       transitionTimingFunction: {
         out: "cubic-bezier(0.22, 1, 0.36, 1)",
         "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
         "in-out": "cubic-bezier(0.65, 0, 0.35, 1)",
-        emphasized: "cubic-bezier(0.2, 0, 0, 1)"
+        emphasized: "cubic-bezier(0.2, 0, 0, 1)",
+        spring: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        gentle: "cubic-bezier(0.4, 0, 0.2, 1)"
       },
       transitionDuration: {
         instant: "80ms",
@@ -214,6 +237,11 @@ const config: Config = {
         "draw-line": {
           "0%": { strokeDashoffset: "1000" },
           "100%": { strokeDashoffset: "0" }
+        },
+        "shimmer-text": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" }
         }
       },
       animation: {
@@ -223,7 +251,8 @@ const config: Config = {
         "ticker": "ticker 700ms cubic-bezier(0.22, 1, 0.36, 1) both",
         "shimmer": "shimmer 2.4s linear infinite",
         "pulse-dot": "pulse-dot 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite",
-        "draw-line": "draw-line 1200ms cubic-bezier(0.22, 1, 0.36, 1) both"
+        "draw-line": "draw-line 1200ms cubic-bezier(0.22, 1, 0.36, 1) both",
+        "shimmer-text": "shimmer-text 6s ease-in-out infinite"
       }
     }
   },

@@ -43,8 +43,8 @@ export function AgentsOnline() {
 
       <style>{`
         @keyframes agentPulse {
-          0%, 100% { background: rgb(67 56 202 / 0.30); transform: scale(1); }
-          50% { background: rgb(79 70 229 / 1); transform: scale(1.6); }
+          0%, 100% { background: rgb(99 102 241 / 0.28); transform: scale(1); }
+          50% { background: rgb(139 92 246 / 0.95); transform: scale(1.6); }
         }
       `}</style>
     </div>

@@ -6,7 +6,7 @@ export default function ManifestoPage() {
     <div className="bg-paper">
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-[72ch] px-6 py-20">
-          <p className="eyebrow">Manifesto. v1.5</p>
+          <p className="eyebrow">Manifesto. v1.6</p>
           <h1 className="mt-4 font-display text-[48px] md:text-[64px] leading-[0.96] tracking-tightest text-ink">
             The work happens without you. The decisions don't.
           </h1>
