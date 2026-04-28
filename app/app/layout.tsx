@@ -39,10 +39,10 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pipeline. The autonomous executive job search.",
+  title: "Pipeline. The job search that runs itself.",
   description:
-    "An AI chief of staff that runs an entire executive job search end-to-end. researching opportunities, drafting thesis-grounded outreach in your voice, sending it from your inbox, handling follow-ups, and putting meetings on your calendar.",
-  metadataBase: new URL("http://localhost:3000")
+    "An AI chief of staff for your job search. Nine specialised agents target opportunities, draft outreach in your voice, send from your inbox, handle follow ups, and book meetings. You approve every move. About ten minutes a day. The rest runs in the background.",
+  metadataBase: new URL("https://pipeline1-sigma.vercel.app")
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

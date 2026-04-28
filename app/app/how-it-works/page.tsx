@@ -99,8 +99,7 @@ export default function HowItWorksPage() {
           <p className="mt-6 max-w-[64ch] text-[17px] text-ink-700 leading-relaxed text-pretty">
             Pipeline does the labor of a job search end to end. Targeting, research, drafting,
             outreach, follow up, and scheduling all happen in the background. A small approval
-            queue surfaces the decisions only you can make. Two minutes a day for hours of compound
-            progress, indefinitely.
+            queue surfaces the decisions only you can make. About ten minutes a day, indefinitely.
           </p>
         </div>
       </section>
@@ -173,7 +172,7 @@ export default function HowItWorksPage() {
       <section className="border-t border-ink/10 bg-ink text-paper">
         <div className="mx-auto max-w-page px-6 py-16">
           <h3 className="font-display text-[36px] md:text-[48px] tracking-tightest leading-tight text-paper">
-            Two minutes of decisions a day. The rest is leverage.
+            Ten minutes of decisions a day. The rest runs in the background.
           </h3>
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Link href="/onboarding" className="btn-accent btn-lg">

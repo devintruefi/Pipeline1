@@ -14,15 +14,15 @@ export default function FounderPage() {
         <p className="drop-cap text-pretty">
           I spent the back half of last year running my own VP-level job search the old way.
           spreadsheets, manual sourcing, half-finished follow-ups, and a private Slack channel of
-          operators all complaining about the same thing. The bottleneck was never motivation. It was
-          leverage.
+          operators all complaining about the same thing. We were not short on effort. We were
+          short on hands.
         </p>
 
         <p className="text-pretty">
-          So I built Pipeline. First as a personal tool, then as a system, then as a product. I used
-          it on myself, found the load-bearing pieces, and quietly opened it to a few friends who
-          were in the same spot. The pattern was the same across all of us: an executive who knew
-          exactly what they wanted but had no leverage to find it. Pipeline became the leverage.
+          So I built Pipeline. First as a personal tool, then as a system, then as a product. I
+          used it on myself, found the load-bearing pieces, and quietly opened it to a few friends
+          who were in the same spot. The pattern was the same across all of us: an executive who
+          knew exactly what they wanted, but no team to go find it. Pipeline became the team.
         </p>
 
         <p className="text-pretty">

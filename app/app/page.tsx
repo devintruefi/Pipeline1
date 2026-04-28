@@ -21,7 +21,6 @@ import {
 import { WaitlistForm } from "@/components/marketing/WaitlistForm";
 import { Sparkline } from "@/components/primitives/Sparkline";
 import { AgentsOnline } from "@/components/marketing/AgentsOnline";
-import { TrustedBy } from "@/components/marketing/TrustedBy";
 
 export default function LandingPage() {
   return (
@@ -35,14 +34,14 @@ export default function LandingPage() {
               Pipeline.
             </h1>
             <p className="mt-4 font-display italic text-[26px] md:text-[36px] text-ink-700 leading-[1.1] tracking-tightish max-w-[26ch]">
-              The bottleneck is not motivation. It is leverage.
+              The work happens without you. The decisions don't.
             </p>
             <div className="rule-thick mt-7 max-w-[280px]" />
             <p className="mt-7 max-w-[58ch] text-[17px] md:text-[18px] leading-[1.6] text-ink-700 text-pretty">
-              An AI chief of staff that runs your entire job search. Nine specialised agents target
-              the right opportunities, write thesis grounded outreach in your voice, send from your
-              inbox, handle follow ups, and put meetings on your calendar. You approve in seconds.
-              Two minutes a day. From start to signed offer in nine weeks.
+              An AI chief of staff for your job search. Nine specialised agents target the right
+              opportunities, write outreach in your voice, send from your inbox, handle follow ups,
+              and put meetings on your calendar. You approve every move. About ten minutes a day.
+              The rest runs in the background.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link href="/onboarding" className="btn-accent btn-lg glow-accent">
@@ -63,12 +62,13 @@ export default function LandingPage() {
             <div className="surface-ink-grad p-6 grain relative overflow-hidden">
               <p className="eyebrow !text-accent-200">Position paper</p>
               <p className="mt-3 font-display italic text-[20px] leading-[1.25] text-paper text-balance">
-                "The bottleneck is not motivation. It is leverage."
+                "The work happens without you. The decisions don't."
               </p>
               <p className="mt-4 text-[13.5px] text-paper-200 leading-relaxed">
-                Most job searches stall not because the candidate is unmotivated, but because the
-                work is the wrong shape for one human. Targeting, drafting, sending, following up.
-                Pipeline gives one person the throughput of a small team.
+                Most searches stall not because the candidate isn't trying. They stall because the
+                work is the wrong shape for one person. Targeting, drafting, sending, follow up,
+                scheduling. Pipeline runs all of it in your voice. You stay focused on the
+                conversations that move the offer.
               </p>
               <div className="mt-5 grid grid-cols-2 gap-4 pt-5 border-t border-paper/10">
                 <div>
@@ -78,7 +78,7 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <p className="eyebrow !text-paper-200">Version</p>
-                  <p className="mt-1.5 text-[14px] font-medium text-paper">v1.4</p>
+                  <p className="mt-1.5 text-[14px] font-medium text-paper">v1.5</p>
                   <p className="text-[12px] text-paper-200">April 2026</p>
                 </div>
               </div>
@@ -101,13 +101,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── Trusted by ──────────────────────────────────────────────── */}
-      <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-page px-6 py-12">
-          <TrustedBy />
-        </div>
-      </section>
-
       {/* ─── Three audiences ─────────────────────────────────────────── */}
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-page px-6 py-16">
@@ -119,10 +112,11 @@ export default function LandingPage() {
               </h2>
             </div>
             <p className="lg:col-span-7 text-[16px] text-ink-700 leading-relaxed text-pretty">
-              Pipeline began as the autonomous executive search. The same nine agent loop works at
-              every career stage. What changes is the cadence, the model depth, and the kind of
-              signals worth chasing. Launch turns alumni networks into warm intros. Pro converts
-              receipts into voice grounded outreach. Max runs peer to peer at the executive level.
+              The same nine agent loop powers every tier. What changes is what each one optimises
+              for. Launch turns alumni networks and ATS hygiene into intern and first job offers.
+              Pro pairs real career receipts with high signal outreach to senior hiring managers.
+              Max coordinates executive moves where the right warm intro outperforms a hundred
+              cold sends.
             </p>
           </div>
 
@@ -146,7 +140,7 @@ export default function LandingPage() {
                 icon: Crown,
                 tier: "Max",
                 price: "$299/mo plus $1,500 placement",
-                who: "VPs, GMs, CROs, founders. Peer to peer leverage at the top.",
+                who: "VPs, GMs, CROs, founders. Executive moves where one warm intro beats a hundred cold sends.",
                 line: "Real time signal alerts, custom thesis development, full Opus tier agent depth, and a live coach for the moments the model cannot handle alone."
               }
             ].map(({ icon: Icon, tier, price, who, line }) => (
@@ -189,8 +183,8 @@ export default function LandingPage() {
             <p className="lg:col-span-7 text-[16px] text-ink-700 leading-relaxed text-pretty">
               Pipeline does the labor. You make the calls only you can make. Each agent has a
               narrow job: target, research, draft, verify, send, classify, schedule, and review.
-              Every outgoing message lands in a queue you approve in seconds. Two minutes a day for
-              hours of compound progress.
+              Every outgoing message lands in a queue you approve in seconds. About ten minutes a
+              day for hours of compound progress.
             </p>
           </div>
 
@@ -237,19 +231,19 @@ export default function LandingPage() {
                 tier: "Launch",
                 pull: "Pipeline turned my LinkedIn into nine introductions before the campus career fair even started.",
                 attrib: "Maya. Graduating senior, computer science.",
-                stat: "9 intros. 3 internship offers. 14 days."
+                stat: "9 intros. 3 internship offers."
               },
               {
                 tier: "Pro",
                 pull: "I got cut on a Tuesday. By Friday I had three interviews booked and a reason to feel like myself again.",
                 attrib: "Daniel. Director of product, ex Stripe.",
-                stat: "3 interviews. 2 offers. 6 weeks."
+                stat: "3 interviews. 2 offers."
               },
               {
                 tier: "Max",
                 pull: "It compresses the work that two recruiters and an executive coach were doing for me into one inbox.",
                 attrib: "Marcus. VP Sales, Series C SaaS.",
-                stat: "Search to offer. 9 weeks."
+                stat: "Two recruiters' workload, in one inbox."
               }
             ].map(({ tier, pull, attrib, stat }) => (
               <figure key={tier} className="card p-6 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-smooth">
@@ -273,9 +267,9 @@ export default function LandingPage() {
         <div className="mx-auto max-w-page px-6 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6">
             {[
-              { value: "9 weeks", label: "From start to accepted offer, on average" },
+              { value: "60+", label: "Touchpoints per active campaign, without lifting a finger" },
               { value: "24%", label: "Cohort average reply rate" },
-              { value: "2 min", label: "Daily approval queue review" },
+              { value: "10 min", label: "Daily approval queue review" },
               { value: "$2.40", label: "Average Claude cost per active user per week" }
             ].map(({ value, label }) => (
               <div key={value}>

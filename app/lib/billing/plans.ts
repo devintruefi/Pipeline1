@@ -57,7 +57,7 @@ export const PLANS: Plan[] = [
     id: "max",
     name: "Pipeline Max",
     tagline: "The autonomous executive job search.",
-    audience: "VPs, CROs, GMs, founders. peer-to-peer leverage at the top.",
+    audience: "VPs, CROs, GMs, founders. Executive moves where one warm intro beats a hundred cold sends.",
     monthly: 299,
     successFee: 1500,
     cadence: "Hourly tick · real-time signal alerts · daily Sunday memo",

@@ -6,21 +6,22 @@ export default function ManifestoPage() {
     <div className="bg-paper">
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-[72ch] px-6 py-20">
-          <p className="eyebrow">Manifesto. v1.4</p>
+          <p className="eyebrow">Manifesto. v1.5</p>
           <h1 className="mt-4 font-display text-[48px] md:text-[64px] leading-[0.96] tracking-tightest text-ink">
-            The bottleneck is not motivation. It is leverage.
+            The work happens without you. The decisions don't.
           </h1>
           <p className="mt-6 font-display italic text-[20px] text-ink-700 leading-snug max-w-[60ch]">
-            "An AI chief of staff that runs an entire executive job search end to end. Compresses
-            9 months into 9 weeks at software margins."
+            "An AI chief of staff for your job search. Nine specialised agents target opportunities,
+            draft outreach in your voice, send from your inbox, handle follow ups, and book
+            meetings. You approve every move."
           </p>
         </div>
       </section>
 
       <article className="mx-auto max-w-[68ch] px-6 py-16 prose prose-ink">
         <p className="drop-cap text-[18px] text-ink-700 leading-[1.7] text-pretty">
-          A senior leader spends six to twelve months on a search that should take nine weeks. Not
-          because they are not working. Because the work is the wrong shape for one human. Each
+          A senior leader spends six to twelve months on a search that should take a fraction of that.
+          Not because they are not working. Because the work is the wrong shape for one person. Each
           target requires research, dossier building, voice tuned outreach, polite follow ups, a
           calendar dance, a pre meeting brief, a thank you, and a re engagement note. None of it
           rewards being awake at 6am. All of it compounds when you forget. We built Pipeline
