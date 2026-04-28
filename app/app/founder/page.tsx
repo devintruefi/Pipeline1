@@ -21,7 +21,7 @@ export default function FounderPage() {
         <p className="text-pretty">
           So I built Pipeline. First as a personal tool, then as a system, then as a product. I used
           it on myself, found the load-bearing pieces, and quietly opened it to a few friends who
-          were in the same spot. The pattern was the same across all of us. an executive who knew
+          were in the same spot. The pattern was the same across all of us: an executive who knew
           exactly what they wanted but had no leverage to find it. Pipeline became the leverage.
         </p>
 

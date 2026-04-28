@@ -26,7 +26,7 @@ import {
  * Open with ⌘K / ctrl+K, /, or by clicking the search affordance in the
  * Toolbar. Filters all known actions and recent targets fuzzily; ↑/↓
  * navigates, Enter executes, Esc closes. The palette is the single source
- * of truth for "go anywhere, do anything" in the app. every new surface
+ * of truth for "go anywhere, do anything" in the app: every new surface
  * should register a Command here when added.
  */
 type Command = {

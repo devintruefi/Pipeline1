@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { Play, Loader2 } from "lucide-react";
 
 /**
- * Run tick. kicks the orchestrator. The button rotates the icon during
+ * Run tick: kicks the orchestrator. The button rotates the icon during
  * the round-trip and adopts the accent fill once the call returns, then
  * relaxes back. Keyboard shortcut "T" is registered globally.
  */

@@ -1,5 +1,5 @@
 /**
- * Sparkline. premium SVG trend strip with gradient area fill.
+ * Sparkline: premium SVG trend strip with gradient area fill.
  *
  * Designed for inline use next to a metric. Renders a soft gradient under
  * the line so the chart feels three-dimensional without overwhelming the

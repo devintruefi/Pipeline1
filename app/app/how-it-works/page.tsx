@@ -43,7 +43,7 @@ const STEPS = [
     title: "Pipeline picks a play. Drafter writes two variants.",
     duration: "Per target",
     body:
-      "Seven plays. direct exec cold email, tailored application + backchannel, warm intro, newsjacking, event convergence, re-engagement, quiet apply. The selector is deterministic and explainable. The Drafter writes voice-fingerprinted variants grounded in a specific dossier line."
+      "Seven plays: direct exec cold email, tailored application + backchannel, warm intro, newsjacking, event convergence, re-engagement, quiet apply. The selector is deterministic and explainable. The Drafter writes voice-fingerprinted variants grounded in a specific dossier line."
   },
   {
     icon: ShieldCheck,
@@ -59,7 +59,7 @@ const STEPS = [
     title: "Sender ships through your inbox at the right hour.",
     duration: "Approval queue",
     body:
-      "Every draft enters a small approval queue you control. Approve, edit-then-send, or reject in seconds. Sender ships the approved draft through your Gmail inside your send-window. LinkedIn drafts go to a tap-to-send queue you complete manually. that's the compliance moat."
+      "Every draft enters a small approval queue you control. Approve, edit-then-send, or reject in seconds. Sender ships the approved draft through your Gmail inside your send-window. LinkedIn drafts go to a tap-to-send queue you complete manually. That's the compliance moat."
   },
   {
     icon: Inbox,
@@ -67,7 +67,7 @@ const STEPS = [
     title: "Follow-up classifies replies and proposes the next move.",
     duration: "On reply",
     body:
-      "Positive, scheduling, info request, auto-reply, unsubscribe, neutral. The classification drives the next play step. a re-engagement, a meeting brief, a polite close. You stay in command, but you no longer have to triage."
+      "Positive, scheduling, info request, auto-reply, unsubscribe, neutral. The classification drives the next play step: a re-engagement, a meeting brief, a polite close. You stay in command, but you no longer have to triage."
   },
   {
     icon: Calendar,
@@ -75,7 +75,7 @@ const STEPS = [
     title: "Scheduler proposes times and writes a pre-meeting brief.",
     duration: "On meeting",
     body:
-      "Three time slots inside your send-window, on your calendar, in their timezone. A one-page brief. why the meeting matters, three things to bring up, one question to ask, red flags to acknowledge. You walk in over-prepared without having prepared."
+      "Three time slots inside your send-window, on your calendar, in their timezone. A one-page brief: why the meeting matters, three things to bring up, one question to ask, red flags to acknowledge. You walk in over-prepared without having prepared."
   },
   {
     icon: Users,

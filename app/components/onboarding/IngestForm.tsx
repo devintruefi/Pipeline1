@@ -8,7 +8,7 @@ VP of Sales · Series B/C SaaS commercial leadership
 Summary
 Three-time commercial leader. Built and scaled GTM teams at Helix, Brick, and Vellum. Took ARR from $14M → $42M at Helix in 22 months by re-architecting the AE/SE pairing.
 
-VP of Sales. Helix (2021. present)
+VP of Sales, Helix (2021, present)
 - Took ARR from $14M to $42M in 22 months
 - Closed two of the three largest deals in company history (>$1.4M ACV each)
 - Built a 28-person commercial team and retained 100% through a 19% RIF
@@ -75,7 +75,7 @@ export function IngestForm() {
       <div>
         <label className="text-[12.5px] uppercase tracking-wider text-ink-500">Paste your resume (text)</label>
         <textarea name="resumeText" rows={12} required defaultValue={SAMPLE_RESUME} className="mt-1 w-full font-mono text-[12.5px]" />
-        <p className="mt-1 text-[11.5px] text-ink-300">In production, drop a PDF. vision-capable parser handles the rest.</p>
+        <p className="mt-1 text-[11.5px] text-ink-300">In production, drop a PDF. A vision-capable parser handles the rest.</p>
       </div>
       <div>
         <label className="text-[12.5px] uppercase tracking-wider text-ink-500">Voice samples (3.5 emails or posts you're proud of)</label>

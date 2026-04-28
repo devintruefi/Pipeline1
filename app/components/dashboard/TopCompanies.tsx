@@ -105,7 +105,7 @@ function band(score: number) {
 }
 
 function nextAction(t: Target, drafts: Draft[], messages: Message[]) {
-  if (t.status === "won") return "Won . keep warm";
+  if (t.status === "won") return "Won, keep warm";
   if (t.status === "rejected") return "Closed";
   if (t.status === "meeting_booked") return "Prep for meeting";
   const lastInbound = messages
@@ -232,7 +232,7 @@ export function TopCompanies({ targets, drafts, messages }: Props) {
       <p className="mt-5 pt-4 border-t border-ink/6 text-[11.5px] text-ink-500 leading-relaxed">
         Likelihood blends stage progression, reply sentiment, voice fidelity,
         mutual connections, and email-deliverability confidence. Re-computes
-        every tick . no second LLM call.
+        every tick, no second LLM call.
       </p>
     </section>
   );
