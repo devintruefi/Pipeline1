@@ -17,7 +17,7 @@ const STEPS = [
     icon: Compass,
     n: "01",
     title: "Onboarding builds your context model.",
-    duration: "30.45 minutes",
+    duration: "30 to 45 minutes",
     body:
       "You spend less than an hour with the Strategist. We pull receipts (quantified wins, with the story behind each), your target profile (role shape, company stage, geography, comp band), your constraints (visa, family, no-fly companies, channel rules), and a voice sample (anything you've written that sounds like you). The output is a five-layer context block the agents reference on every tick."
   },
@@ -51,7 +51,7 @@ const STEPS = [
     title: "Verifier checks risk and voice fidelity.",
     duration: "Pre-send",
     body:
-      "Email validation. Risk light (green / yellow / red) for tone, claims, and compliance. Voice score (0.1) measuring sentence length, em-dash rate, and other stylistic markers against your voice profile. Anything below the threshold gets flagged for review."
+      "Email validation. Risk light (green / yellow / red) for tone, claims, and compliance. Voice score (0 to 1) measuring sentence length, em-dash rate, and other stylistic markers against your voice profile. Anything below the threshold gets flagged for review."
   },
   {
     icon: Mail,
@@ -83,7 +83,7 @@ const STEPS = [
     title: "Pipeline Manager surfaces what's working and what to pivot.",
     duration: "Daily + Sunday",
     body:
-      "Each morning a short briefing. Each Sunday a memo: what's converting, what's stalled, which campaigns to lean into, which to retire. The model can't decide what you want. it can keep you honest about how the search is actually performing."
+      "Each morning a short briefing. Each Sunday a memo: what's converting, what's stalled, which campaigns to lean into, which to retire. The model cannot decide what you want, but it can keep you honest about how the search is actually performing."
   }
 ];
 
@@ -94,12 +94,13 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-page px-6 py-16">
           <p className="eyebrow">How it works</p>
           <h1 className="mt-3 font-display text-[44px] md:text-[64px] leading-[0.96] tracking-tightest text-ink">
-            Nine specialised agents,<br />one approval queue.
+            Nine agents do the work.<br />You make the calls.
           </h1>
           <p className="mt-6 max-w-[64ch] text-[17px] text-ink-700 leading-relaxed text-pretty">
-            Pipeline never sends anything you haven't seen. The agents do the research, the
-            writing, the routing, the follow-up. and surface a small queue of decisions you can
-            approve in seconds. Most days that's two minutes for hours of compound progress.
+            Pipeline does the labor of a job search end to end. Targeting, research, drafting,
+            outreach, follow up, and scheduling all happen in the background. A small approval
+            queue surfaces the decisions only you can make. Two minutes a day for hours of compound
+            progress, indefinitely.
           </p>
         </div>
       </section>
@@ -143,7 +144,7 @@ export default function HowItWorksPage() {
                 <li>· Decide what you want next, and what you'd negotiate for.</li>
               </ul>
               <p className="mt-6 pt-4 border-t border-paper/15 text-[12.5px] text-paper-200 leading-relaxed">
-                Everything else. research, drafting, sending, classifying replies, scheduling.
+                Everything else (research, drafting, sending, classifying replies, scheduling)
                 runs in the background.
               </p>
             </div>
@@ -151,18 +152,18 @@ export default function HowItWorksPage() {
             <div className="card p-6">
               <p className="eyebrow">Cost-aware routing</p>
               <p className="mt-3 text-[14px] text-ink-700 leading-relaxed text-pretty">
-                We route the cheapest model that's good enough. Triage on Haiku, drafting on
+                We route the cheapest model that is good enough. Triage on Haiku, drafting on
                 Sonnet, strategy and the Sunday memo on Opus. Every run is logged with token
-                counts and estimated cost. visible in the Runs page.
+                counts and estimated cost, visible in the Runs page.
               </p>
             </div>
 
             <div className="card p-6">
               <p className="eyebrow">Privacy</p>
               <p className="mt-3 text-[14px] text-ink-700 leading-relaxed text-pretty">
-                Your receipts, your dossier, your outreach. yours. We never sell, share, or
-                expose your data. The DB lives in your Supabase project on Max; on Launch and
-                Pro it's tenant-isolated in ours.
+                Your receipts, your dossier, your outreach are yours. We never sell, share, or
+                expose your data. On Max the database lives in your own Supabase project. On
+                Launch and Pro it is tenant isolated inside ours.
               </p>
             </div>
           </aside>
@@ -172,7 +173,7 @@ export default function HowItWorksPage() {
       <section className="border-t border-ink/10 bg-ink text-paper">
         <div className="mx-auto max-w-page px-6 py-16">
           <h3 className="font-display text-[36px] md:text-[48px] tracking-tightest leading-tight text-paper">
-            Two minutes a day. Hours of compound progress.
+            Two minutes of decisions a day. The rest is leverage.
           </h3>
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Link href="/onboarding" className="btn-accent btn-lg">

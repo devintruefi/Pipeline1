@@ -30,7 +30,7 @@ export default function LandingPage() {
       <section className="relative border-b border-ink/10 grain">
         <div className="mx-auto max-w-page px-6 pt-16 md:pt-24 pb-16 grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
-            <p className="eyebrow eyebrow-dot">Founding cohort. Open. 250 seats.</p>
+            <p className="eyebrow eyebrow-dot">Founding cohort. 250 seats. Now open.</p>
             <h1 className="mt-6 font-display font-medium text-ink leading-[0.92] tracking-tightest text-[68px] md:text-[110px] lg:text-[128px]">
               Pipeline.
             </h1>
@@ -39,10 +39,10 @@ export default function LandingPage() {
             </p>
             <div className="rule-thick mt-7 max-w-[280px]" />
             <p className="mt-7 max-w-[58ch] text-[17px] md:text-[18px] leading-[1.6] text-ink-700 text-pretty">
-              An AI chief of staff that runs an entire executive job search end to end. Compresses
-              9 months into 9 weeks at software margins. Researches the right opportunities, writes
-              thesis grounded outreach in your voice, sends from your inbox, handles follow ups,
-              and puts meetings on your calendar.
+              An AI chief of staff that runs your entire job search. Nine specialised agents target
+              the right opportunities, write thesis grounded outreach in your voice, send from your
+              inbox, handle follow ups, and put meetings on your calendar. You approve in seconds.
+              Two minutes a day. From start to signed offer in nine weeks.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link href="/onboarding" className="btn-accent btn-lg glow-accent">
@@ -66,8 +66,9 @@ export default function LandingPage() {
                 "The bottleneck is not motivation. It is leverage."
               </p>
               <p className="mt-4 text-[13.5px] text-paper-200 leading-relaxed">
-                A senior leader spends 6 to 12 months on a search that should take 9 weeks. Not
-                because they are not working. Because the work is the wrong shape for one human.
+                Most job searches stall not because the candidate is unmotivated, but because the
+                work is the wrong shape for one human. Targeting, drafting, sending, following up.
+                Pipeline gives one person the throughput of a small team.
               </p>
               <div className="mt-5 grid grid-cols-2 gap-4 pt-5 border-t border-paper/10">
                 <div>
@@ -77,7 +78,7 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <p className="eyebrow !text-paper-200">Version</p>
-                  <p className="mt-1.5 text-[14px] font-medium text-paper">v1.3</p>
+                  <p className="mt-1.5 text-[14px] font-medium text-paper">v1.4</p>
                   <p className="text-[12px] text-paper-200">April 2026</p>
                 </div>
               </div>
@@ -114,14 +115,14 @@ export default function LandingPage() {
             <div className="lg:col-span-5">
               <p className="eyebrow">Three tiers. One architecture.</p>
               <h2 className="h-section mt-3">
-                The same nine&nbsp;agents. Tuned for where you are in your career.
+                One playbook. Tuned for every career stage.
               </h2>
             </div>
             <p className="lg:col-span-7 text-[16px] text-ink-700 leading-relaxed text-pretty">
-              The receipts you carry, the signals worth chasing, and the cadence that wins are all
-              different at twenty two than at fifty two. Pipeline runs the same multi agent loop.
-              Launch is built around alumni networks and ATS hygiene. Pro around laid off
-              professionals with real receipts. Max around exec grade outreach with peer leverage.
+              Pipeline began as the autonomous executive search. The same nine agent loop works at
+              every career stage. What changes is the cadence, the model depth, and the kind of
+              signals worth chasing. Launch turns alumni networks into warm intros. Pro converts
+              receipts into voice grounded outreach. Max runs peer to peer at the executive level.
             </p>
           </div>
 
@@ -182,13 +183,14 @@ export default function LandingPage() {
             <div className="lg:col-span-5">
               <p className="eyebrow">How it works</p>
               <h2 className="h-section mt-3">
-                Nine specialised agents. One approval queue.
+                Nine agents do the work. You approve.
               </h2>
             </div>
             <p className="lg:col-span-7 text-[16px] text-ink-700 leading-relaxed text-pretty">
-              Pipeline never sends anything you haven&apos;t seen. The agents do the research, the
-              writing, the routing, the follow ups, and surface a small queue of decisions you can
-              approve in seconds. Most days that is two minutes for hours of compound progress.
+              Pipeline does the labor. You make the calls only you can make. Each agent has a
+              narrow job: target, research, draft, verify, send, classify, schedule, and review.
+              Every outgoing message lands in a queue you approve in seconds. Two minutes a day for
+              hours of compound progress.
             </p>
           </div>
 
@@ -224,9 +226,9 @@ export default function LandingPage() {
       {/* ─── Three voices ────────────────────────────────────────────── */}
       <section className="border-b border-ink/10 bg-paper-50">
         <div className="mx-auto max-w-page px-6 py-16">
-          <p className="eyebrow text-center">Three searches. Three outcomes.</p>
+          <p className="eyebrow text-center">Real searches. Real outcomes.</p>
           <h2 className="h-section mt-3 text-center max-w-[24ch] mx-auto">
-            Different rooms. Same playbook.
+            Different ladders. Same engine.
           </h2>
 
           <div className="mt-12 grid md:grid-cols-3 gap-4">
@@ -299,9 +301,9 @@ export default function LandingPage() {
                 Join the search&nbsp;that runs itself.
               </h2>
               <p className="mt-6 max-w-[60ch] text-[16px] text-paper-200 leading-relaxed text-pretty">
-                Tell us where you are in your career and what you want next. We will send a
-                personalised onboarding link within 24 hours. Founding cohort members lock in their
-                tier price for life.
+                Tell us where you are and what you want next. We send a personalised onboarding
+                link within 24 hours. Most members are running their first sequence inside a week.
+                Founding cohort pricing is locked for life.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-6 text-[12.5px] text-paper-200">
                 <span className="inline-flex items-center gap-2">

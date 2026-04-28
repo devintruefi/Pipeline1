@@ -6,7 +6,7 @@ export default function ManifestoPage() {
     <div className="bg-paper">
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-[72ch] px-6 py-20">
-          <p className="eyebrow">Manifesto. v1.3</p>
+          <p className="eyebrow">Manifesto. v1.4</p>
           <h1 className="mt-4 font-display text-[48px] md:text-[64px] leading-[0.96] tracking-tightest text-ink">
             The bottleneck is not motivation. It is leverage.
           </h1>

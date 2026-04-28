@@ -18,9 +18,10 @@ export default function PricingPage() {
             Three tiers. One architecture.
           </h1>
           <p className="mt-6 max-w-[64ch] text-[17px] text-ink-700 leading-relaxed text-pretty">
-            The agents are the same. What changes is the cadence, the model tier, the volume cap,
-            and the kinds of signals worth chasing. Pick the tier that matches where you are now.
-            you can move up at any time without losing your context model.
+            The agents are identical across tiers. What changes is the cadence (hourly versus
+            daily), the model depth (Haiku to Opus), the volume cap, and the kinds of signals
+            worth chasing. Pick the tier that fits your stage now. Move up any time. Your context
+            model follows you.
           </p>
         </div>
       </section>
@@ -155,27 +156,27 @@ export default function PricingPage() {
 
       <section>
         <div className="mx-auto max-w-page px-6 py-16">
-          <h3 className="h-section">A few notes on pricing.</h3>
+          <h3 className="h-section">A few notes on how this works.</h3>
           <div className="mt-6 grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-[88ch] text-[15px] text-ink-700 leading-relaxed text-pretty">
             <p>
-              <span className="font-medium text-ink">Founding-cohort lock-in.</span> The first 250
-              members of each tier keep their monthly rate forever. We're learning what each
-              audience actually needs, and we'd rather earn loyalty than test elasticity.
+              <span className="font-medium text-ink">Founding cohort lock in.</span> The first 250
+              members of each tier keep their monthly rate forever. We are learning what each
+              audience actually needs, and we would rather earn loyalty than test elasticity.
             </p>
             <p>
               <span className="font-medium text-ink">Move tiers without losing context.</span> Your
               identity, thesis, target profile, constraints, and live context follow you up or down
-              the ladder. Graduating from Launch into a real role means the same model that helped
-              you find it can help you find the next one.
+              the ladder. Graduating from Launch into your first real role means the same context
+              model that helped you find it can help you find the next.
             </p>
             <p>
-              <span className="font-medium text-ink">Placement fee on Max.</span> We bet on the
-              outcome with you. Max charges $1,500 only on an offer you accept. If the search
-              doesn't land, you only paid for the months we worked together.
+              <span className="font-medium text-ink">Placement fee on Max.</span> We bet on
+              outcomes with you. Max charges $1,500 only on an offer you accept. If the search
+              does not land, you only paid for the months we worked together.
             </p>
             <p>
               <span className="font-medium text-ink">No data sold, ever.</span> We don't share your
-              receipts, your dossier, or your outreach with anyone. Pipeline is a tool you wield.
+              receipts, your dossier, or your outreach with anyone. Pipeline is a tool you wield,
               not a marketplace someone wields against you.
             </p>
           </div>
