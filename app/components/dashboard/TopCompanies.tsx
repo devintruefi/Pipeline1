@@ -12,7 +12,7 @@ interface Props {
 }
 
 /**
- * Top Companies — the prioritized list of where Marcus is in each conversation
+ * Top Companies . the prioritized list of where Marcus is in each conversation
  * and what the model thinks his odds are.
  *
  * Likelihood is a deterministic blend of:
@@ -22,7 +22,7 @@ interface Props {
  *   - whether a mutual connection exists in the dossier
  *   - email confidence (verified / inferred)
  *
- * The mapping deliberately avoids a second LLM call — we want a stable,
+ * The mapping deliberately avoids a second LLM call . we want a stable,
  * explainable score on the dashboard, not a black box.
  */
 
@@ -105,7 +105,7 @@ function band(score: number) {
 }
 
 function nextAction(t: Target, drafts: Draft[], messages: Message[]) {
-  if (t.status === "won") return "Won — keep warm";
+  if (t.status === "won") return "Won . keep warm";
   if (t.status === "rejected") return "Closed";
   if (t.status === "meeting_booked") return "Prep for meeting";
   const lastInbound = messages
@@ -174,12 +174,12 @@ export function TopCompanies({ targets, drafts, messages }: Props) {
             : 0;
           const b = band(score);
           return (
-            <li key={target.id} className="py-4 first:pt-0 last:pb-0">
+            <li key={target.id} className="py-4 first:pt-0 last:pb-0 group">
               <div className="grid grid-cols-12 gap-4 items-center">
                 {/* Company + person */}
                 <div className="col-span-12 md:col-span-4 min-w-0">
-                  <p className="font-display text-[18px] leading-tight text-ink truncate">
-                    {target.company ?? "—"}
+                  <p className="font-display text-[18px] leading-tight text-ink truncate transition-colors duration-fast group-hover:text-accent">
+                    {target.company ?? "."}
                   </p>
                   <p className="text-[12.5px] text-ink-500 truncate mt-0.5">
                     {target.fullName}
@@ -191,7 +191,7 @@ export function TopCompanies({ targets, drafts, messages }: Props) {
                 <div className="col-span-12 md:col-span-4">
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-[11px] uppercase tracking-eyebrow text-ink-500">
-                      {STAGE_LABEL[target.status] ?? "—"}
+                      {STAGE_LABEL[target.status] ?? "."}
                     </span>
                     <span className="text-[11px] text-ink-400">
                       {stageIdx + 1}/{STAGE_ORDER.length}
@@ -232,7 +232,7 @@ export function TopCompanies({ targets, drafts, messages }: Props) {
       <p className="mt-5 pt-4 border-t border-ink/6 text-[11.5px] text-ink-500 leading-relaxed">
         Likelihood blends stage progression, reply sentiment, voice fidelity,
         mutual connections, and email-deliverability confidence. Re-computes
-        every tick — no second LLM call.
+        every tick . no second LLM call.
       </p>
     </section>
   );

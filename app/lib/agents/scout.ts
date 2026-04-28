@@ -32,7 +32,7 @@ export async function runScout(userId: string, opts: { limit?: number } = {}) {
       tier: "triage",
       system: SYSTEM,
       cacheable,
-      user: `Signal:\n  kind: ${sig.kind}\n  source: ${sig.source}\n  headline: ${sig.headline}\n  body: ${sig.body ?? ""}\n  company: ${sig.entityCompany ?? "—"}\n  person: ${sig.entityPerson ?? "—"}\n\nScore now.`,
+      user: `Signal:\n  kind: ${sig.kind}\n  source: ${sig.source}\n  headline: ${sig.headline}\n  body: ${sig.body ?? ""}\n  company: ${sig.entityCompany ?? ". "}\n  person: ${sig.entityPerson ?? ". "}\n\nScore now.`,
       jsonMode: true,
       userId
     });

@@ -4,7 +4,7 @@ import type { RawSignal } from "./index";
 
 /**
  * Public-LinkedIn signal pull. By design, Pipeline NEVER scrapes LinkedIn
- * (compliance moat — see business plan §10). This adapter only consumes
+ * (compliance moat. see business plan §10). This adapter only consumes
  * publicly-syndicated LinkedIn news (e.g., RSS feeds users opt into). Mocked.
  */
 export async function fetchPublicLinkedIn(_ctx: UserContext): Promise<RawSignal[]> {

@@ -39,10 +39,10 @@ export const PLAYS: Record<PlayKey, PlayDefinition> = {
     steps: [
       { day: 0, action: "Researcher → Drafter → Verifier → user approval → Gmail send" },
       { day: 7, action: "Follow-up #1 with a fresh angle from latest news" },
-      { day: 14, action: "Follow-up #2 — different format (e.g., a specific question)" },
-      { day: 28, action: "Follow-up #3 — final, low-pressure close-the-loop" }
+      { day: 14, action: "Follow-up #2. different format (e.g., a specific question)" },
+      { day: 28, action: "Follow-up #3. final, low-pressure close-the-loop" }
     ],
-    expectedReplyRate: "15–22%",
+    expectedReplyRate: "15.22%",
     cautions: ["Pause if target was just laid off or took parental leave."]
   },
   tailored_app_backchannel: {
@@ -56,7 +56,7 @@ export const PLAYS: Record<PlayKey, PlayDefinition> = {
       { day: 0, action: "Agent identifies hiring manager + a peer; sends parallel direct note" },
       { day: 5, action: "Follow-up only if no movement on the application" }
     ],
-    expectedReplyRate: "12–18%",
+    expectedReplyRate: "12.18%",
     cautions: ["Don't backchannel through a known no-fly contact."]
   },
   warm_intro: {
@@ -70,7 +70,7 @@ export const PLAYS: Record<PlayKey, PlayDefinition> = {
       { day: 0, action: "User forwards" },
       { day: 7, action: "Nudge connector if no movement" }
     ],
-    expectedReplyRate: "45–65%",
+    expectedReplyRate: "45.65%",
     cautions: ["Use sparingly; don't burn warm connectors on speculative interest."]
   },
   newsjacking: {
@@ -83,8 +83,8 @@ export const PLAYS: Record<PlayKey, PlayDefinition> = {
       { day: 0, action: "Verifier → send within 24-48h of the announcement" },
       { day: 5, action: "Follow-up only if reply was warm but not actionable" }
     ],
-    expectedReplyRate: "20–30%",
-    cautions: ["Time-decay is steep — every day after the news, value drops ~30%."]
+    expectedReplyRate: "20.30%",
+    cautions: ["Time-decay is steep. every day after the news, value drops ~30%."]
   },
   event_convergence: {
     key: "event_convergence",
@@ -97,7 +97,7 @@ export const PLAYS: Record<PlayKey, PlayDefinition> = {
       { day: 0, action: "In-person meeting" },
       { day: 1, action: "Same-day follow-up note with a concrete next step" }
     ],
-    expectedReplyRate: "25–40%",
+    expectedReplyRate: "25.40%",
     cautions: ["Only triggers if the user can credibly commit to attending."]
   },
   re_engage: {
@@ -110,8 +110,8 @@ export const PLAYS: Record<PlayKey, PlayDefinition> = {
       { day: 0, action: "Drafter writes a touch grounded in a NEW development (theirs or ours)" },
       { day: 7, action: "One follow-up; never more" }
     ],
-    expectedReplyRate: "30–45%",
-    cautions: ["Honor the original 'reconnect in X' window — earlier feels needy."]
+    expectedReplyRate: "30.45%",
+    cautions: ["Honor the original 'reconnect in X' window. earlier feels needy."]
   },
   quiet_apply: {
     key: "quiet_apply",
@@ -122,7 +122,7 @@ export const PLAYS: Record<PlayKey, PlayDefinition> = {
       { day: 0, action: "Tailored resume + cover letter through ATS" },
       { day: 0, action: "Flag honestly to user that this is a low-probability path" }
     ],
-    expectedReplyRate: "4–10%",
+    expectedReplyRate: "4.10%",
     cautions: ["Tell the user what you're doing and why it's a low-probability play."]
   }
 };

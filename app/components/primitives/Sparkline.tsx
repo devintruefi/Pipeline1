@@ -1,9 +1,10 @@
 /**
- * Sparkline — minimal SVG line chart for trend strips.
+ * Sparkline. premium SVG trend strip with gradient area fill.
  *
- * Designed for inline use next to a metric. Animates the stroke draw on
- * mount and renders an optional area fill, end dot, and gridless context.
- * Uses currentColor so callers control the hue via Tailwind text utilities.
+ * Designed for inline use next to a metric. Renders a soft gradient under
+ * the line so the chart feels three-dimensional without overwhelming the
+ * adjacent number. Uses currentColor for the line so callers control hue
+ * via Tailwind text utilities; the gradient inherits from currentColor too.
  */
 type Props = {
   values: number[];
@@ -13,6 +14,8 @@ type Props = {
   className?: string;
   strokeWidth?: number;
 };
+
+let _sparkUid = 0;
 
 export function Sparkline({
   values,
@@ -40,6 +43,10 @@ export function Sparkline({
   const areaPath = `${linePath} L ${width.toFixed(2)} ${height} L 0 ${height} Z`;
   const last = points[points.length - 1];
 
+  // Generate a stable but unique gradient id per render so multiple
+  // sparklines on the same page don't collide.
+  const gid = `spark-grad-${_sparkUid++}`;
+
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
@@ -49,11 +56,17 @@ export function Sparkline({
       role="img"
       aria-hidden
     >
+      <defs>
+        <linearGradient id={gid} x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="currentColor" stopOpacity="0.32" />
+          <stop offset="60%" stopColor="currentColor" stopOpacity="0.08" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+        </linearGradient>
+      </defs>
       {fill && (
         <path
           d={areaPath}
-          fill="currentColor"
-          fillOpacity={0.08}
+          fill={`url(#${gid})`}
         />
       )}
       <path
@@ -67,8 +80,10 @@ export function Sparkline({
         strokeDasharray="1000"
         strokeDashoffset="1000"
       />
-      <circle cx={last[0]} cy={last[1]} r={2.5} fill="currentColor" />
-      <circle cx={last[0]} cy={last[1]} r={5} fill="currentColor" fillOpacity={0.18} />
+      {/* Halo on the trailing point for that "live data" feel */}
+      <circle cx={last[0]} cy={last[1]} r={2.6} fill="currentColor" />
+      <circle cx={last[0]} cy={last[1]} r={5.5} fill="currentColor" fillOpacity={0.18} />
+      <circle cx={last[0]} cy={last[1]} r={9} fill="currentColor" fillOpacity={0.06} />
     </svg>
   );
 }

@@ -1,7 +1,7 @@
 import { Quote } from "lucide-react";
 
 /**
- * Sunday memo — the Pipeline Manager's weekly synthesis. Treated as
+ * Sunday memo. the Pipeline Manager's weekly synthesis. Treated as
  * editorial content: warm paper background, serif italic pull-quote
  * styling, generous leading. Empty state nudges toward Run tick.
  */
@@ -23,7 +23,7 @@ export function SundayMemo({ notes }: { notes: string | null }) {
 
       {lines.length === 0 ? (
         <p className="mt-5 text-[13px] text-ink-500 leading-relaxed">
-          The Pipeline Manager publishes a synthesis every Sunday — what's working, what's not,
+          The Pipeline Manager publishes a synthesis every Sunday. what's working, what's not,
           and the one or two things you should change next week. Run a tick to generate this week's.
         </p>
       ) : (

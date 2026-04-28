@@ -32,7 +32,7 @@ export async function runFollowup(userId: string, inboundMessage: { threadId?: s
     tier: "draft",
     system: SYSTEM,
     cacheable,
-    user: `Inbound message:\n---\n${inboundMessage.body}\n---\n\nTarget id: ${inboundMessage.targetId ?? "—"}\n\nClassify and draft the response.`,
+    user: `Inbound message:\n---\n${inboundMessage.body}\n---\n\nTarget id: ${inboundMessage.targetId ?? ". "}\n\nClassify and draft the response.`,
     jsonMode: true,
     userId
   });

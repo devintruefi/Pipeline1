@@ -24,7 +24,7 @@ type Density = "comfy" | "compact";
  *
  * The page hands us all rows already filtered by status; we further
  * narrow by free-text query against name / title / company. The query
- * is preserved in the URL via the search input but search is local —
+ * is preserved in the URL via the search input but search is local.
  * no server round-trip per keystroke.
  */
 export function TargetsTable({ targets: rows }: { targets: Target[] }) {
@@ -159,7 +159,7 @@ export function TargetsTable({ targets: rows }: { targets: Target[] }) {
                         {t.status.replace(/_/g, " ")}
                       </span>
                     </td>
-                    <td className={`${padY} font-mono text-[12px] text-ink-700`}>{t.email ?? "—"}</td>
+                    <td className={`${padY} font-mono text-[12px] text-ink-700`}>{t.email ?? ". "}</td>
                     <td className={`${padY} text-right`}>
                       <div className="inline-flex items-center gap-2">
                         <div className="h-1 w-14 rounded-full bg-paper-200 overflow-hidden">

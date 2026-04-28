@@ -32,7 +32,7 @@ export async function createCheckoutSession(args: CheckoutArgs): Promise<{ url: 
   params.append("mode", "subscription");
   params.append("payment_method_types[]", "card");
   params.append("line_items[0][price_data][currency]", "usd");
-  params.append("line_items[0][price_data][product_data][name]", `${args.plan.name} — monthly`);
+  params.append("line_items[0][price_data][product_data][name]", `${args.plan.name}. monthly`);
   params.append("line_items[0][price_data][recurring][interval]", "month");
   params.append("line_items[0][price_data][unit_amount]", String(args.plan.monthly * 100));
   params.append("line_items[0][quantity]", "1");

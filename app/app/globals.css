@@ -9,13 +9,13 @@
 :root {
   color-scheme: light;
 
-  /* Surfaces — clean cool near-white. Never yellow, never warm-cream. */
+  /* Surfaces. clean cool near-white. Never yellow, never warm-cream. */
   --paper: 250 251 252;
   --paper-50: 255 255 255;
   --paper-100: 241 244 248;
   --paper-200: 227 232 238;
 
-  /* Ink — near-black with a subtle blue undertone. Never pure black. */
+  /* Ink. near-black with a subtle blue undertone. Never pure black. */
   --ink: 11 18 32;
   --ink-900: 15 23 42;
   --ink-800: 30 41 59;
@@ -24,26 +24,26 @@
   --ink-300: 203 213 225;
   --ink-100: 237 241 246;
 
-  /* Accent — electric indigo. Modern, professional, with quiet energy. */
+  /* Accent. electric indigo. Modern, professional, with quiet energy. */
   --accent: 67 56 202;
   --accent-700: 49 46 128;
   --accent-500: 79 70 229;
   --accent-200: 199 210 254;
   --accent-100: 224 231 255;
 
-  /* Highlight — warm amber. Reserved for high-importance moments. */
+  /* Highlight. warm amber. Reserved for high-importance moments. */
   --highlight: 217 122 31;
   --highlight-200: 248 203 132;
 
-  /* Teal — complementary cool secondary for data viz / metrics */
+  /* Teal. complementary cool secondary for data viz / metrics */
   --teal: 14 147 132;
   --teal-200: 184 227 221;
 
-  /* Cool secondary — refined slate */
+  /* Cool secondary. refined slate */
   --cool: 71 85 105;
   --cool-200: 203 213 225;
 
-  /* Editorial shadows — cool-tinted, never neutral gray */
+  /* Editorial shadows. cool-tinted, never neutral gray */
   --shadow-card:
     0 1px 0 0 rgb(11 18 32 / 0.03),
     0 4px 14px -8px rgb(11 18 32 / 0.10);
@@ -114,7 +114,7 @@ body, p, li, td, th, label, blockquote, q {
   color: rgb(var(--paper));
 }
 
-/* Crisp, branded focus ring — no default browser outline anywhere */
+/* Crisp, branded focus ring. no default browser outline anywhere */
 *:focus { outline: none; }
 *:focus-visible {
   outline: 2px solid rgb(var(--accent));
@@ -204,7 +204,7 @@ body, p, li, td, th, label, blockquote, q {
     border-radius: 12px;
   }
 
-  /* Card primitive — editorial, single-layer (never nested) */
+  /* Card primitive. editorial, single-layer (never nested) */
   .card {
     background: rgb(255 255 255);
     border: 1px solid rgb(var(--ink) / 0.08);
@@ -302,7 +302,7 @@ body, p, li, td, th, label, blockquote, q {
   .pill-red     { background: rgb(220 38 38 / 0.14); color: rgb(220 38 38); }
   .pill-outline { background: transparent; border-color: rgb(var(--ink) / 0.14); color: rgb(var(--ink-700)); }
 
-  /* Status dot — used in dense lists where pills would be heavy */
+  /* Status dot. used in dense lists where pills would be heavy */
   .dot { display: inline-block; width: 8px; height: 8px; border-radius: 9999px; flex: none; }
   .dot-green { background: rgb(5 150 105); }
   .dot-amber { background: rgb(217 119 6); }
@@ -410,7 +410,7 @@ body, p, li, td, th, label, blockquote, q {
   .tag-red    { @apply pill pill-red; }
 
 
-  /* Subtle gradient on dark surfaces — adds depth, never glare */
+  /* Subtle gradient on dark surfaces. adds depth, never glare */
   .surface-ink-grad {
     background: radial-gradient(120% 120% at 0% 0%, rgb(30 41 70) 0%, rgb(11 18 32) 60%, rgb(11 18 32) 100%);
     color: rgb(var(--paper));
@@ -418,24 +418,24 @@ body, p, li, td, th, label, blockquote, q {
     border-radius: 14px;
   }
 
-  /* Indigo-tinted soft surface — used for callouts and value props */
+  /* Indigo-tinted soft surface. used for callouts and value props */
   .surface-accent-soft {
     background: linear-gradient(135deg, rgb(240 241 254) 0%, rgb(224 231 255) 100%);
     border: 1px solid rgb(67 56 202 / 0.12);
     border-radius: 14px;
   }
 
-  /* Gradient progress fill — primary metric bars */
+  /* Gradient progress fill. primary metric bars */
   .bar-grad {
     background: linear-gradient(90deg, rgb(49 46 128) 0%, rgb(79 70 229) 100%);
   }
 
-  /* Soft accent halo — used on primary CTA */
+  /* Soft accent halo. used on primary CTA */
   .glow-accent {
     box-shadow: 0 8px 22px -10px rgb(67 56 202 / 0.40);
   }
 
-  /* Number metric pill — small KPI surface */
+  /* Number metric pill. small KPI surface */
   .kpi {
     background: rgb(var(--paper-50));
     border: 1px solid rgb(var(--ink) / 0.08);

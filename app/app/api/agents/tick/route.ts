@@ -18,7 +18,7 @@ export async function POST(req: Request) {
   try {
     json = await req.json();
   } catch {
-    // Empty body is OK — we'll fall back to the active session user.
+    // Empty body is OK. we'll fall back to the active session user.
   }
   const parsed = Body.safeParse(json);
   if (!parsed.success) return NextResponse.json({ error: "Invalid input" }, { status: 400 });

@@ -28,7 +28,7 @@ export default async function ApprovalsPage() {
           </h1>
           <p className="mt-3 text-[14.5px] text-ink-700 max-w-prose leading-relaxed">
             Approve, edit-then-approve, or reject. Pipeline never sends without a green from you.
-            Sender batches at 9–11 AM in your local timezone.
+            Sender batches at 9.11 AM in your local timezone.
           </p>
         </div>
         <Link href="/dashboard" className="btn-ghost text-[12.5px] hidden md:inline-flex">

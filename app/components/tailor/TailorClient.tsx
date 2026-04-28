@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const SAMPLE_JD = `VP of Sales — Series C SaaS, GTM rebuild
+const SAMPLE_JD = `VP of Sales. Series C SaaS, GTM rebuild
 
 We're hiring a VP of Sales to rebuild our AE/SE motion as we move from founder-led sales into a repeatable enterprise commercial system. Recent Series C; 30 quota carriers across NA and EMEA. The successful candidate will:
 

@@ -15,7 +15,7 @@ Required sections:
   - podcastAppearances: 0-2 appearances with the takeaway.
   - mutualConnections: 0-3 plausible connectors, with relationship.
   - companyNews: 0-3 items material to the target's role.
-  - hooks: 3-5 conversational openings the user could realistically use — each grounded in something specific (a post, an event, a number).
+  - hooks: 3-5 conversational openings the user could realistically use. each grounded in something specific (a post, an event, a number).
   - redFlags: things to AVOID (recently laid off, just took parental leave, publicly complained about generic outreach, etc.).
 
 Be honest about what you don't know. Better to leave a section empty than to invent.
@@ -30,9 +30,9 @@ export async function runResearcher(userId: string, targetId: string): Promise<D
   const cacheable = renderContextBlock(ctx);
   const prompt = `Build a dossier for:
   Name: ${target.fullName}
-  Title: ${target.title ?? "—"}
-  Company: ${target.company ?? "—"}
-  LinkedIn: ${target.linkedinUrl ?? "—"}
+  Title: ${target.title ?? ". "}
+  Company: ${target.company ?? ". "}
+  LinkedIn: ${target.linkedinUrl ?? ". "}
 
 Pull plausible public information consistent with a senior operator at this company at this stage. If a section has no real data, leave it as an empty array.`;
 

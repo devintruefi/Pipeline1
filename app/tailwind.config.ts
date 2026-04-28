@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 /**
  * Pipeline · Design tokens.
  *
- * The palette is cool-tinted on the neutral axis (paper / ink) — premium,
+ * The palette is cool-tinted on the neutral axis (paper / ink). premium,
  * professional, calm. One editorial accent (deep navy) carries the brand;
  * one warm secondary (amber gold) is reserved for high-importance moments.
  * Signal colors stay reserved for status (green / amber / red) and never
@@ -22,7 +22,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Cool ink — near-black with a subtle blue undertone
+        // Cool ink. near-black with a subtle blue undertone
         ink: {
           DEFAULT: "#0B1220",
           950: "#070A14",
@@ -37,7 +37,7 @@ const config: Config = {
           100: "#EDF1F6",
           50: "#F4F6FA"
         },
-        // Cool paper — clean near-white that reads premium, not yellow
+        // Cool paper. clean near-white that reads premium, not yellow
         paper: {
           DEFAULT: "#FAFBFC",
           50: "#FFFFFF",
@@ -45,7 +45,7 @@ const config: Config = {
           200: "#E3E8EE",
           300: "#C5CDD8"
         },
-        // Editorial accent — deep navy, calm and unmistakably professional
+        // Editorial accent. deep navy, calm and unmistakably professional
         accent: {
           DEFAULT: "#4338CA",
           700: "#312E80",
@@ -57,7 +57,7 @@ const config: Config = {
           100: "#E0E7FF",
           50: "#F0F1FE"
         },
-        // Warm amber highlight — used sparingly for "this matters now" moments
+        // Warm amber highlight. used sparingly for "this matters now" moments
         highlight: {
           DEFAULT: "#B5701A",
           700: "#8A540F",
@@ -69,7 +69,7 @@ const config: Config = {
           100: "#F8E6BB",
           50: "#FCF5E5"
         },
-        // Cool secondary — refined slate, used in data viz + informational UI
+        // Cool secondary. refined slate, used in data viz + informational UI
         cool: {
           DEFAULT: "#475569",
           700: "#334155",
@@ -89,7 +89,7 @@ const config: Config = {
           red: "#DC2626",
           "red-soft": "#FEE2E2"
         },
-        // Teal — used sparingly in data viz to add a complementary energy
+        // Teal. used sparingly in data viz to add a complementary energy
         // point against the indigo accent. Same role as 'highlight' but
         // optimised for cool/calm contexts (charts, secondary metrics).
         teal: {
@@ -168,7 +168,7 @@ const config: Config = {
         focus:
           "0 0 0 2px rgb(250 251 252 / 1), 0 0 0 4px rgb(67 56 202 / 0.55)",
         ring: "inset 0 0 0 1px rgb(11 18 32 / 0.08)",
-        // Soft accent halo — used on primary CTAs to add quiet energy.
+        // Soft accent halo. used on primary CTAs to add quiet energy.
         glow: "0 0 0 1px rgb(67 56 202 / 0.12), 0 12px 32px -10px rgb(67 56 202 / 0.40)",
         "glow-soft": "0 8px 22px -10px rgb(67 56 202 / 0.30)"
       },

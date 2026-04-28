@@ -11,9 +11,9 @@ type Target = typeof targets.$inferSelect;
  * The approval card.
  *
  * Three regions, no nested cards:
- *   1) Header strip — target identity + channel + risk light
- *   2) Body — subject + draft body (mono, generous leading)
- *   3) Footer — single decisive primary, danger secondary, metadata trailing
+ *   1) Header strip. target identity + channel + risk light
+ *   2) Body. subject + draft body (mono, generous leading)
+ *   3) Footer. single decisive primary, danger secondary, metadata trailing
  */
 export function ApprovalCard({ draft, target }: { draft: Draft; target: Target | null }) {
   const router = useRouter();
@@ -86,7 +86,7 @@ export function ApprovalCard({ draft, target }: { draft: Draft; target: Target |
           <div className="grid sm:grid-cols-2 gap-3">
             {draft.groundingNote && (
               <p className="text-[12px] text-ink-500 leading-relaxed">
-                <span className="text-ink-700 font-medium">Grounded in — </span>
+                <span className="text-ink-700 font-medium">Grounded in. </span>
                 {draft.groundingNote}
               </p>
             )}

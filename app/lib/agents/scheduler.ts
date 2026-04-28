@@ -12,7 +12,7 @@ const SYSTEM = `You are PIPELINE SCHEDULER.
 You take a confirmed meeting intent and produce:
   - 2-4 proposed slot strings, respecting the user's send window and time zone
   - duration in minutes (default 30, longer if the message implies it)
-  - a pre-meeting brief in tight markdown — why we're meeting, three things to bring, one thing to avoid
+  - a pre-meeting brief in tight markdown. why we're meeting, three things to bring, one thing to avoid
 
 Output STRICT JSON for the SchedulerOutput shape.`;
 

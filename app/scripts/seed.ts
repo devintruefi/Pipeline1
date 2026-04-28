@@ -21,34 +21,34 @@ VP of Sales · Series B/C SaaS commercial leadership
 Summary
 Three-time commercial leader. Built and scaled GTM teams at Helix, Brick, and Vellum. Took ARR from $14M to $42M at Helix in 22 months by re-architecting the AE/SE pairing.
 
-VP of Sales — Helix (2021 — present)
+VP of Sales. Helix (2021. present)
 - Took ARR from $14M to $42M in 22 months
 - Closed two of the three largest deals in company history (>$1.4M ACV each)
 - Built a 28-person commercial team and retained 100% through a 19% RIF
 - Shipped a partner-sourced channel that grew from 3% to 31% of new logo bookings
 
-Director of Sales — Brick (2018 — 2021)
+Director of Sales. Brick (2018. 2021)
 - Grew NA bookings from $4M to $19M
 - Hired and developed 12 AEs; 4 are now VPs
 
-Account Executive — Vellum (2014 — 2018)
+Account Executive. Vellum (2014. 2018)
 - President's Club, three consecutive years
 - Closed the largest single deal in company history at the time
 
 Skills: Enterprise sales · Commercial leadership · Go-to-market design · Channel · Pricing
-Education: Stanford GSB — MBA, 2014`;
+Education: Stanford GSB. MBA, 2014`;
 
 const VOICE = [
-  `Quick note —
+  `Quick note.
 
 Saw your team's funding announcement this morning. The framing in the press release matched almost exactly what you wrote about "earned distribution" on Substack last quarter. Curious what the AE/SE pairing looks like in your motion now that the partner channel is doing real volume.
 
 Worth a 20-minute conversation?
 
-— Marcus`,
+. Marcus`,
   `Reading your Q3 letter today.
 
-Two things stood out — the deliberate move out of the SMB tier, and the quiet pivot in how you're framing AI as a wedge into the enterprise plan. Both of those are decisions I've watched other teams flinch on.
+Two things stood out. the deliberate move out of the SMB tier, and the quiet pivot in how you're framing AI as a wedge into the enterprise plan. Both of those are decisions I've watched other teams flinch on.
 
 If it's useful, happy to send a one-pager on how we made the same trade at Helix.`
 ];
@@ -114,7 +114,7 @@ async function main() {
   console.log("Tick result:", r);
 
   console.log("\nSeed complete.");
-  console.log(`Open http://localhost:3000/dashboard — you'll be auto-routed to the demo user via the seed fallback in /lib/session.ts`);
+  console.log(`Open http://localhost:3000/dashboard. you'll be auto-routed to the demo user via the seed fallback in /lib/session.ts`);
   process.exit(0);
 }
 

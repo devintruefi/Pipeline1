@@ -6,14 +6,14 @@ import * as schema from "./schema";
 import { sql } from "drizzle-orm";
 
 /**
- * Postgres client — Supabase-friendly.
+ * Postgres client. Supabase-friendly.
  *
  * In production we point at Supabase's pooler (transaction mode, port 6543) so
  * each Vercel lambda invocation gets a short-lived connection. The pooler
  * doesn't support prepared statements, hence `prepare: false`.
  *
  * For local dev, point DATABASE_URL at any Postgres (a local docker, or the
- * same Supabase URL — both work). The boot-time `ensureSchema()` is idempotent
+ * same Supabase URL. both work). The boot-time `ensureSchema()` is idempotent
  * and creates everything on first connect, so a fresh checkout boots without
  * a separate `db:push` step.
  */
@@ -31,7 +31,7 @@ const queryClient = postgres(connectionString, {
   max: 1,
   // Required when talking to Supabase's transaction-mode pooler (port 6543).
   prepare: false,
-  // Keep connections short — Vercel lambdas die fast.
+  // Keep connections short. Vercel lambdas die fast.
   idle_timeout: 20,
   connect_timeout: 30
 });

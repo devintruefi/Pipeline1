@@ -47,7 +47,7 @@ export function mockSignals(_ctx: UserContext): RawSignal[] {
       headline: "Upwave is hiring a VP of Sales",
       body: "Upwave, a Series B SaaS company, posted a VP of Sales role yesterday. The job description emphasises rebuilding the AE/SE motion and partner channel.",
       entityCompany: "Upwave",
-      entityPerson: "Hiring Manager — TBD",
+      entityPerson: "Hiring Manager. TBD",
       detectedAt: now - 1 * day
     },
     {
@@ -57,7 +57,7 @@ export function mockSignals(_ctx: UserContext): RawSignal[] {
       headline: "Marigold to spin out enterprise unit",
       body: "Marigold announced plans to spin its enterprise SaaS unit into an independent company. New leadership will be needed across commercial, finance, and product.",
       entityCompany: "Marigold Spin-Co",
-      entityPerson: "TBD — search underway",
+      entityPerson: "TBD. search underway",
       detectedAt: now - 3 * day
     },
     {
@@ -77,14 +77,14 @@ export function mockSignals(_ctx: UserContext): RawSignal[] {
       headline: "Thrive's VP GTM exits in surprise move",
       body: "Thrive Health's VP of GTM exited yesterday, leaving the company actively seeking a senior commercial leader.",
       entityCompany: "Thrive Health",
-      entityPerson: "Hiring Manager — CEO Anna Reeves",
+      entityPerson: "Hiring Manager. CEO Anna Reeves",
       detectedAt: now - 6 * day
     },
     {
       kind: "conference",
       source: "SaaStr",
       url: "https://example.com/saastr-2026",
-      headline: "SaaStr Annual 2026 — speakers announced",
+      headline: "SaaStr Annual 2026. speakers announced",
       body: "Multiple commercial leaders from companies in the user's archetype list are speaking at SaaStr Annual next month.",
       entityCompany: "SaaStr",
       entityPerson: "Multiple",
@@ -94,10 +94,10 @@ export function mockSignals(_ctx: UserContext): RawSignal[] {
       kind: "product_launch",
       source: "TechCrunch",
       url: "https://example.com/heron-launch",
-      headline: "Heron launches enterprise tier — first GTM hire to follow",
+      headline: "Heron launches enterprise tier. first GTM hire to follow",
       body: "Heron's new enterprise tier launched today. The company has indicated it will hire a head of enterprise sales next quarter.",
       entityCompany: "Heron",
-      entityPerson: "Founder — Maya Aiyer",
+      entityPerson: "Founder. Maya Aiyer",
       detectedAt: now - 12 * day
     },
     {
@@ -107,7 +107,7 @@ export function mockSignals(_ctx: UserContext): RawSignal[] {
       headline: "Quill announces 12% workforce reduction",
       body: "Quill is reducing headcount; existing CRO is staying. Reduces near-term fit but worth tracking for re-engagement in 6 months.",
       entityCompany: "Quill",
-      entityPerson: "—",
+      entityPerson: ". ",
       detectedAt: now - 1 * day
     }
   ];

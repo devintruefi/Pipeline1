@@ -47,7 +47,7 @@ export function ReplyTriage({ messages, targets }: { messages: Message[]; target
   const target = selected ? targets.find((t) => t.id === selected.targetId) ?? null : null;
 
   // Keyboard navigation + triage shortcuts.
-  // ↑/↓ or J/K — move selection.  B/R/N/P/X/A — trigger an action on selected.
+  // ↑/↓ or J/K. move selection.  B/R/N/P/X/A. trigger an action on selected.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const tag = (document.activeElement?.tagName ?? "").toLowerCase();
@@ -250,7 +250,7 @@ function suggestionFor(c: Message["classification"]): string {
     case "scheduling":
       return "Confirm the slot. Auto-add the brief 15 minutes before.";
     case "info_request":
-      return "Send the requested context — short, specific, attach proof.";
+      return "Send the requested context. short, specific, attach proof.";
     case "negative":
       return "Acknowledge graciously. Snooze the target for 90 days.";
     case "auto_reply":

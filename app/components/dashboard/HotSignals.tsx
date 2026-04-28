@@ -16,7 +16,7 @@ const KIND_META: Record<string, { label: string; icon: typeof TrendingUp }> = {
 };
 
 /**
- * Hot Signals — fresh, high-relevance Scout output. Each row offers a
+ * Hot Signals. fresh, high-relevance Scout output. Each row offers a
  * single primary action: "Draft outreach". Score is rendered as a small
  * tabular figure with a thin bar so the user can scan top-down.
  */

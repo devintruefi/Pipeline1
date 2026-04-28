@@ -20,7 +20,7 @@ const AGENT_META: Record<string, { label: string; icon: typeof Compass; tone: st
 /**
  * The live agent activity feed. Shows the last N runs across all 9 agents
  * with their status, cost, and a relative timestamp. Doubles as the system
- * health surface — partial/error rows render with the appropriate signal.
+ * health surface. partial/error rows render with the appropriate signal.
  */
 export function AgentActivity({ runs }: { runs: Run[] }) {
   const totalCost = runs.reduce((s, r) => s + (r.costUsd ?? 0), 0);
@@ -68,7 +68,7 @@ export function AgentActivity({ runs }: { runs: Run[] }) {
                 </div>
                 <div className="mt-1 flex items-center gap-3 text-[11.5px] text-ink-500 tabular">
                   <span className={`dot ${dot} h-1.5 w-1.5`} />
-                  <span>{r.durationMs ? `${(r.durationMs / 1000).toFixed(1)}s` : "—"}</span>
+                  <span>{r.durationMs ? `${(r.durationMs / 1000).toFixed(1)}s` : ". "}</span>
                   <span>{(r.inputTokens ?? 0) + (r.outputTokens ?? 0)} tok</span>
                   <span>${(r.costUsd ?? 0).toFixed(3)}</span>
                 </div>

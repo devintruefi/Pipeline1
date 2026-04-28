@@ -10,7 +10,7 @@ export default function PlaysPage() {
           Seven sequences. One per kind of moment.
         </h1>
         <p className="mt-4 text-[16px] leading-[1.65] text-ink-700 text-pretty">
-          Each high-priority target enters a play — a multi-step sequence designed to convert a signal
+          Each high-priority target enters a play. a multi-step sequence designed to convert a signal
           into a meeting. The Pipeline Manager picks the play; you can override.
         </p>
       </header>

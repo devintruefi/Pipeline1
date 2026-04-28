@@ -126,7 +126,7 @@ export default async function TargetDetail({ params }: { params: { id: string } 
               </div>
             ) : (
               <p className="font-display italic text-[16px] text-ink-500">
-                No dossier yet — Researcher will build one on the next tick.
+                No dossier yet. Researcher will build one on the next tick.
               </p>
             )}
           </Block>
@@ -188,7 +188,7 @@ export default async function TargetDetail({ params }: { params: { id: string } 
                     }`}
                   >
                     <p className="eyebrow-quiet">
-                      {m.direction} · {m.classification ?? "—"}
+                      {m.direction} · {m.classification ?? ". "}
                     </p>
                     <pre className="mt-2 whitespace-pre-wrap font-mono text-[12.5px] leading-relaxed text-ink-700">
                       {m.body}
@@ -219,7 +219,7 @@ export default async function TargetDetail({ params }: { params: { id: string } 
                 style={{ width: `${conf}%` }}
               />
             </div>
-            <p className="mt-4 font-mono text-[12px] text-ink-700 break-all">{t.email ?? "—"}</p>
+            <p className="mt-4 font-mono text-[12px] text-ink-700 break-all">{t.email ?? ". "}</p>
           </div>
 
           <div className="card p-6 space-y-3">

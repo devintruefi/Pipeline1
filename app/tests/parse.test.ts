@@ -3,7 +3,7 @@ import { parseResumeText, extractVoiceProfile } from "@/lib/parsing/resume";
 
 describe("parseResumeText", () => {
   it("extracts role with bullets in dash format", () => {
-    const txt = `Marcus Chen\n\nVP of Sales — Helix (2021 — present)\n- Took ARR from $14M to $42M\n- Closed largest deals\n\nSkills: Enterprise sales, Channel`;
+    const txt = `Marcus Chen\n\nVP of Sales. Helix (2021. present)\n- Took ARR from $14M to $42M\n- Closed largest deals\n\nSkills: Enterprise sales, Channel`;
     const r = parseResumeText(txt);
     expect(r?.roles[0]?.title).toBe("VP of Sales");
     expect(r?.roles[0]?.company).toBe("Helix");

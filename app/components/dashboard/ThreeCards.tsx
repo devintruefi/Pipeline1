@@ -31,7 +31,7 @@ export function ThreeCards({
               <span className="leading-snug">{s.headline}</span>
             </li>
           ))}
-          {signals.length === 0 && <li className="text-paper-200 italic">No fresh signals yet — run a tick.</li>}
+          {signals.length === 0 && <li className="text-paper-200 italic">No fresh signals yet. run a tick.</li>}
         </ul>
       </div>
 
@@ -46,7 +46,7 @@ export function ThreeCards({
               <span className="truncate">{d.subject ?? "(no subject)"}</span>
             </li>
           ))}
-          {drafts.length === 0 && <li className="text-ink-500 italic">Queue empty — hit "Run tick" above.</li>}
+          {drafts.length === 0 && <li className="text-ink-500 italic">Queue empty. hit "Run tick" above.</li>}
         </ul>
       </div>
 
@@ -56,10 +56,10 @@ export function ThreeCards({
         <p className="mt-3 text-[13px] text-ink-700">Reply rate this week: <span className="text-ink font-semibold">{replyRate}%</span></p>
         <ul className="mt-4 space-y-2 text-[13px] text-ink-700">
           {meetings.slice(0, 2).map((m) => (
-            <li key={m.id}>📅 {new Date(m.scheduledFor).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })} — {m.briefMd ? m.briefMd.split("\n")[0].replace(/^#\s*/, "") : "Meeting"}</li>
+            <li key={m.id}>📅 {new Date(m.scheduledFor).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}. {m.briefMd ? m.briefMd.split("\n")[0].replace(/^#\s*/, "") : "Meeting"}</li>
           ))}
           {campaigns.slice(0, 2).map((c) => (
-            <li key={c.id}>🎯 Campaign: <span className="text-ink">{c.name}</span> — {c.targetCount} targets</li>
+            <li key={c.id}>🎯 Campaign: <span className="text-ink">{c.name}</span>. {c.targetCount} targets</li>
           ))}
           {meetings.length === 0 && campaigns.length === 0 && <li className="text-ink-300 italic">Nothing on the calendar yet.</li>}
         </ul>

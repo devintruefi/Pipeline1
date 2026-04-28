@@ -33,10 +33,10 @@ export function ConstraintsForm({ userId }: { userId: string }) {
         <Row label="Company stage">
           <input name="companyStage" defaultValue="Series B, Series C" className="w-full" />
         </Row>
-        <Row label="Industries — must">
+        <Row label="Industries. must">
           <input name="industriesMust" defaultValue="SaaS, vertical AI, infrastructure" className="w-full" />
         </Row>
-        <Row label="Industries — nope">
+        <Row label="Industries. nope">
           <input name="industriesNope" defaultValue="crypto, gambling" className="w-full" />
         </Row>
       </Section>

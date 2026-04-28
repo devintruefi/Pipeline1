@@ -7,8 +7,8 @@ import { getActiveOrSeedUser } from "@/lib/session";
  * Search endpoint used by the ⌘K command palette and the /targets search box.
  *
  * Query params:
- *   q     — substring to match against fullName / title / company (optional)
- *   limit — cap (default 12, max 40)
+ *   q. substring to match against fullName / title / company (optional)
+ *   limit. cap (default 12, max 40)
  *
  * Returns the most-recently-updated matches for the active user.
  */

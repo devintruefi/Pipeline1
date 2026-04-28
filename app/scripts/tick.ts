@@ -1,6 +1,6 @@
 /**
  * CLI entry: `npm run agents:tick -- <userId?>`
- * Runs a single orchestrator tick — useful for cron from any external runner.
+ * Runs a single orchestrator tick. useful for cron from any external runner.
  */
 import { db, schema } from "@/lib/db/client";
 import { eq } from "drizzle-orm";

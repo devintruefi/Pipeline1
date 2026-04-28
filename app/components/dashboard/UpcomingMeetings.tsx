@@ -6,7 +6,7 @@ type Meeting = typeof meetings.$inferSelect;
 type Target = typeof targets.$inferSelect;
 
 /**
- * Calendar widget — a tight week view of confirmed and proposed meetings.
+ * Calendar widget. a tight week view of confirmed and proposed meetings.
  * Each entry shows day-strip, time, target, and a one-line brief preview.
  * Empty state nudges the user toward booking.
  */

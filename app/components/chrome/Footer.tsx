@@ -15,7 +15,7 @@ export function Footer() {
             </Link>
             <p className="text-[14px] leading-relaxed text-ink-500 text-pretty">
               An AI chief of staff that runs an entire executive job search end-to-end.
-              Compresses 9 months into 9 weeks — at software margins.
+              Compresses 9 months into 9 weeks. at software margins.
             </p>
             <p className="font-display italic text-[15px] text-ink-700 leading-snug max-w-[34ch]">
               "The bottleneck is not motivation. It is leverage."

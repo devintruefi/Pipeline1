@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, AlertCircle, CheckCircle2, MessageSquare, Calendar, Sparkles } from "lucide-react";
 
 /**
- * Today's briefing — the editorial "what to do right now" panel that sits
+ * Today's briefing. the editorial "what to do right now" panel that sits
  * at the top of the Control Center. The tone is ink-inverted so the user's
  * eye lands here first. Each row is a discrete decision with a single
  * primary action; we never stack multiple CTAs in one row.
@@ -46,7 +46,7 @@ export function TodayBriefing({
     items.push({
       kind: "approval",
       title: `${draftsToApprove} draft${draftsToApprove > 1 ? "s" : ""} ready for review`,
-      context: "Approve, edit-then-send, or reject. Sender ships at 9–11 AM.",
+      context: "Approve, edit-then-send, or reject. Sender ships at 9.11 AM.",
       href: "/approvals",
       count: draftsToApprove,
       urgent: draftsToApprove >= 5
@@ -65,7 +65,7 @@ export function TodayBriefing({
     items.push({
       kind: "signal",
       title: `${hotSignals} hot signal${hotSignals > 1 ? "s" : ""} from overnight`,
-      context: "Funding, leadership change, or product launch — high relevance.",
+      context: "Funding, leadership change, or product launch. high relevance.",
       href: "/dashboard#signals",
       count: hotSignals
     });

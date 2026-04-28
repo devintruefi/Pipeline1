@@ -39,24 +39,24 @@ export function ContextPanelLive({ userId }: { userId: string }) {
         {snap.thesis ? (
           <div className="space-y-2">
             <p className="text-[13.5px] text-ink leading-relaxed">{snap.thesis.positioning}</p>
-            <p className="text-[12px] text-ink-500"><span className="text-ink-700">Why now —</span> {snap.thesis.whyNow}</p>
+            <p className="text-[12px] text-ink-500"><span className="text-ink-700">Why now. </span> {snap.thesis.whyNow}</p>
             {snap.thesis.proofPoints?.length > 0 && (
               <ul className="text-[12.5px] text-ink-700 space-y-1 mt-2">
                 {snap.thesis.proofPoints.slice(0, 3).map((p, i) => <li key={i}>· {p}</li>)}
               </ul>
             )}
-            <p className="text-[12px] text-ink-500 mt-2">Archetypes: {snap.thesis.archetypes?.map((a) => a.label).join(" · ") || "—"}</p>
+            <p className="text-[12px] text-ink-500 mt-2">Archetypes: {snap.thesis.archetypes?.map((a) => a.label).join(" · ") || ". "}</p>
           </div>
         ) : (
-          <p className="text-[12.5px] text-ink-300 italic">— synthesised on final turn —</p>
+          <p className="text-[12.5px] text-ink-300 italic">. synthesised on final turn. </p>
         )}
       </Block>
 
       <Block label="03 · Target profile" filled={!!snap.target}>
         {snap.target ? (
-          <p className="text-[12.5px] text-ink-700">{snap.target.roleShape?.join(", ") || "—"} · {snap.target.companyStage?.join(", ") || "—"}</p>
+          <p className="text-[12.5px] text-ink-700">{snap.target.roleShape?.join(", ") || ". "} · {snap.target.companyStage?.join(", ") || ". "}</p>
         ) : (
-          <p className="text-[12.5px] text-ink-300 italic">— set in constraints step —</p>
+          <p className="text-[12.5px] text-ink-300 italic">. set in constraints step. </p>
         )}
       </Block>
 
@@ -64,12 +64,12 @@ export function ContextPanelLive({ userId }: { userId: string }) {
         {snap.constraints ? (
           <p className="text-[12.5px] text-ink-700">Autonomy: {snap.constraints.autonomy}</p>
         ) : (
-          <p className="text-[12.5px] text-ink-300 italic">— set in constraints step —</p>
+          <p className="text-[12.5px] text-ink-300 italic">. set in constraints step. </p>
         )}
       </Block>
 
       <Block label="05 · Live context" filled={false}>
-        <p className="text-[12.5px] text-ink-300 italic">— populated once Scout starts running —</p>
+        <p className="text-[12.5px] text-ink-300 italic">. populated once Scout starts running. </p>
       </Block>
     </div>
   );

@@ -41,7 +41,7 @@ interface CallArgs {
   maxTokens?: number;
   temperature?: number;
   userId?: string;
-  jsonMode?: boolean; // expect a JSON response — wrap with assistant prefill `{`
+  jsonMode?: boolean; // expect a JSON response. wrap with assistant prefill `{`
 }
 
 export interface CallResult {

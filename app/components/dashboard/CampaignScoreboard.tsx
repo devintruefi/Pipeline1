@@ -2,7 +2,7 @@ import type { Thesis } from "@/lib/db/schema";
 import { Sparkline } from "@/components/primitives/Sparkline";
 
 /**
- * Campaign scoreboard — a tight grid showing each active campaign with
+ * Campaign scoreboard. a tight grid showing each active campaign with
  * its theme, target count, sent/replied numbers, and a sparkline of the
  * trend. Click-through (future) opens the campaign detail.
  *

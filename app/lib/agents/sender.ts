@@ -6,7 +6,7 @@ import { id } from "@/lib/utils";
 
 /**
  * SENDER ships approved drafts. Email goes via Gmail OAuth (or mock). LinkedIn
- * is NEVER auto-sent — it goes onto a tap-to-send queue (see /linkedin in the UI),
+ * is NEVER auto-sent. it goes onto a tap-to-send queue (see /linkedin in the UI),
  * preserving the compliance moat described in the business plan.
  */
 export async function runSender(userId: string, draftId: string) {

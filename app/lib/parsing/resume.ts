@@ -16,8 +16,8 @@ export function parseResumeText(text: string): Identity["resume"] {
   const summary = summaryStartIdx >= 0 ? lines.slice(summaryStartIdx + 1, summaryStartIdx + 4).join(" ") : lines.slice(1, 4).join(" ");
 
   const roles: NonNullable<Identity["resume"]>["roles"] = [];
-  // Look for role lines like: "Title — Company (Year–Year)"
-  const roleRe = /^(.+?)\s+(?:—|–|-)\s+(.+?)\s*\((.+?)\s*[–-]\s*(.+?)\)\s*$/;
+  // Look for role lines like: "Title. Company (Year.Year)"
+  const roleRe = /^(.+?)\s+(?:. |.|-)\s+(.+?)\s*\((.+?)\s*[.-]\s*(.+?)\)\s*$/;
   for (let i = 0; i < lines.length; i++) {
     const m = roleRe.exec(lines[i]);
     if (!m) continue;
@@ -45,7 +45,7 @@ export function parseResumeText(text: string): Identity["resume"] {
   if (educationLine) {
     const idx = lines.indexOf(educationLine);
     for (let i = idx + 1; i < Math.min(lines.length, idx + 4); i++) {
-      const parts = lines[i].split(/\s+—\s+|\s+-\s+|,\s*/);
+      const parts = lines[i].split(/\s+. \s+|\s+-\s+|,\s*/);
       if (parts.length >= 2) education.push({ school: parts[0], degree: parts[1], year: parts[2] });
     }
   }
@@ -64,10 +64,10 @@ export function extractVoiceProfile(samples: string[]) {
   // Drafter as few-shots. Here we encode 'avoid' phrases that AI tends to
   // produce and that an executive's writing rarely contains.
   return {
-    tone: "direct, declarative, low on hedging — written like a senior operator",
+    tone: "direct, declarative, low on hedging. written like a senior operator",
     cadence: "short paragraphs; punctuated by em-dashes and one-line beats",
-    quirks: ["uses '—' freely", "avoids exclamation points", "signs with first name only"],
-    sampleOpeners: ["Quick note —", "Saw the news on", "Reading your post on"],
+    quirks: ["uses '. ' freely", "avoids exclamation points", "signs with first name only"],
+    sampleOpeners: ["Quick note. ", "Saw the news on", "Reading your post on"],
     sampleClosers: ["Worth a 20-minute conversation?", "Happy to be useful here.", "If it's helpful."],
     avoid: [
       "I hope this email finds you well",

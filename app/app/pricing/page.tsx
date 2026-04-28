@@ -19,7 +19,7 @@ export default function PricingPage() {
           </h1>
           <p className="mt-6 max-w-[64ch] text-[17px] text-ink-700 leading-relaxed text-pretty">
             The agents are the same. What changes is the cadence, the model tier, the volume cap,
-            and the kinds of signals worth chasing. Pick the tier that matches where you are now —
+            and the kinds of signals worth chasing. Pick the tier that matches where you are now.
             you can move up at any time without losing your context model.
           </p>
         </div>
@@ -126,11 +126,11 @@ export default function PricingPage() {
                     }`}
                   >
                     <p>
-                      <span className="font-medium">Cadence — </span>
+                      <span className="font-medium">Cadence. </span>
                       {plan.cadence}
                     </p>
                     <p>
-                      <span className="font-medium">Models — </span>
+                      <span className="font-medium">Models. </span>
                       {plan.modelTier}
                     </p>
                   </div>
@@ -175,7 +175,7 @@ export default function PricingPage() {
             </p>
             <p>
               <span className="font-medium text-ink">No data sold, ever.</span> We don't share your
-              receipts, your dossier, or your outreach with anyone. Pipeline is a tool you wield —
+              receipts, your dossier, or your outreach with anyone. Pipeline is a tool you wield.
               not a marketplace someone wields against you.
             </p>
           </div>

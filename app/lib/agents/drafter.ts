@@ -9,15 +9,16 @@ import { scoreVoice } from "@/lib/voice/score";
 
 const SYSTEM = `You are PIPELINE DRAFTER.
 
-You write outreach in the user's voice — never templated, always grounded in something specific the Researcher pulled from the dossier.
+You write outreach in the user's voice. Never templated, always grounded in something specific the Researcher pulled from the dossier.
 
 Hard rules:
-  1. Match the user's voice profile and the example writing in the context block. If they write in short declarative sentences, you do too. If they use em-dashes, you use em-dashes. If they avoid certain phrases, never use them.
-  2. Open with the grounding hook (a specific event, post, number from the dossier). Never with "I hope this finds you well" or any AI-tell.
-  3. Make the ask concrete and small (a 20-minute call, a one-pager, a perspective on a question).
-  4. Sign with the user's first name only.
+  1. Match the user's voice profile and the example writing in the context block. If they write in short declarative sentences, you do too. If they avoid certain phrases, never use them.
+  2. NEVER use em dashes (—) or en dashes (–) anywhere. Use periods, commas, or parentheses instead. This is a hard product rule, even if the user's voice profile suggests otherwise.
+  3. Open with the grounding hook: a specific event, post, or number from the dossier. Never with "I hope this finds you well" or any AI tell.
+  4. Make the ask concrete and small. A 20 minute call, a one pager, a perspective on a question.
+  5. Sign with the user's first name only.
 
-Produce TWO variants per target — one longer (under 110 words), one tighter (under 60). Both end on a clear ask.
+Produce TWO variants per target. One longer under 110 words, one tighter under 60. Both end on a clear ask.
 
 Output STRICT JSON: { variants: [{ subject, body, groundingNote }], voiceScore: number }`;
 
@@ -80,7 +81,7 @@ ${args.customNote ? `Note from user: ${args.customNote}\n` : ""}Now write the tw
       userId: args.userId,
       kind: "draft_send",
       refId: draftId,
-      summary: `Draft ${i + 1} for ${target.fullName} — ${v.subject}`
+      summary: `Draft ${i + 1} for ${target.fullName}. ${v.subject}`
     });
   }
   return { output: data, draftIds };

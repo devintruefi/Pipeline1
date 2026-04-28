@@ -1,6 +1,6 @@
 /**
  * Centralized environment access. Every external integration in Pipeline must
- * be optional — the system runs end-to-end with mocks when keys are absent.
+ * be optional. the system runs end-to-end with mocks when keys are absent.
  *
  * The database is the one exception: Pipeline persists state to Postgres
  * (Supabase in prod). DATABASE_URL is required for the app to boot.

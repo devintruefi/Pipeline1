@@ -17,7 +17,7 @@ const STEPS = [
     icon: Compass,
     n: "01",
     title: "Onboarding builds your context model.",
-    duration: "30–45 minutes",
+    duration: "30.45 minutes",
     body:
       "You spend less than an hour with the Strategist. We pull receipts (quantified wins, with the story behind each), your target profile (role shape, company stage, geography, comp band), your constraints (visa, family, no-fly companies, channel rules), and a voice sample (anything you've written that sounds like you). The output is a five-layer context block the agents reference on every tick."
   },
@@ -27,7 +27,7 @@ const STEPS = [
     title: "Scout watches the world for signals.",
     duration: "Continuous",
     body:
-      "Funding rounds, exec departures, posted roles, conference speakers, layoffs, product launches, alumni at companies you care about — Scout pulls them in continuously and scores each one for relevance, freshness, and actionability. The high-scoring signals with a named person become targets."
+      "Funding rounds, exec departures, posted roles, conference speakers, layoffs, product launches, alumni at companies you care about. Scout pulls them in continuously and scores each one for relevance, freshness, and actionability. The high-scoring signals with a named person become targets."
   },
   {
     icon: FileText,
@@ -43,7 +43,7 @@ const STEPS = [
     title: "Pipeline picks a play. Drafter writes two variants.",
     duration: "Per target",
     body:
-      "Seven plays — direct exec cold email, tailored application + backchannel, warm intro, newsjacking, event convergence, re-engagement, quiet apply. The selector is deterministic and explainable. The Drafter writes voice-fingerprinted variants grounded in a specific dossier line."
+      "Seven plays. direct exec cold email, tailored application + backchannel, warm intro, newsjacking, event convergence, re-engagement, quiet apply. The selector is deterministic and explainable. The Drafter writes voice-fingerprinted variants grounded in a specific dossier line."
   },
   {
     icon: ShieldCheck,
@@ -51,7 +51,7 @@ const STEPS = [
     title: "Verifier checks risk and voice fidelity.",
     duration: "Pre-send",
     body:
-      "Email validation. Risk light (green / yellow / red) for tone, claims, and compliance. Voice score (0–1) measuring sentence length, em-dash rate, and other stylistic markers against your voice profile. Anything below the threshold gets flagged for review."
+      "Email validation. Risk light (green / yellow / red) for tone, claims, and compliance. Voice score (0.1) measuring sentence length, em-dash rate, and other stylistic markers against your voice profile. Anything below the threshold gets flagged for review."
   },
   {
     icon: Mail,
@@ -59,7 +59,7 @@ const STEPS = [
     title: "Sender ships through your inbox at the right hour.",
     duration: "Approval queue",
     body:
-      "Every draft enters a small approval queue you control. Approve, edit-then-send, or reject in seconds. Sender ships the approved draft through your Gmail inside your send-window. LinkedIn drafts go to a tap-to-send queue you complete manually — that's the compliance moat."
+      "Every draft enters a small approval queue you control. Approve, edit-then-send, or reject in seconds. Sender ships the approved draft through your Gmail inside your send-window. LinkedIn drafts go to a tap-to-send queue you complete manually. that's the compliance moat."
   },
   {
     icon: Inbox,
@@ -67,7 +67,7 @@ const STEPS = [
     title: "Follow-up classifies replies and proposes the next move.",
     duration: "On reply",
     body:
-      "Positive, scheduling, info request, auto-reply, unsubscribe, neutral. The classification drives the next play step — a re-engagement, a meeting brief, a polite close. You stay in command, but you no longer have to triage."
+      "Positive, scheduling, info request, auto-reply, unsubscribe, neutral. The classification drives the next play step. a re-engagement, a meeting brief, a polite close. You stay in command, but you no longer have to triage."
   },
   {
     icon: Calendar,
@@ -75,7 +75,7 @@ const STEPS = [
     title: "Scheduler proposes times and writes a pre-meeting brief.",
     duration: "On meeting",
     body:
-      "Three time slots inside your send-window, on your calendar, in their timezone. A one-page brief — why the meeting matters, three things to bring up, one question to ask, red flags to acknowledge. You walk in over-prepared without having prepared."
+      "Three time slots inside your send-window, on your calendar, in their timezone. A one-page brief. why the meeting matters, three things to bring up, one question to ask, red flags to acknowledge. You walk in over-prepared without having prepared."
   },
   {
     icon: Users,
@@ -83,7 +83,7 @@ const STEPS = [
     title: "Pipeline Manager surfaces what's working and what to pivot.",
     duration: "Daily + Sunday",
     body:
-      "Each morning a short briefing. Each Sunday a memo: what's converting, what's stalled, which campaigns to lean into, which to retire. The model can't decide what you want — it can keep you honest about how the search is actually performing."
+      "Each morning a short briefing. Each Sunday a memo: what's converting, what's stalled, which campaigns to lean into, which to retire. The model can't decide what you want. it can keep you honest about how the search is actually performing."
   }
 ];
 
@@ -98,7 +98,7 @@ export default function HowItWorksPage() {
           </h1>
           <p className="mt-6 max-w-[64ch] text-[17px] text-ink-700 leading-relaxed text-pretty">
             Pipeline never sends anything you haven't seen. The agents do the research, the
-            writing, the routing, the follow-up — and surface a small queue of decisions you can
+            writing, the routing, the follow-up. and surface a small queue of decisions you can
             approve in seconds. Most days that's two minutes for hours of compound progress.
           </p>
         </div>
@@ -143,7 +143,7 @@ export default function HowItWorksPage() {
                 <li>· Decide what you want next, and what you'd negotiate for.</li>
               </ul>
               <p className="mt-6 pt-4 border-t border-paper/15 text-[12.5px] text-paper-200 leading-relaxed">
-                Everything else — research, drafting, sending, classifying replies, scheduling —
+                Everything else. research, drafting, sending, classifying replies, scheduling.
                 runs in the background.
               </p>
             </div>
@@ -153,14 +153,14 @@ export default function HowItWorksPage() {
               <p className="mt-3 text-[14px] text-ink-700 leading-relaxed text-pretty">
                 We route the cheapest model that's good enough. Triage on Haiku, drafting on
                 Sonnet, strategy and the Sunday memo on Opus. Every run is logged with token
-                counts and estimated cost — visible in the Runs page.
+                counts and estimated cost. visible in the Runs page.
               </p>
             </div>
 
             <div className="card p-6">
               <p className="eyebrow">Privacy</p>
               <p className="mt-3 text-[14px] text-ink-700 leading-relaxed text-pretty">
-                Your receipts, your dossier, your outreach — yours. We never sell, share, or
+                Your receipts, your dossier, your outreach. yours. We never sell, share, or
                 expose your data. The DB lives in your Supabase project on Max; on Launch and
                 Pro it's tenant-isolated in ours.
               </p>

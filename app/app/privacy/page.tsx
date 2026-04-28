@@ -3,7 +3,7 @@ const TENETS: Array<[string, string]> = [
   ["Never sold, never shared", "Your data is never sold or shared with third parties. There is no data broker integration. There never will be."],
   ["Used only for your search", "Email content read by Pipeline is used only to classify and draft replies for you. It is not used to train shared models."],
   ["Export and delete, one click", "You can export everything as JSON and delete your account from Settings → Privacy. The deletion is hard, not soft."],
-  ["Audit log per agent", "Every agent run logs to your account so you can audit what the system did and why — input tokens, output tokens, cost, and notes."]
+  ["Audit log per agent", "Every agent run logs to your account so you can audit what the system did and why. input tokens, output tokens, cost, and notes."]
 ];
 
 export default function PrivacyPage() {
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
         Your inbox is sacred.
       </h1>
       <p className="mt-5 text-[16px] leading-[1.65] text-ink-700 text-pretty max-w-prose">
-        Five tenets. The product is built around them — not the other way around.
+        Five tenets. The product is built around them. not the other way around.
       </p>
 
       <ol className="mt-10 space-y-1">

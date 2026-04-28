@@ -8,12 +8,12 @@ interface Turn {
 }
 
 const OPENING_QUESTIONS = [
-  "Reading your resume, the throughline I see is taking $10–20M ARR companies past $40M by re-architecting the AE/SE pairing — does that match how you'd describe yourself?",
+  "Reading your resume, the throughline I see is taking $10.20M ARR companies past $40M by re-architecting the AE/SE pairing. does that match how you'd describe yourself?",
   "What's the moment in the last 24 months you're proudest of, and what made it possible?",
-  "What kind of company shape do you want to walk into next — and what shape do you want to avoid?",
+  "What kind of company shape do you want to walk into next. and what shape do you want to avoid?",
   "What's a reasonable comp floor below which you'd say no? And what would make you say yes anyway?",
-  "Are there companies, founders, or sectors where you absolutely should not be reaching out — confidentiality, friends, ex-customers?",
-  "Last one — what's one thing about you that you've never had a good way of putting on a resume but that always shows up in interviews?"
+  "Are there companies, founders, or sectors where you absolutely should not be reaching out. confidentiality, friends, ex-customers?",
+  "Last one. what's one thing about you that you've never had a good way of putting on a resume but that always shows up in interviews?"
 ];
 
 export function StrategyConversation({ userId }: { userId: string }) {
@@ -61,7 +61,7 @@ export function StrategyConversation({ userId }: { userId: string }) {
         body: JSON.stringify({ userId })
       });
       if (r.ok) {
-        setTurns((t) => [...t, { role: "agent", content: "Got it. I've drafted your commercial thesis on the right. Take 30 seconds to scan it — then onward." }]);
+        setTurns((t) => [...t, { role: "agent", content: "Got it. I've drafted your commercial thesis on the right. Take 30 seconds to scan it. then onward." }]);
         setDone(true);
       }
     }

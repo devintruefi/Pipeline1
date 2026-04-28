@@ -3,7 +3,7 @@
  *
  *   npm run db:ensure
  *
- * Runs the boot-time DDL against DATABASE_URL. Idempotent — every CREATE is
+ * Runs the boot-time DDL against DATABASE_URL. Idempotent. every CREATE is
  * `IF NOT EXISTS`, so it's safe to run on every deploy. Useful as a Vercel
  * "Build Command" prefix or a one-shot CI step.
  */

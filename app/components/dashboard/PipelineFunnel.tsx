@@ -13,7 +13,7 @@ const STAGES: Array<{ key: Target["status"]; label: string; tone: string; ratio:
 ];
 
 /**
- * The pipeline funnel — visual + numeric. Each stage shows count, a sized
+ * The pipeline funnel. visual + numeric. Each stage shows count, a sized
  * bar (clamped so 0 doesn't disappear), and conversion rate vs the prior
  * stage so the user sees where the leak is.
  */
@@ -57,7 +57,7 @@ export function PipelineFunnel({ targets: rows }: { targets: Target[] }) {
                 </span>
               </div>
               <span className="text-[12px] text-right tabular text-ink-500">
-                {conversion != null ? `${conversion}%` : "—"}
+                {conversion != null ? `${conversion}%` : ". "}
               </span>
             </li>
           );

@@ -3,13 +3,13 @@ import type { drafts } from "@/lib/db/schema";
 type Draft = typeof drafts.$inferSelect;
 
 /**
- * Voice fidelity gauge — a single big number showing the average
+ * Voice fidelity gauge. a single big number showing the average
  * voice-fingerprint score across this week's drafts. Anything below
  * 80% triggers an amber flag and an inline tip.
  *
  * The voice score is computed deterministically by lib/voice/score.ts
  * using stylistic features (sentence length, em-dash rate, contraction
- * rate, etc.) — not a second LLM call.
+ * rate, etc.). not a second LLM call.
  */
 export function VoiceQuality({ drafts: rows }: { drafts: Draft[] }) {
   const valid = rows.filter((d) => typeof d.voiceScore === "number");
@@ -19,11 +19,11 @@ export function VoiceQuality({ drafts: rows }: { drafts: Draft[] }) {
   const tone = pct >= 88 ? "green" : pct >= 78 ? "amber" : "red";
   const message =
     valid.length === 0
-      ? "No drafts yet — voice score will appear after the next tick."
+      ? "No drafts yet. voice score will appear after the next tick."
       : pct >= 88
       ? "Drafts are reading like you. Hold the line."
       : pct >= 78
-      ? "Slight drift. Drafter is using one phrase you'd avoid — review approvals."
+      ? "Slight drift. Drafter is using one phrase you'd avoid. review approvals."
       : "Significant drift. Run a voice refresh from Settings → Voice profile.";
 
   // Build a tiny tick-mark gauge (60 ticks; the threshold is 88%).

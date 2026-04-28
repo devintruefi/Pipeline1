@@ -2,7 +2,7 @@
  * Voice fingerprinting (deterministic, non-LLM).
  *
  * Computes a 0..1 score representing how much a draft body resembles the
- * user's actual past writing. We don't try to be perfect — we measure a few
+ * user's actual past writing. We don't try to be perfect. we measure a few
  * stylistic dimensions and combine them. The signal is strong enough to
  * regress when the model drifts off-voice and weak enough to never block.
  */
@@ -32,7 +32,7 @@ function features(text: string): VoiceFeatures {
   const n = Math.max(1, sentences.length);
   return {
     avgSentenceLen: words.length / n,
-    emDashRate: (text.match(/—|--/g)?.length ?? 0) / n,
+    emDashRate: (text.match(/. |--/g)?.length ?? 0) / n,
     exclamationRate: (text.match(/!/g)?.length ?? 0) / n,
     questionRate: (text.match(/\?/g)?.length ?? 0) / n,
     contractionsRate: (text.match(/\b\w+'\w+\b/g)?.length ?? 0) / Math.max(1, words.length),
@@ -52,7 +52,7 @@ function diff(a: VoiceFeatures, b: VoiceFeatures): number {
     "shortSentenceRate",
     "lowercaseSentenceStartRate"
   ];
-  // Scale avg sentence len differently — others are 0..~1.
+  // Scale avg sentence len differently. others are 0..~1.
   let total = 0;
   for (const k of norms) {
     const av = a[k];

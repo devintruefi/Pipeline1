@@ -8,14 +8,14 @@ import { CommandPalette } from "@/components/chrome/CommandPalette";
 /**
  * Editorial pairing.
  *
- * Fraunces — display + italic. Variable, optical-sizing aware. Used for
+ * Fraunces. display + italic. Variable, optical-sizing aware. Used for
  * headlines, metrics, and the in-app numeric voice. Drives `opsz` by
  * font-size automatically; `SOFT` tuned softer for warm editorial feel.
  *
- * Manrope — body sans. Variable, modern humanist; spaced for prose but
+ * Manrope. body sans. Variable, modern humanist; spaced for prose but
  * narrow enough for dense UI. Deliberately not Inter / system default.
  *
- * JetBrains Mono — used sparingly for keyboard shortcuts, draft bodies,
+ * JetBrains Mono. used sparingly for keyboard shortcuts, draft bodies,
  * and run-log payloads. High legibility at small sizes.
  */
 const sans = Manrope({
@@ -39,9 +39,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pipeline — The autonomous executive job search.",
+  title: "Pipeline. The autonomous executive job search.",
   description:
-    "An AI chief of staff that runs an entire executive job search end-to-end — researching opportunities, drafting thesis-grounded outreach in your voice, sending it from your inbox, handling follow-ups, and putting meetings on your calendar.",
+    "An AI chief of staff that runs an entire executive job search end-to-end. researching opportunities, drafting thesis-grounded outreach in your voice, sending it from your inbox, handling follow-ups, and putting meetings on your calendar.",
   metadataBase: new URL("http://localhost:3000")
 };
 

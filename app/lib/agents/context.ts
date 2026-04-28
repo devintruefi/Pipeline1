@@ -21,7 +21,7 @@ export async function loadUserContext(userId: string): Promise<UserContext> {
 /** Render the context as a long, cacheable text block for prompt-cached system prompts. */
 export function renderContextBlock(ctx: UserContext): string {
   const parts: string[] = [];
-  parts.push(`# USER CONTEXT (Personal Context Model)\n\nName: ${ctx.name ?? "—"}\nUserId: ${ctx.userId}`);
+  parts.push(`# USER CONTEXT (Personal Context Model)\n\nName: ${ctx.name ?? ". "}\nUserId: ${ctx.userId}`);
 
   if (ctx.identity) {
     parts.push("\n## Identity");
@@ -29,14 +29,14 @@ export function renderContextBlock(ctx: UserContext): string {
       parts.push(`**Headline:** ${ctx.identity.resume.headline}\n**Summary:** ${ctx.identity.resume.summary}`);
       parts.push("\n**Roles**");
       for (const r of ctx.identity.resume.roles) {
-        parts.push(`- **${r.title}** at ${r.company} (${r.start} – ${r.end}) — ${r.scope ?? ""}`);
+        parts.push(`- **${r.title}** at ${r.company} (${r.start}. ${r.end}). ${r.scope ?? ""}`);
         for (const b of r.bullets.slice(0, 4)) parts.push(`  · ${b}`);
       }
       parts.push(`\n**Skills:** ${ctx.identity.resume.skills.join(", ")}`);
     }
     if (ctx.identity.receipts.length) {
       parts.push("\n**Receipts (proof points)**");
-      for (const r of ctx.identity.receipts) parts.push(`- ${r.title} — ${r.metric}: ${r.story}`);
+      for (const r of ctx.identity.receipts) parts.push(`- ${r.title}. ${r.metric}: ${r.story}`);
     }
     if (ctx.identity.voiceProfile) {
       parts.push(`\n**Voice profile.** Tone: ${ctx.identity.voiceProfile.tone}. Cadence: ${ctx.identity.voiceProfile.cadence}.`);
@@ -45,7 +45,7 @@ export function renderContextBlock(ctx: UserContext): string {
       if (ctx.identity.voiceProfile.avoid.length)
         parts.push(`Always avoid: ${ctx.identity.voiceProfile.avoid.join("; ")}`);
       if (ctx.identity.voiceProfile.examples.length) {
-        parts.push("\nVoice examples (the user's actual writing — match this tone, cadence, and rhythm):");
+        parts.push("\nVoice examples (the user's actual writing. match this tone, cadence, and rhythm):");
         for (const ex of ctx.identity.voiceProfile.examples.slice(0, 5)) parts.push(`---\n${ex}\n---`);
       }
     }
@@ -57,15 +57,15 @@ export function renderContextBlock(ctx: UserContext): string {
     for (const p of ctx.thesis.proofPoints) parts.push(`- ${p}`);
     parts.push("**Target archetypes:**");
     for (const a of ctx.thesis.archetypes)
-      parts.push(`- **${a.label}** — ${a.description} (signals: ${a.signals.join(", ")})`);
+      parts.push(`- **${a.label}**. ${a.description} (signals: ${a.signals.join(", ")})`);
   }
 
   if (ctx.target) {
     parts.push("\n## Target profile");
     parts.push(`Roles: ${ctx.target.roleShape.join(", ")}`);
     parts.push(`Stage: ${ctx.target.companyStage.join(", ")}`);
-    parts.push(`Industries — must: ${ctx.target.industries.mustHave.join(", ")} | nope: ${ctx.target.industries.nope.join(", ")}`);
-    parts.push(`Comp: $${ctx.target.comp.floor.toLocaleString()}–$${ctx.target.comp.ceiling.toLocaleString()} (${ctx.target.comp.flexNotes})`);
+    parts.push(`Industries. must: ${ctx.target.industries.mustHave.join(", ")} | nope: ${ctx.target.industries.nope.join(", ")}`);
+    parts.push(`Comp: $${ctx.target.comp.floor.toLocaleString()}.$${ctx.target.comp.ceiling.toLocaleString()} (${ctx.target.comp.flexNotes})`);
     parts.push(`Geography: ${ctx.target.geography.primary.join(", ")} (remote-ok: ${ctx.target.geography.remote})`);
     parts.push(`Mission: ${ctx.target.mission}`);
   }
@@ -74,8 +74,8 @@ export function renderContextBlock(ctx: UserContext): string {
     parts.push("\n## Constraints");
     parts.push(`Channels: email=${ctx.constraints.channels.email} li=${ctx.constraints.channels.linkedin} warm=${ctx.constraints.channels.warmIntro}`);
     parts.push(`Daily send cap: ${ctx.constraints.volume.dailySendCap}`);
-    parts.push(`No-fly companies: ${ctx.constraints.confidentiality.noFlyCompanies.join(", ") || "—"}`);
-    parts.push(`No-fly people: ${ctx.constraints.confidentiality.noFlyPeople.join(", ") || "—"}`);
+    parts.push(`No-fly companies: ${ctx.constraints.confidentiality.noFlyCompanies.join(", ") || ". "}`);
+    parts.push(`No-fly people: ${ctx.constraints.confidentiality.noFlyPeople.join(", ") || ". "}`);
     parts.push(`Autonomy mode: ${ctx.constraints.autonomy}`);
   }
 

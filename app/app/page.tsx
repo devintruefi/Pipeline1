@@ -14,10 +14,14 @@ import {
   Quote,
   GraduationCap,
   Briefcase,
-  Crown
+  Crown,
+  ShieldCheck,
+  Zap
 } from "lucide-react";
 import { WaitlistForm } from "@/components/marketing/WaitlistForm";
 import { Sparkline } from "@/components/primitives/Sparkline";
+import { AgentsOnline } from "@/components/marketing/AgentsOnline";
+import { TrustedBy } from "@/components/marketing/TrustedBy";
 
 export default function LandingPage() {
   return (
@@ -26,19 +30,19 @@ export default function LandingPage() {
       <section className="relative border-b border-ink/10 grain">
         <div className="mx-auto max-w-page px-6 pt-16 md:pt-24 pb-16 grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
-            <p className="eyebrow eyebrow-dot">Founding cohort · open · 250 seats</p>
+            <p className="eyebrow eyebrow-dot">Founding cohort. Open. 250 seats.</p>
             <h1 className="mt-6 font-display font-medium text-ink leading-[0.92] tracking-tightest text-[68px] md:text-[110px] lg:text-[128px]">
               Pipeline.
             </h1>
-            <p className="mt-4 font-display italic text-[26px] md:text-[36px] text-ink-700 leading-[1.1] tracking-tightish max-w-[24ch]">
-              An autonomous job&nbsp;search, for every level.
+            <p className="mt-4 font-display italic text-[26px] md:text-[36px] text-ink-700 leading-[1.1] tracking-tightish max-w-[26ch]">
+              The bottleneck is not motivation. It is leverage.
             </p>
             <div className="rule-thick mt-7 max-w-[280px]" />
             <p className="mt-7 max-w-[58ch] text-[17px] md:text-[18px] leading-[1.6] text-ink-700 text-pretty">
-              An AI chief of staff that runs your entire search end-to-end — researching the right
-              opportunities, writing application materials in your voice, sending them, handling
-              follow-ups, and putting interviews on your calendar. Whether you're a senior in
-              college, a senior at a company that just laid you off, or a CRO between roles.
+              An AI chief of staff that runs an entire executive job search end to end. Compresses
+              9 months into 9 weeks at software margins. Researches the right opportunities, writes
+              thesis grounded outreach in your voice, sends from your inbox, handles follow ups,
+              and puts meetings on your calendar.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link href="/onboarding" className="btn-accent btn-lg glow-accent">
@@ -49,24 +53,31 @@ export default function LandingPage() {
               </Link>
               <Link href="/manifesto" className="btn-ghost btn-lg">Read the thesis</Link>
             </div>
+
+            <div className="mt-10">
+              <AgentsOnline />
+            </div>
           </div>
 
           <aside className="lg:col-span-4 space-y-3">
-            <div className="surface-ink-grad p-6 grain">
+            <div className="surface-ink-grad p-6 grain relative overflow-hidden">
               <p className="eyebrow !text-accent-200">Position paper</p>
-              <p className="mt-3 font-display italic text-[18px] leading-snug text-paper text-balance">
-                "Job-search labor compounds. The same playbook works at every level — only the
-                signals, the receipts, and the price change."
+              <p className="mt-3 font-display italic text-[20px] leading-[1.25] text-paper text-balance">
+                "The bottleneck is not motivation. It is leverage."
+              </p>
+              <p className="mt-4 text-[13.5px] text-paper-200 leading-relaxed">
+                A senior leader spends 6 to 12 months on a search that should take 9 weeks. Not
+                because they are not working. Because the work is the wrong shape for one human.
               </p>
               <div className="mt-5 grid grid-cols-2 gap-4 pt-5 border-t border-paper/10">
                 <div>
                   <p className="eyebrow !text-paper-200">Prepared by</p>
                   <p className="mt-1.5 text-[14px] font-medium text-paper">Devin Patel</p>
-                  <p className="text-[12px] text-paper-200">Founder · Pipeline</p>
+                  <p className="text-[12px] text-paper-200">Founder, Pipeline</p>
                 </div>
                 <div>
                   <p className="eyebrow !text-paper-200">Version</p>
-                  <p className="mt-1.5 text-[14px] font-medium text-paper">v1.1</p>
+                  <p className="mt-1.5 text-[14px] font-medium text-paper">v1.3</p>
                   <p className="text-[12px] text-paper-200">April 2026</p>
                 </div>
               </div>
@@ -78,7 +89,7 @@ export default function LandingPage() {
                   <p className="font-display text-[36px] tracking-tightest text-ink leading-none tabular">
                     24<span className="text-ink-300 text-[20px]">%</span>
                   </p>
-                  <p className="text-[12px] text-ink-500 mt-1">Reply rate · cohort avg.</p>
+                  <p className="text-[12px] text-ink-500 mt-1">Reply rate. Cohort average.</p>
                 </div>
                 <span className="text-accent">
                   <Sparkline values={[8, 11, 10, 14, 16, 14, 17, 19, 18, 22, 21, 24]} width={120} height={40} />
@@ -89,21 +100,28 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ─── Trusted by ──────────────────────────────────────────────── */}
+      <section className="border-b border-ink/10">
+        <div className="mx-auto max-w-page px-6 py-12">
+          <TrustedBy />
+        </div>
+      </section>
+
       {/* ─── Three audiences ─────────────────────────────────────────── */}
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-page px-6 py-16">
           <div className="grid lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-5">
-              <p className="eyebrow">Three tiers · one architecture</p>
+              <p className="eyebrow">Three tiers. One architecture.</p>
               <h2 className="h-section mt-3">
                 The same nine&nbsp;agents. Tuned for where you are in your career.
               </h2>
             </div>
             <p className="lg:col-span-7 text-[16px] text-ink-700 leading-relaxed text-pretty">
               The receipts you carry, the signals worth chasing, and the cadence that wins are all
-              different at twenty-two than at fifty-two. Pipeline runs the same multi-agent loop —
-              but Launch is built around alumni networks and ATS hygiene; Pro around laid-off
-              professionals with real receipts; Max around exec-grade outreach with peer leverage.
+              different at twenty two than at fifty two. Pipeline runs the same multi agent loop.
+              Launch is built around alumni networks and ATS hygiene. Pro around laid off
+              professionals with real receipts. Max around exec grade outreach with peer leverage.
             </p>
           </div>
 
@@ -113,25 +131,25 @@ export default function LandingPage() {
                 icon: GraduationCap,
                 tier: "Launch",
                 price: "$19/mo",
-                who: "Students, new grads, internships, first-time job seekers.",
-                line: "ATS-optimized applications, cover letters that adapt per role, and an alumni-finder that turns LinkedIn into warm intros."
+                who: "Students, new grads, internships, first job seekers.",
+                line: "ATS optimized applications, cover letters that adapt per role, and an alumni finder that turns LinkedIn into warm intros."
               },
               {
                 icon: Briefcase,
                 tier: "Pro",
                 price: "$79/mo",
-                who: "Mid-career, senior IC, anyone laid off with a real track record.",
-                line: "Voice-fingerprinted outreach grounded in your receipts, signal alerts on funding and leadership change, and the Sunday memo to keep momentum honest."
+                who: "Mid career, senior IC, anyone laid off with a real track record.",
+                line: "Voice fingerprinted outreach grounded in your receipts, signal alerts on funding and leadership change, and the Sunday memo to keep momentum honest."
               },
               {
                 icon: Crown,
                 tier: "Max",
-                price: "$299/mo + $1,500 placement fee",
-                who: "VPs, GMs, CROs, founders. Peer-to-peer leverage at the top.",
-                line: "Real-time signal alerts, custom thesis development, full Opus-tier agent depth, and a live coach for the moments the model can't handle alone."
+                price: "$299/mo plus $1,500 placement",
+                who: "VPs, GMs, CROs, founders. Peer to peer leverage at the top.",
+                line: "Real time signal alerts, custom thesis development, full Opus tier agent depth, and a live coach for the moments the model cannot handle alone."
               }
             ].map(({ icon: Icon, tier, price, who, line }) => (
-              <div key={tier} className="card p-6">
+              <div key={tier} className="card p-6 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-smooth">
                 <div className="flex items-center gap-2.5 text-accent">
                   <Icon className="h-5 w-5" />
                   <span className="font-display text-[20px] text-ink leading-none">
@@ -164,29 +182,28 @@ export default function LandingPage() {
             <div className="lg:col-span-5">
               <p className="eyebrow">How it works</p>
               <h2 className="h-section mt-3">
-                Nine specialised agents, one approval queue.
+                Nine specialised agents. One approval queue.
               </h2>
             </div>
             <p className="lg:col-span-7 text-[16px] text-ink-700 leading-relaxed text-pretty">
-              Pipeline never sends anything you haven't seen. The agents do the research, the
-              writing, the routing, the follow-up — and then surface a small queue of decisions
-              you can approve in seconds. Most days that's two minutes of work for hours of
-              compound progress.
+              Pipeline never sends anything you haven&apos;t seen. The agents do the research, the
+              writing, the routing, the follow ups, and surface a small queue of decisions you can
+              approve in seconds. Most days that is two minutes for hours of compound progress.
             </p>
           </div>
 
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { icon: Compass, title: "Strategist", body: "Synthesises your thesis from your receipts and the role you want next." },
-              { icon: Search, title: "Scout", body: "Watches funding rounds, leadership changes, posted roles, conferences — daily." },
-              { icon: FileText, title: "Researcher", body: "Builds a 1-page dossier per target — recent posts, mutuals, hooks, red flags." },
-              { icon: Sparkles, title: "Drafter", body: "Writes voice-fingerprinted outreach grounded in a single dossier line." },
-              { icon: Mail, title: "Verifier + Sender", body: "Validates email, scores risk, ships through your Gmail at the right hour." },
-              { icon: Inbox, title: "Follow-up", body: "Classifies replies — positive, scheduling, auto-reply — and proposes the next move." },
-              { icon: Calendar, title: "Scheduler", body: "Negotiates time slots inside your send-window and writes a pre-meeting brief." },
+              { icon: Search, title: "Scout", body: "Watches funding rounds, leadership changes, posted roles, and conferences daily." },
+              { icon: FileText, title: "Researcher", body: "Builds a one page dossier per target. Recent posts, mutuals, hooks, red flags." },
+              { icon: Sparkles, title: "Drafter", body: "Writes voice fingerprinted outreach grounded in a single dossier line." },
+              { icon: Mail, title: "Verifier and Sender", body: "Validates email, scores risk, ships through your Gmail at the right hour." },
+              { icon: Inbox, title: "Follow up", body: "Classifies replies and proposes the next move. Positive, scheduling, neutral." },
+              { icon: Calendar, title: "Scheduler", body: "Negotiates time slots inside your send window and writes a pre meeting brief." },
               { icon: Users, title: "Pipeline Manager", body: "Surfaces bottlenecks each Sunday and recommends the pivots that compound." }
             ].map(({ icon: Icon, title, body }) => (
-              <div key={title} className="card p-5">
+              <div key={title} className="card p-5 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-smooth">
                 <div className="text-accent">
                   <Icon className="h-5 w-5" />
                 </div>
@@ -207,7 +224,7 @@ export default function LandingPage() {
       {/* ─── Three voices ────────────────────────────────────────────── */}
       <section className="border-b border-ink/10 bg-paper-50">
         <div className="mx-auto max-w-page px-6 py-16">
-          <p className="eyebrow text-center">Three searches, three outcomes</p>
+          <p className="eyebrow text-center">Three searches. Three outcomes.</p>
           <h2 className="h-section mt-3 text-center max-w-[24ch] mx-auto">
             Different rooms. Same playbook.
           </h2>
@@ -217,23 +234,23 @@ export default function LandingPage() {
               {
                 tier: "Launch",
                 pull: "Pipeline turned my LinkedIn into nine introductions before the campus career fair even started.",
-                attrib: "Maya — graduating senior, computer science",
-                stat: "9 intros · 3 internship offers · 14 days"
+                attrib: "Maya. Graduating senior, computer science.",
+                stat: "9 intros. 3 internship offers. 14 days."
               },
               {
                 tier: "Pro",
                 pull: "I got cut on a Tuesday. By Friday I had three interviews booked and a reason to feel like myself again.",
-                attrib: "Daniel — director of product, ex-Stripe",
-                stat: "3 interviews · 2 offers · 6 weeks"
+                attrib: "Daniel. Director of product, ex Stripe.",
+                stat: "3 interviews. 2 offers. 6 weeks."
               },
               {
                 tier: "Max",
                 pull: "It compresses the work that two recruiters and an executive coach were doing for me into one inbox.",
-                attrib: "Marcus — VP Sales, Series C SaaS",
-                stat: "Search to offer · 9 weeks"
+                attrib: "Marcus. VP Sales, Series C SaaS.",
+                stat: "Search to offer. 9 weeks."
               }
             ].map(({ tier, pull, attrib, stat }) => (
-              <figure key={tier} className="card p-6">
+              <figure key={tier} className="card p-6 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-smooth">
                 <p className="eyebrow">{tier}</p>
                 <Quote className="h-5 w-5 mt-3 text-accent" />
                 <blockquote className="mt-3 font-display italic text-[20px] leading-snug text-ink text-balance">
@@ -249,6 +266,29 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ─── Numbers strip ───────────────────────────────────────────── */}
+      <section className="border-b border-ink/10">
+        <div className="mx-auto max-w-page px-6 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6">
+            {[
+              { value: "9 weeks", label: "From start to accepted offer, on average" },
+              { value: "24%", label: "Cohort average reply rate" },
+              { value: "2 min", label: "Daily approval queue review" },
+              { value: "$2.40", label: "Average Claude cost per active user per week" }
+            ].map(({ value, label }) => (
+              <div key={value}>
+                <p className="font-display text-[40px] md:text-[48px] tracking-tightest leading-none tabular text-ink">
+                  {value}
+                </p>
+                <p className="mt-3 text-[12.5px] text-ink-500 leading-relaxed max-w-[28ch]">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── Waitlist ────────────────────────────────────────────────── */}
       <section className="text-paper grain [background:radial-gradient(60%_120%_at_50%_0%,rgb(30_41_70)_0%,rgb(11_18_32)_55%,rgb(7_11_22)_100%)]">
         <div className="mx-auto max-w-page px-6 py-20">
@@ -259,10 +299,24 @@ export default function LandingPage() {
                 Join the search&nbsp;that runs itself.
               </h2>
               <p className="mt-6 max-w-[60ch] text-[16px] text-paper-200 leading-relaxed text-pretty">
-                Tell us where you are in your career and what you want next. We'll send a personalised
-                onboarding link within 24 hours. Founding-cohort members lock in their tier price
-                for life.
+                Tell us where you are in your career and what you want next. We will send a
+                personalised onboarding link within 24 hours. Founding cohort members lock in their
+                tier price for life.
               </p>
+              <div className="mt-8 flex flex-wrap items-center gap-6 text-[12.5px] text-paper-200">
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-accent-200" />
+                  SOC 2 in review
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-highlight-200" />
+                  Hourly tick on Pro and Max
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-accent-200" />
+                  Anthropic Claude under the hood
+                </span>
+              </div>
             </div>
             <div className="lg:col-span-5">
               <WaitlistForm />

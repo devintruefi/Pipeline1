@@ -9,7 +9,7 @@ import type { Identity } from "@/lib/db/schema";
  *   - Mirrors the JD's vocabulary where the user has authentic experience.
  *   - Rewrites the headline as a thesis-for-this-role paragraph.
  *   - Outputs ATS-parseable markdown which we render to a clean PDF on the
- *     client (or text — no auto-keyword stuffing).
+ *     client (or text. no auto-keyword stuffing).
  *
  * The scoring is deterministic so a 9am role drop produces an identical
  * tailored resume at 9:05am every time, with no LLM calls required.
@@ -97,7 +97,7 @@ export function tailorResume(input: TailorInput): TailorOutput {
 
   const headline = input.thesisLine
     ? input.thesisLine
-    : `${input.resume.headline} — focused on ${[...jdUni].slice(0, 3).join(", ")}.`;
+    : `${input.resume.headline}. focused on ${[...jdUni].slice(0, 3).join(", ")}.`;
 
   // Reordered summary: keep the user's summary, but lead with the JD's strongest theme if present.
   const summary = input.resume.summary;
@@ -106,13 +106,13 @@ export function tailorResume(input: TailorInput): TailorOutput {
   const md: string[] = [];
   md.push(`# ${input.resume.headline}\n\n${headline}\n\n${summary}\n`);
   for (const role of rolesOrdered) {
-    md.push(`\n## ${role.title} — ${role.company} (${role.start} — ${role.end})`);
+    md.push(`\n## ${role.title}. ${role.company} (${role.start}. ${role.end})`);
     for (const b of role.bullets) md.push(`- ${b}`);
   }
   if (input.resume.skills.length) md.push(`\n## Skills\n${input.resume.skills.join(" · ")}`);
   if (input.resume.education.length) {
     md.push(`\n## Education`);
-    for (const e of input.resume.education) md.push(`- ${e.school} — ${e.degree}${e.year ? ` (${e.year})` : ""}`);
+    for (const e of input.resume.education) md.push(`- ${e.school}. ${e.degree}${e.year ? ` (${e.year})` : ""}`);
   }
 
   return {

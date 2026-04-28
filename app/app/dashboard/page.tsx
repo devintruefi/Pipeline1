@@ -22,12 +22,12 @@ export const dynamic = "force-dynamic";
  * The Control Center.
  *
  * Layout (desktop):
- *   [ Today's briefing — full bleed, ink-on-paper ]
+ *   [ Today's briefing. full bleed, ink-on-paper ]
  *   [ MetricRail · 4 KPIs with sparklines      ]
  *   [ Pipeline funnel | Approval queue | Hot signals ] ← 3 cols main
  *   [ Voice fidelity | Agent activity | Calendar    ] ← 3 cols ancillary
- *   [ Campaign scoreboard — full width             ]
- *   [ Sunday memo — editorial pull-quote panel    ]
+ *   [ Campaign scoreboard. full width             ]
+ *   [ Sunday memo. editorial pull-quote panel    ]
  *
  * Mobile reflows to a single column. Stagger animation cascades the
  * primary widgets in on first paint.
@@ -193,7 +193,7 @@ export default async function ControlCenterPage() {
 /**
  * Build a deterministic 14-point series anchored on `target` so sparklines
  * feel coherent without depending on historical data we don't have yet.
- * Pure function of (target, length, jitter) — same inputs, same series.
+ * Pure function of (target, length, jitter). same inputs, same series.
  */
 function trendSeries(target: number, length: number, jitter: number): number[] {
   const base = Math.max(1, target);
