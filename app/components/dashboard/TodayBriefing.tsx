@@ -75,7 +75,7 @@ export function TodayBriefing({
   const greeting = greetingForHour();
 
   return (
-    <section className="rounded-xl bg-ink text-paper overflow-hidden grain">
+    <section className="surface-ink-grad text-paper overflow-hidden grain">
       <div className="px-7 py-7 md:px-9 md:py-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>

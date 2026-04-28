@@ -55,7 +55,7 @@ export function Toolbar() {
             Pipeline
           </span>
           {!inApp && (
-            <span className="hidden sm:inline pill pill-outline ml-1">v1.0</span>
+            <span className="hidden sm:inline pill pill-outline ml-1">v1.1</span>
           )}
         </Link>
 

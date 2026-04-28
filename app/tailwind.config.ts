@@ -47,15 +47,15 @@ const config: Config = {
         },
         // Editorial accent — deep navy, calm and unmistakably professional
         accent: {
-          DEFAULT: "#1E40AF",
-          700: "#15287E",
-          600: "#1A36A0",
-          500: "#1E40AF",
-          400: "#2E55C8",
-          300: "#5C7BD6",
-          200: "#A6B7E0",
-          100: "#DDE4F4",
-          50: "#EEF2FA"
+          DEFAULT: "#4338CA",
+          700: "#312E80",
+          600: "#3730A3",
+          500: "#4F46E5",
+          400: "#6366F1",
+          300: "#A5B4FC",
+          200: "#C7D2FE",
+          100: "#E0E7FF",
+          50: "#F0F1FE"
         },
         // Warm amber highlight — used sparingly for "this matters now" moments
         highlight: {
@@ -82,12 +82,26 @@ const config: Config = {
           50: "#F1F5F9"
         },
         signal: {
-          green: "#047857",
+          green: "#059669",
           "green-soft": "#D1FAE5",
-          amber: "#B45309",
+          amber: "#D97706",
           "amber-soft": "#FEF3C7",
-          red: "#B91C1C",
+          red: "#DC2626",
           "red-soft": "#FEE2E2"
+        },
+        // Teal — used sparingly in data viz to add a complementary energy
+        // point against the indigo accent. Same role as 'highlight' but
+        // optimised for cool/calm contexts (charts, secondary metrics).
+        teal: {
+          DEFAULT: "#0E9384",
+          700: "#0A6E63",
+          600: "#0C8377",
+          500: "#0E9384",
+          400: "#3DB1A4",
+          300: "#7FCDC2",
+          200: "#B8E3DD",
+          100: "#DEF2EF",
+          50: "#EEF8F6"
         }
       },
       fontFamily: {
@@ -152,8 +166,11 @@ const config: Config = {
         card: "0 1px 0 0 rgb(11 18 32 / 0.03), 0 4px 14px -8px rgb(11 18 32 / 0.10)",
         lift: "0 1px 0 0 rgb(11 18 32 / 0.04), 0 22px 50px -28px rgb(11 18 32 / 0.22)",
         focus:
-          "0 0 0 2px rgb(250 251 252 / 1), 0 0 0 4px rgb(30 58 138 / 0.55)",
-        ring: "inset 0 0 0 1px rgb(11 18 32 / 0.08)"
+          "0 0 0 2px rgb(250 251 252 / 1), 0 0 0 4px rgb(67 56 202 / 0.55)",
+        ring: "inset 0 0 0 1px rgb(11 18 32 / 0.08)",
+        // Soft accent halo — used on primary CTAs to add quiet energy.
+        glow: "0 0 0 1px rgb(67 56 202 / 0.12), 0 12px 32px -10px rgb(67 56 202 / 0.40)",
+        "glow-soft": "0 8px 22px -10px rgb(67 56 202 / 0.30)"
       },
       transitionTimingFunction: {
         out: "cubic-bezier(0.22, 1, 0.36, 1)",

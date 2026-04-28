@@ -48,7 +48,9 @@ export function StatTile({
   return (
     <div
       className={`relative px-6 py-5 ${
-        emphasis ? "bg-ink text-paper" : ""
+        emphasis
+          ? "text-paper [background:radial-gradient(120%_120%_at_0%_0%,rgb(30_41_70)_0%,rgb(11_18_32)_60%,rgb(11_18_32)_100%)]"
+          : ""
       }`}
     >
       <p className={`eyebrow ${emphasis ? "!text-accent-200" : ""}`}>{eyebrow}</p>

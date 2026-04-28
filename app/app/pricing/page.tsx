@@ -35,7 +35,7 @@ export default function PricingPage() {
                   key={plan.id}
                   className={
                     plan.highlight
-                      ? "rounded-xl bg-ink text-paper p-7 grain shadow-lift"
+                      ? "surface-ink-grad p-7 grain shadow-lift"
                       : "card p-7"
                   }
                 >

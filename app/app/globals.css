@@ -24,14 +24,20 @@
   --ink-300: 203 213 225;
   --ink-100: 237 241 246;
 
-  /* Accent — deep navy. Calm, premium, unmistakably professional. */
-  --accent: 30 64 175;
-  --accent-700: 21 40 126;
-  --accent-200: 166 183 224;
+  /* Accent — electric indigo. Modern, professional, with quiet energy. */
+  --accent: 67 56 202;
+  --accent-700: 49 46 128;
+  --accent-500: 79 70 229;
+  --accent-200: 199 210 254;
+  --accent-100: 224 231 255;
 
   /* Highlight — warm amber. Reserved for high-importance moments. */
-  --highlight: 181 112 26;
-  --highlight-200: 239 205 126;
+  --highlight: 217 122 31;
+  --highlight-200: 248 203 132;
+
+  /* Teal — complementary cool secondary for data viz / metrics */
+  --teal: 14 147 132;
+  --teal-200: 184 227 221;
 
   /* Cool secondary — refined slate */
   --cool: 71 85 105;
@@ -68,8 +74,8 @@
   --ink-500: 134 152 175;
   --ink-300: 90 105 128;
   --ink-100: 51 65 85;
-  --accent: 92 123 214;
-  --accent-200: 30 41 95;
+  --accent: 129 140 248;
+  --accent-200: 49 46 128;
   --highlight: 224 171 66;
   --highlight-200: 122 74 14;
   --shadow-card:
@@ -240,9 +246,12 @@ body, p, li, td, th, label, blockquote, q {
 
   .btn-accent {
     @apply btn bg-accent text-paper;
-    box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.16) inset, 0 1px 2px 0 rgb(21 40 126 / 0.30);
+    box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.16) inset, 0 1px 2px 0 rgb(49 46 128 / 0.40), 0 8px 22px -10px rgb(67 56 202 / 0.40);
   }
-  .btn-accent:hover { background: rgb(var(--accent-700)); }
+  .btn-accent:hover {
+    background: rgb(var(--accent-700));
+    box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.16) inset, 0 1px 2px 0 rgb(49 46 128 / 0.50), 0 14px 32px -10px rgb(67 56 202 / 0.55);
+  }
 
   .btn-secondary {
     @apply btn bg-paper text-ink;
@@ -260,9 +269,9 @@ body, p, li, td, th, label, blockquote, q {
 
   .btn-danger {
     @apply btn text-signal-red;
-    background: rgb(185 28 28 / 0.08);
+    background: rgb(220 38 38 / 0.08);
   }
-  .btn-danger:hover { background: rgb(185 28 28 / 0.14); }
+  .btn-danger:hover { background: rgb(220 38 38 / 0.14); }
 
   .btn-sm { padding: 6px 10px; font-size: 12.5px; }
   .btn-lg { padding: 11px 18px; font-size: 14.5px; }
@@ -288,19 +297,19 @@ body, p, li, td, th, label, blockquote, q {
   .pill-ink     { background: rgb(var(--ink)); color: rgb(var(--paper)); }
   .pill-accent  { background: rgb(var(--accent) / 0.10); color: rgb(var(--accent-700)); }
   .pill-cool    { background: rgb(var(--cool) / 0.10); color: rgb(var(--cool)); }
-  .pill-green   { background: rgb(4 120 87 / 0.12); color: rgb(4 120 87); }
-  .pill-amber   { background: rgb(180 83 9 / 0.14); color: rgb(180 83 9); }
-  .pill-red     { background: rgb(185 28 28 / 0.12); color: rgb(185 28 28); }
+  .pill-green   { background: rgb(5 150 105 / 0.14); color: rgb(5 150 105); }
+  .pill-amber   { background: rgb(217 119 6 / 0.16); color: rgb(217 119 6); }
+  .pill-red     { background: rgb(220 38 38 / 0.14); color: rgb(220 38 38); }
   .pill-outline { background: transparent; border-color: rgb(var(--ink) / 0.14); color: rgb(var(--ink-700)); }
 
   /* Status dot — used in dense lists where pills would be heavy */
   .dot { display: inline-block; width: 8px; height: 8px; border-radius: 9999px; flex: none; }
-  .dot-green { background: rgb(4 120 87); }
-  .dot-amber { background: rgb(180 83 9); }
-  .dot-red   { background: rgb(185 28 28); }
+  .dot-green { background: rgb(5 150 105); }
+  .dot-amber { background: rgb(217 119 6); }
+  .dot-red   { background: rgb(220 38 38); }
   .dot-cool  { background: rgb(var(--cool)); }
   .dot-ink   { background: rgb(var(--ink)); }
-  .dot-live  { background: rgb(4 120 87); box-shadow: 0 0 0 0 rgb(4 120 87 / 0.4); animation: pulse-dot 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+  .dot-live  { background: rgb(5 150 105); box-shadow: 0 0 0 0 rgb(5 150 105 / 0.4); animation: pulse-dot 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
 
   /* ─── Forms ───────────────────────────────────────────────────────────── */
   textarea, input, select { font-family: inherit; }
@@ -400,7 +409,40 @@ body, p, li, td, th, label, blockquote, q {
   .tag-amber  { @apply pill pill-amber; }
   .tag-red    { @apply pill pill-red; }
 
-  /* Keyboard-shortcut chip */
+
+  /* Subtle gradient on dark surfaces — adds depth, never glare */
+  .surface-ink-grad {
+    background: radial-gradient(120% 120% at 0% 0%, rgb(30 41 70) 0%, rgb(11 18 32) 60%, rgb(11 18 32) 100%);
+    color: rgb(var(--paper));
+    border: 1px solid rgb(255 255 255 / 0.08);
+    border-radius: 14px;
+  }
+
+  /* Indigo-tinted soft surface — used for callouts and value props */
+  .surface-accent-soft {
+    background: linear-gradient(135deg, rgb(240 241 254) 0%, rgb(224 231 255) 100%);
+    border: 1px solid rgb(67 56 202 / 0.12);
+    border-radius: 14px;
+  }
+
+  /* Gradient progress fill — primary metric bars */
+  .bar-grad {
+    background: linear-gradient(90deg, rgb(49 46 128) 0%, rgb(79 70 229) 100%);
+  }
+
+  /* Soft accent halo — used on primary CTA */
+  .glow-accent {
+    box-shadow: 0 8px 22px -10px rgb(67 56 202 / 0.40);
+  }
+
+  /* Number metric pill — small KPI surface */
+  .kpi {
+    background: rgb(var(--paper-50));
+    border: 1px solid rgb(var(--ink) / 0.08);
+    border-radius: 12px;
+  }
+
+    /* Keyboard-shortcut chip */
   .kbd {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 1px 5px;

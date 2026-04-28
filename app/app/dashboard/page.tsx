@@ -136,7 +136,7 @@ export default async function ControlCenterPage() {
       <header className="flex items-end justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
           <p className="font-display tracking-tighter text-[20px] text-ink leading-none">Control Center</p>
-          <span className="pill pill-outline">v1.0</span>
+          <span className="pill pill-outline">v1.1</span>
         </div>
         <div className="flex items-center gap-2">
           <Link href="/inbox"     className="btn-ghost text-[12.5px]">Inbox</Link>

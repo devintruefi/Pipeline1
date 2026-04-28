@@ -41,7 +41,7 @@ export default function LandingPage() {
               college, a senior at a company that just laid you off, or a CRO between roles.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <Link href="/onboarding" className="btn-accent btn-lg">
+              <Link href="/onboarding" className="btn-accent btn-lg glow-accent">
                 Start your search <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/dashboard" className="btn-secondary btn-lg">
@@ -52,7 +52,7 @@ export default function LandingPage() {
           </div>
 
           <aside className="lg:col-span-4 space-y-3">
-            <div className="rounded-xl bg-ink text-paper p-6 grain">
+            <div className="surface-ink-grad p-6 grain">
               <p className="eyebrow !text-accent-200">Position paper</p>
               <p className="mt-3 font-display italic text-[18px] leading-snug text-paper text-balance">
                 "Job-search labor compounds. The same playbook works at every level — only the
@@ -71,7 +71,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div className="rounded-xl border border-ink/10 bg-paper-50 p-5">
+            <div className="rounded-xl border border-accent/12 bg-accent-50 p-5">
               <p className="eyebrow-quiet">Live cohort signal</p>
               <div className="mt-3 flex items-end justify-between gap-4">
                 <div>
@@ -250,7 +250,7 @@ export default function LandingPage() {
       </section>
 
       {/* ─── Waitlist ────────────────────────────────────────────────── */}
-      <section className="bg-ink text-paper grain">
+      <section className="text-paper grain [background:radial-gradient(60%_120%_at_50%_0%,rgb(30_41_70)_0%,rgb(11_18_32)_55%,rgb(7_11_22)_100%)]">
         <div className="mx-auto max-w-page px-6 py-20">
           <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7">

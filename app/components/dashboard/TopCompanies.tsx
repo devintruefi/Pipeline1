@@ -199,7 +199,7 @@ export function TopCompanies({ targets, drafts, messages }: Props) {
                   </div>
                   <div className="relative h-1.5 bg-ink/8 rounded-full overflow-hidden">
                     <div
-                      className="absolute inset-y-0 left-0 bg-accent rounded-full transition-all duration-slow"
+                      className="absolute inset-y-0 left-0 bar-grad rounded-full transition-all duration-slow"
                       style={{ width: `${stagePct}%` }}
                     />
                   </div>
