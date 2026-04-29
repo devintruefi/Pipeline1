@@ -129,7 +129,7 @@ export function TargetsTable({ targets: rows }: { targets: Target[] }) {
               {filtered.length === 0 && (
                 <tr>
                   <td colSpan={6} className="text-center !py-12 text-ink-500 text-[13px]">
-                    {q ? `No matches for "${q}".` : "Nothing in this filter."}
+                    {q ? `No matches for "${q}".` : "No targets in this filter yet. Scout populates the pipeline as fresh signals arrive."}
                   </td>
                 </tr>
               )}

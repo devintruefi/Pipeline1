@@ -1,7 +1,10 @@
 import { IngestForm } from "@/components/onboarding/IngestForm";
+import { OnboardingProgress } from "@/components/onboarding/OnboardingProgress";
 
 export default function IngestPage() {
   return (
+    <>
+    <OnboardingProgress phase="ingest" />
     <div className="mx-auto max-w-[860px] px-6 py-12">
       <p className="eyebrow">Phase 1 · Ingest</p>
       <h1 className="h-section mt-2">Drop in your background.</h1>
@@ -12,5 +15,6 @@ export default function IngestPage() {
         <IngestForm />
       </div>
     </div>
+    </>
   );
 }

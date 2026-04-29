@@ -22,7 +22,7 @@ export function UpcomingMeetings({
       <header className="flex items-baseline justify-between">
         <div>
           <p className="eyebrow">On the calendar</p>
-          <h3 className="h-meta mt-1">{rows.length === 0 ? "Nothing booked" : `${rows.length} upcoming`}</h3>
+          <h3 className="h-meta mt-1">{rows.length === 0 ? "Calendar is open" : `${rows.length} upcoming`}</h3>
         </div>
         <button className="text-[12.5px] text-ink-700 hover:text-ink underline-offset-4 hover:underline">
           Connect calendar →

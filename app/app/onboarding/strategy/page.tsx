@@ -1,4 +1,5 @@
 import { StrategyConversation } from "@/components/onboarding/StrategyConversation";
+import { OnboardingProgress } from "@/components/onboarding/OnboardingProgress";
 import { getActiveOrSeedUser } from "@/lib/session";
 import { redirect } from "next/navigation";
 
@@ -6,6 +7,8 @@ export default async function StrategyPage() {
   const user = await getActiveOrSeedUser();
   if (!user) redirect("/onboarding/ingest");
   return (
+    <>
+    <OnboardingProgress phase="strategy" />
     <div className="mx-auto max-w-[1240px] px-6 py-12">
       <p className="eyebrow">Phase 2 · Strategy conversation</p>
       <h1 className="h-section mt-2">Let's surface your thesis.</h1>
@@ -21,6 +24,7 @@ export default async function StrategyPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

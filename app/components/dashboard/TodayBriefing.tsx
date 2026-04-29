@@ -82,7 +82,7 @@ export function TodayBriefing({
             <p className="eyebrow !text-accent-200">{greeting} · {today()}</p>
             <h1 className="mt-2 font-display font-medium tracking-tightest text-paper text-[34px] md:text-[44px] leading-[1.0] text-balance">
               {totalActions === 0
-                ? `Nothing on your plate, ${firstName}.`
+                ? `Quiet morning, ${firstName}.`
                 : `${firstName}, ${humanizeTotal(totalActions)}.`}
             </h1>
             <p className="mt-3 text-paper-200 text-[14.5px] leading-relaxed max-w-prose">

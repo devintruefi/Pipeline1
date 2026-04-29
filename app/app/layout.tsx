@@ -4,6 +4,7 @@ import { Manrope, JetBrains_Mono, Fraunces } from "next/font/google";
 import { Toolbar } from "@/components/chrome/Toolbar";
 import { Footer } from "@/components/chrome/Footer";
 import { CommandPalette } from "@/components/chrome/CommandPalette";
+import { Toaster } from "@/components/chrome/Toaster";
 
 /**
  * Editorial pairing.
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <Footer />
         <CommandPalette />
+        <Toaster />
       </body>
     </html>
   );

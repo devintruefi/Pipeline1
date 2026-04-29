@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { messages, targets } from "@/lib/db/schema";
 import { Calendar, Archive, CornerDownLeft, ThumbsUp, ThumbsDown, Bell } from "lucide-react";
 import { relativeTime } from "@/lib/utils";
+import { toast } from "@/lib/toast";
 
 type Message = typeof messages.$inferSelect;
 type Target = typeof targets.$inferSelect;
@@ -61,22 +62,27 @@ export function ReplyTriage({ messages, targets }: { messages: Message[]; target
         setSelectedId(filtered[next].id);
       };
 
-      const fire = (label: string) => {
+      const fire = (label: string, detail?: string) => {
         if (!selected) return;
         if (flashTimer.current) clearTimeout(flashTimer.current);
         setFlash(label);
         flashTimer.current = setTimeout(() => setFlash(null), 1400);
+        toast({
+          type: "success",
+          message: label,
+          detail: detail ?? "Queued for approval. You can find it in /approvals before it sends."
+        });
       };
 
       const k = e.key.toLowerCase();
       if (k === "arrowdown" || k === "j") { e.preventDefault(); move(1); return; }
       if (k === "arrowup"   || k === "k") { e.preventDefault(); move(-1); return; }
-      if (k === "b") { e.preventDefault(); fire("Booked a call"); return; }
-      if (k === "r") { e.preventDefault(); fire("Reply queued for approval"); return; }
-      if (k === "n") { e.preventDefault(); fire("Nudge in 5 days scheduled"); return; }
-      if (k === "p") { e.preventDefault(); fire("Marked positive"); return; }
-      if (k === "x") { e.preventDefault(); fire("Marked negative"); return; }
-      if (k === "a") { e.preventDefault(); fire("Archived"); move(1); return; }
+      if (k === "b") { e.preventDefault(); fire("Booking a call", "Scheduler will propose three slots inside your send window."); return; }
+      if (k === "r") { e.preventDefault(); fire("Reply drafted", "Drafter is writing in your voice. Review in /approvals."); return; }
+      if (k === "n") { e.preventDefault(); fire("Nudge scheduled", "Follow-up will draft a 5-day check-in for your approval."); return; }
+      if (k === "p") { e.preventDefault(); fire("Marked positive", "Pipeline Manager will weight this campaign for the Sunday memo."); return; }
+      if (k === "x") { e.preventDefault(); fire("Marked negative", "Snoozing this target for 90 days. Pipeline will not retry."); return; }
+      if (k === "a") { e.preventDefault(); fire("Archived", "Removed from inbox. The message stays in the timeline on the target page."); move(1); return; }
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -85,10 +91,13 @@ export function ReplyTriage({ messages, targets }: { messages: Message[]; target
   if (messages.length === 0) {
     return (
       <div className="card p-10 text-center">
-        <p className="font-display italic text-[20px] text-ink-700">No replies yet.</p>
+        <p className="font-display italic text-[20px] text-ink-700">Inbox is quiet.</p>
         <p className="mt-3 text-[13.5px] text-ink-500 max-w-prose mx-auto">
-          As your sends land, the Follow-up agent classifies replies into positive · scheduling · info request ·
-          neutral · negative · auto-reply, and routes the right next move into the approval queue.
+          Follow-up classifies every reply within two minutes of arrival. Positive, scheduling, info request,
+          neutral, negative, auto-reply. The right next move is routed into your approval queue automatically.
+        </p>
+        <p className="mt-3 text-[12px] text-ink-400 max-w-prose mx-auto">
+          Once your first sends are out, replies will appear here.
         </p>
       </div>
     );

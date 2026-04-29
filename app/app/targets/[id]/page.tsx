@@ -2,7 +2,8 @@ import { db, schema } from "@/lib/db/client";
 import { eq, and, desc } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Mail, Linkedin, Users, AlertTriangle, ExternalLink } from "lucide-react";
+import { Mail, Linkedin, Users, AlertTriangle, ExternalLink, Sparkles, Compass } from "lucide-react";
+import { relativeTime } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,9 @@ export default async function TargetDetail({ params }: { params: { id: string } 
     .orderBy(desc(schema.messages.createdAt));
   const dossier = t.dossier;
   const conf = Math.round(t.emailConfidence * 100);
+  const originatingSignal = t.signalId
+    ? await db.query.signals.findFirst({ where: eq(schema.signals.id, t.signalId) })
+    : null;
 
   return (
     <div className="mx-auto max-w-page px-6 py-10">
@@ -60,8 +64,32 @@ export default async function TargetDetail({ params }: { params: { id: string } 
       </header>
 
       <div className="mt-10 grid lg:grid-cols-12 gap-8">
-        {/* Main: dossier + drafts + thread */}
-        <div className="lg:col-span-8 space-y-10">
+        {/* Main: dossier + drafts + thread. Mobile: lower in DOM order so the
+            verifier confidence + risk flags surface above drafts. */}
+        <div className="lg:col-span-8 space-y-10 order-2 lg:order-1">
+          {originatingSignal && (
+            <section className="card overflow-hidden">
+              <div className="px-5 py-3 border-b border-ink/8 bg-paper-50 flex items-center gap-2">
+                <Compass className="h-3.5 w-3.5 text-accent" />
+                <p className="eyebrow !mt-0">Why this target</p>
+              </div>
+              <div className="px-5 py-4 space-y-2">
+                <p className="text-[14px] text-ink leading-snug">
+                  {originatingSignal.headline}
+                </p>
+                <p className="text-[12.5px] text-ink-500 leading-relaxed">
+                  {signalKindLabel(originatingSignal.kind)} · <span className="text-ink-700">{originatingSignal.source}</span>
+                  {originatingSignal.detectedAt && (
+                    <> · {relativeTime(new Date(originatingSignal.detectedAt).getTime())}</>
+                  )}
+                  {originatingSignal.url && (
+                    <> · <a href={originatingSignal.url} target="_blank" rel="noreferrer" className="text-accent hover:text-accent-700 inline-flex items-center gap-0.5">source <ExternalLink className="h-3 w-3" /></a></>
+                  )}
+                </p>
+              </div>
+            </section>
+          )}
+
           <Block title="Dossier">
             {dossier ? (
               <div className="space-y-7 text-[14.5px] text-ink-700 leading-relaxed">
@@ -105,6 +133,11 @@ export default async function TargetDetail({ params }: { params: { id: string } 
                         <li key={i}>
                           <p className="font-medium text-ink">{p.title}</p>
                           <p className="text-ink-500 text-[13px]">{p.takeaway}</p>
+                          {p.url && (
+                            <a href={p.url} target="_blank" rel="noreferrer" className="text-[11.5px] text-ink-400 hover:text-accent inline-flex items-center gap-0.5 mt-0.5">
+                              {hostOf(p.url)} <ExternalLink className="h-2.5 w-2.5" />
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -123,17 +156,22 @@ export default async function TargetDetail({ params }: { params: { id: string } 
                     </ul>
                   </Subblock>
                 )}
+                {dossier.generatedAt && (
+                  <p className="text-[11.5px] text-ink-400 pt-3 border-t border-ink/6">
+                    Researcher · refreshed {relativeTime(dossier.generatedAt)}
+                  </p>
+                )}
               </div>
             ) : (
               <p className="font-display italic text-[16px] text-ink-500">
-                No dossier yet. Researcher will build one on the next tick.
+                Researcher will build a one-page dossier on this target on the next tick. Recent posts, mutuals, hooks, red flags, all sourced.
               </p>
             )}
           </Block>
 
           <Block title="Drafts">
             {drafts.length === 0 ? (
-              <p className="font-display italic text-[16px] text-ink-500">No drafts yet.</p>
+              <p className="font-display italic text-[16px] text-ink-500">No drafts yet. Drafter writes against this target as soon as the dossier lands and a play is selected.</p>
             ) : (
               <div className="space-y-3">
                 {drafts.map((d) => (
@@ -200,8 +238,9 @@ export default async function TargetDetail({ params }: { params: { id: string } 
           </Block>
         </div>
 
-        {/* Aside: status panel */}
-        <aside className="lg:col-span-4 space-y-4">
+        {/* Aside: verifier + risk + timeline. Mobile: rises to the top so
+            the user sees confidence + flags before scrolling through drafts. */}
+        <aside className="lg:col-span-4 space-y-4 order-1 lg:order-2">
           <div className="card p-6">
             <p className="eyebrow">Verifier</p>
             <div className="mt-3 flex items-end gap-3">
@@ -278,3 +317,20 @@ function KV({ label, value, mono }: { label: string; value: string; mono?: boole
     </div>
   );
 }
+
+function signalKindLabel(kind: string) {
+  return ({
+    funding: "Funding round",
+    leadership_change: "Leadership change",
+    role_posted: "Role posted",
+    exec_news: "Executive news",
+    conference: "Conference / speaker",
+    layoff: "Layoff / restructuring",
+    product_launch: "Product launch"
+  } as Record<string, string>)[kind] ?? kind.replace(/_/g, " ");
+}
+
+function hostOf(u: string) {
+  try { return new URL(u).host.replace(/^www\./, ""); } catch { return "source"; }
+}
+

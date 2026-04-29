@@ -1,4 +1,5 @@
 import { ConstraintsForm } from "@/components/onboarding/ConstraintsForm";
+import { OnboardingProgress } from "@/components/onboarding/OnboardingProgress";
 import { getActiveOrSeedUser } from "@/lib/session";
 import { redirect } from "next/navigation";
 
@@ -6,6 +7,8 @@ export default async function ConstraintsPage() {
   const user = await getActiveOrSeedUser();
   if (!user) redirect("/onboarding/ingest");
   return (
+    <>
+    <OnboardingProgress phase="constraints" />
     <div className="mx-auto max-w-[860px] px-6 py-12">
       <p className="eyebrow">Phase 3 · Constraints</p>
       <h1 className="h-section mt-2">Set the rules of engagement.</h1>
@@ -16,5 +19,6 @@ export default async function ConstraintsPage() {
         <ConstraintsForm userId={user.id} />
       </div>
     </div>
+    </>
   );
 }

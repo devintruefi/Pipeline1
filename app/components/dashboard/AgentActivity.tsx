@@ -39,7 +39,7 @@ export function AgentActivity({ runs }: { runs: Run[] }) {
 
       {runs.length === 0 ? (
         <p className="mt-6 text-[13px] text-ink-500">
-          No runs yet. Press <span className="kbd">T</span> to fire the next tick.
+          Agents are idle right now. Press <span className="kbd">T</span> to fire the next tick — Scout, Researcher, Drafter, Verifier, Sender all run in sequence.
         </p>
       ) : (
         <ol className="mt-5 relative">

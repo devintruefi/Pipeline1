@@ -36,7 +36,7 @@ export function HotSignals({ signals: rows }: { signals: Signal[] }) {
       <ul id="signals" className="mt-5 divide-y divide-ink/8">
         {rows.length === 0 && (
           <li className="py-10 text-[13px] text-ink-500 text-center">
-            No fresh signals yet. The Scout runs on the next tick.
+            Scout is sweeping funding rounds, leadership changes, and posted roles. Fresh signals land on the next tick.
           </li>
         )}
         {rows.slice(0, 6).map((s) => {

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "@/lib/toast";
 
 export function ConstraintsForm({ userId }: { userId: string }) {
   const router = useRouter();
@@ -12,18 +13,37 @@ export function ConstraintsForm({ userId }: { userId: string }) {
         e.preventDefault();
         setBusy(true);
         const fd = new FormData(e.currentTarget);
-        await fetch("/api/onboarding/constraints", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId, ...Object.fromEntries(fd) })
-        });
-        // Kick the orchestrator once so the dashboard has fresh content.
-        await fetch("/api/agents/tick", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId })
-        });
-        router.push("/dashboard");
+        const id = "onboarding-constraints";
+        toast({ id, type: "pending", message: "Wiring up your agents…", detail: "Saving constraints and kicking the first tick." });
+        try {
+          const c = await fetch("/api/onboarding/constraints", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId, ...Object.fromEntries(fd) })
+          });
+          if (!c.ok) throw new Error(`Constraints save returned ${c.status}`);
+          const t = await fetch("/api/agents/tick", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId })
+          });
+          if (!t.ok) throw new Error(`First tick returned ${t.status}`);
+          toast({
+            id,
+            type: "success",
+            message: "Onboarding complete",
+            detail: "Your dashboard is being warmed up. The first batch of signals lands shortly."
+          });
+          router.push("/dashboard");
+        } catch (err) {
+          toast({
+            id,
+            type: "error",
+            message: "Could not finish onboarding",
+            detail: err instanceof Error ? err.message : "Try again in a moment."
+          });
+          setBusy(false);
+        }
       }}
     >
       <Section title="Target shape">

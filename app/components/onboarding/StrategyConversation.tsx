@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "@/lib/toast";
 
 interface Turn {
   role: "agent" | "user";
@@ -31,41 +32,56 @@ export function StrategyConversation({ userId }: { userId: string }) {
 
   const submit = async () => {
     if (!input.trim()) return;
+    const userInput = input;
     setBusy(true);
-    const newTurns: Turn[] = [...turns, { role: "user", content: input }];
+    const newTurns: Turn[] = [...turns, { role: "user", content: userInput }];
     setTurns(newTurns);
     setInput("");
 
-    // Persist the user turn.
-    await fetch("/api/onboarding/strategy/turn", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, role: "user", content: input })
-    });
+    try {
+      const tr = await fetch("/api/onboarding/strategy/turn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, role: "user", content: userInput })
+      });
+      if (!tr.ok) throw new Error(`Turn save returned ${tr.status}`);
 
-    const next = step + 1;
-    if (next < OPENING_QUESTIONS.length) {
-      const nextQ = OPENING_QUESTIONS[next];
-      setTurns((t) => [...t, { role: "agent", content: nextQ }]);
-      await fetch("/api/onboarding/strategy/turn", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, role: "agent", content: nextQ })
-      });
-      setStep(next);
-    } else {
-      // Synthesise thesis on final turn.
-      const r = await fetch("/api/onboarding/strategy/synthesize", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId })
-      });
-      if (r.ok) {
-        setTurns((t) => [...t, { role: "agent", content: "Got it. I've drafted your commercial thesis on the right. Take 30 seconds to scan it, then onward." }]);
+      const next = step + 1;
+      if (next < OPENING_QUESTIONS.length) {
+        const nextQ = OPENING_QUESTIONS[next];
+        setTurns((t) => [...t, { role: "agent", content: nextQ }]);
+        const ar = await fetch("/api/onboarding/strategy/turn", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId, role: "agent", content: nextQ })
+        });
+        if (!ar.ok) throw new Error(`Agent turn save returned ${ar.status}`);
+        setStep(next);
+      } else {
+        const r = await fetch("/api/onboarding/strategy/synthesize", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId })
+        });
+        if (!r.ok) throw new Error(`Synthesize returned ${r.status}`);
+        setTurns((t) => [...t, { role: "agent", content: "Got it. I've drafted your commercial thesis on the right. Take thirty seconds to scan it, then onward." }]);
         setDone(true);
+        toast({
+          type: "success",
+          message: "Thesis drafted",
+          detail: "Phase 2 of 3 done. Constraints next."
+        });
       }
+    } catch (err) {
+      toast({
+        type: "error",
+        message: "Strategist hit a snag",
+        detail: err instanceof Error ? err.message : "Try sending again.",
+        action: { label: "Retry", onClick: () => { setInput(userInput); } }
+      });
+    } finally {
+      setBusy(false);
     }
-    setBusy(false);
   };
 
   return (

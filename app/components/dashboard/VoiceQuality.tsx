@@ -19,7 +19,7 @@ export function VoiceQuality({ drafts: rows }: { drafts: Draft[] }) {
   const tone = pct >= 88 ? "green" : pct >= 78 ? "amber" : "red";
   const message =
     valid.length === 0
-      ? "No drafts yet. voice score will appear after the next tick."
+      ? "Voice score appears after the first batch of drafts. The Drafter scores every line against your samples — sentence length, contractions, opener and closer pattern."
       : pct >= 88
       ? "Drafts are reading like you. Hold the line."
       : pct >= 78

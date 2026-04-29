@@ -14,7 +14,20 @@ export const dynamic = "force-dynamic";
  */
 export default async function InboxPage() {
   const user = await getActiveOrSeedUser();
-  if (!user) return null;
+  if (!user) {
+    return (
+      <div className="mx-auto max-w-[640px] px-6 py-20 text-center">
+        <p className="eyebrow">Inbox</p>
+        <h1 className="mt-2 font-display text-[36px] tracking-tightest leading-tight text-ink">
+          Sign in to see replies.
+        </h1>
+        <p className="mt-3 text-[14px] text-ink-700 max-w-prose mx-auto">
+          The inbox is per user. Walk through onboarding to start ingesting Gmail and the Follow-up
+          agent will begin classifying replies as they arrive.
+        </p>
+      </div>
+    );
+  }
 
   const [messages, targets] = await Promise.all([
     db.select().from(schema.messages)

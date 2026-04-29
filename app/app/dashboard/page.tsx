@@ -12,6 +12,7 @@ import { VoiceQuality } from "@/components/dashboard/VoiceQuality";
 import { ApprovalQueuePreview } from "@/components/dashboard/ApprovalQueuePreview";
 import { TopCompanies } from "@/components/dashboard/TopCompanies";
 import { SundayMemo } from "@/components/dashboard/SundayMemo";
+import { FirstRunCard } from "@/components/dashboard/FirstRunCard";
 import { TickButton } from "@/components/dashboard/TickButton";
 import { relativeTime } from "@/lib/utils";
 import Link from "next/link";
@@ -146,6 +147,10 @@ export default async function ControlCenterPage() {
           <TickButton userId={user.id} />
         </div>
       </header>
+
+      {targets.length === 0 && signals.length === 0 && allSentDrafts.length === 0 && drafts.length === 0 && (
+        <FirstRunCard name={user.name?.split(" ")[0] ?? "there"} />
+      )}
 
       <div className="space-y-6 stagger">
         <TodayBriefing

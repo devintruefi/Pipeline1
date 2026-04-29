@@ -31,7 +31,7 @@ export function ApprovalQueuePreview({
 
       {rows.length === 0 ? (
         <p className="mt-5 text-[13px] text-ink-500 leading-relaxed">
-          Queue empty. Run a tick to generate the next batch of drafts grounded in the latest signals.
+          Queue is clear. The next tick will refill it with drafts grounded in fresh signals — usually within the hour on Pro and Max.
         </p>
       ) : (
         <ul className="mt-4 divide-y divide-ink/8">

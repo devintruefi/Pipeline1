@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "@/lib/toast";
 
 const SAMPLE_RESUME = `Marcus Chen
 VP of Sales · Series B/C SaaS commercial leadership
@@ -53,10 +54,21 @@ export function IngestForm() {
         });
         if (!r.ok) {
           const j = await r.json().catch(() => ({}));
-          setErr(j.error ?? "Failed to ingest.");
+          const msg = j.error ?? "Failed to ingest.";
+          setErr(msg);
+          toast({
+            type: "error",
+            message: "Ingest failed",
+            detail: msg + " Check the resume + voice samples and try again."
+          });
           setBusy(false);
           return;
         }
+        toast({
+          type: "success",
+          message: "Receipts ingested",
+          detail: "Strategist is reading them now. Phase 2 of 3."
+        });
         router.push("/onboarding/strategy");
       }}
     >
