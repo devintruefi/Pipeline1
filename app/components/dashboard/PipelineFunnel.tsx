@@ -3,19 +3,35 @@ import type { targets } from "@/lib/db/schema";
 
 type Target = typeof targets.$inferSelect;
 
-const STAGES: Array<{ key: Target["status"]; label: string; tone: string; ratio: number }> = [
-  { key: "watch",          label: "Watch",      tone: "bg-ink-100",   ratio: 1.0 },
-  { key: "warm",           label: "Warm",       tone: "bg-ink-200",   ratio: 0.85 },
-  { key: "hot",            label: "Hot",        tone: "bg-accent-300", ratio: 0.70 },
-  { key: "engaged",        label: "Engaged",    tone: "bg-accent-500", ratio: 0.55 },
-  { key: "meeting_booked", label: "Meeting",    tone: "bg-cool-500",  ratio: 0.40 },
-  { key: "won",            label: "Won",        tone: "bg-ink",       ratio: 0.25 }
+type Stage = {
+  key: Target["status"];
+  label: string;
+  /** Tailwind bar fill class. */
+  tone: string;
+  /** Text color used inside the bar — picked per stage so the count stays
+   *  readable on both light tracks and dark fills. */
+  text: string;
+  ratio: number;
+};
+
+const STAGES: Stage[] = [
+  { key: "watch",          label: "Watch",   tone: "bg-ink-100",    text: "text-ink-800", ratio: 1.0 },
+  { key: "warm",           label: "Warm",    tone: "bg-ink-200",    text: "text-ink-800", ratio: 0.85 },
+  { key: "hot",            label: "Hot",     tone: "bg-accent-300", text: "text-ink-900", ratio: 0.70 },
+  { key: "engaged",        label: "Engaged", tone: "bg-accent-500", text: "text-paper",   ratio: 0.55 },
+  { key: "meeting_booked", label: "Meeting", tone: "bg-cool-500",   text: "text-paper",   ratio: 0.40 },
+  { key: "won",            label: "Won",     tone: "bg-ink",        text: "text-paper",   ratio: 0.25 }
 ];
 
 /**
- * The pipeline funnel. visual + numeric. Each stage shows count, a sized
+ * The pipeline funnel. Visual + numeric. Each stage shows count, a sized
  * bar (clamped so 0 doesn't disappear), and conversion rate vs the prior
  * stage so the user sees where the leak is.
+ *
+ * Count number sits inside the bar at the leading edge, with its text color
+ * picked per stage (dark on light fills, light on dark fills) so it's
+ * always readable. Previous version used mix-blend-luminosity which made
+ * the number disappear on the darker stages.
  */
 export function PipelineFunnel({ targets: rows }: { targets: Target[] }) {
   const counts = STAGES.map((s) => ({
@@ -41,7 +57,7 @@ export function PipelineFunnel({ targets: rows }: { targets: Target[] }) {
           const prev = i > 0 ? counts[i - 1].count : null;
           const conversion =
             prev != null && prev > 0 ? Math.round((stage.count / prev) * 100) : null;
-          const widthPct = Math.max(6, Math.round((stage.count / max) * 100));
+          const widthPct = Math.max(8, Math.round((stage.count / max) * 100));
           return (
             <li key={stage.key} className="grid grid-cols-[88px_1fr_64px] items-center gap-3">
               <span className="text-[12px] uppercase tracking-wider text-ink-500 font-medium truncate">
@@ -52,12 +68,14 @@ export function PipelineFunnel({ targets: rows }: { targets: Target[] }) {
                   className={`h-full ${stage.tone} rounded-md transition-all duration-slow ease-out`}
                   style={{ width: `${widthPct}%` }}
                 />
-                <span className="absolute inset-0 flex items-center pl-3 text-[13px] font-medium text-ink mix-blend-luminosity">
+                <span
+                  className={`absolute inset-y-0 left-0 flex items-center pl-3 text-[13px] font-medium tabular ${stage.text}`}
+                >
                   {stage.count}
                 </span>
               </div>
               <span className="text-[12px] text-right tabular text-ink-500">
-                {conversion != null ? `${conversion}%` : ". "}
+                {conversion != null ? `${conversion}%` : ""}
               </span>
             </li>
           );
