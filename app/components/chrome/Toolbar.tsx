@@ -20,6 +20,7 @@ const APP_PREFIXES = [
   "/runs",
   "/inbox",
   "/onboarding",
+  "/profile",
   "/control"
 ];
 
@@ -92,7 +93,7 @@ export function Toolbar() {
                 <span>Search targets, signals…</span>
                 <span className="kbd ml-3">⌘K</span>
               </button>
-              <Link href="/onboarding" className="btn-ghost text-[13px]">Settings</Link>
+              <Link href="/profile" className="btn-ghost text-[13px]">Profile</Link>
             </>
           ) : (
             <>

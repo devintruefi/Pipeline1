@@ -38,3 +38,16 @@ export async function getActiveOrSeedUser() {
   const seed = await db.query.users.findFirst({ where: eq(schema.users.email, "demo@pipeline.app") });
   return seed ?? null;
 }
+
+/**
+ * Like getActiveUserId, but falls back to the demo seed user when no cookie
+ * is present. Used by API routes that mutate user-scoped data so the demo
+ * surface stays interactive without forcing onboarding first.
+ */
+export async function getActiveOrSeedUserId(): Promise<string | null> {
+  const direct = await getActiveUserId();
+  if (direct) return direct;
+  const seed = await db.query.users.findFirst({ where: eq(schema.users.email, "demo@pipeline.app") });
+  return seed?.id ?? null;
+}
+
