@@ -9,18 +9,18 @@ export function MetricRail({
   sentThisWeek,
   replyRate,
   meetingsBooked,
-  pipelineValue,
+  activeConversations,
   series
 }: {
   sentThisWeek: number;
   replyRate: number;
   meetingsBooked: number;
-  pipelineValue: number;
+  activeConversations: number;
   series: {
     sent: number[];
     replyRate: number[];
     meetings: number[];
-    pipelineValue: number[];
+    activeConversations: number[];
   };
 }) {
   return (
@@ -53,12 +53,12 @@ export function MetricRail({
           caption="next 14 days"
         />
         <StatTile
-          eyebrow="Pipeline value"
-          value={`$${(pipelineValue / 1000).toFixed(0)}k`}
-          delta={{ value: 18, suffix: "%" }}
-          series={series.pipelineValue}
+          eyebrow="Active conversations"
+          value={activeConversations}
+          delta={{ value: activeConversations > 0 ? 3 : 0 }}
+          series={series.activeConversations}
           tone="ink"
-          caption="weighted by stage"
+          caption="engaged or in scheduling"
         />
       </div>
     </section>

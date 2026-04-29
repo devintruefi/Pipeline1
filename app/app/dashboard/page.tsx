@@ -107,11 +107,13 @@ export default async function ControlCenterPage() {
     (m) => m.status === "confirmed" || m.status === "proposed"
   ).length;
 
-  // Crude pipeline-value heuristic: stage weights × roughly $20k per opportunity tier.
-  const STAGE_WEIGHT: Record<string, number> = {
-    watch: 0.05, warm: 0.15, hot: 0.30, engaged: 0.50, meeting_booked: 0.70, won: 1.0
-  };
-  const pipelineValue = targets.reduce((s, t) => s + (STAGE_WEIGHT[t.status] ?? 0) * 25_000, 0);
+  // Active conversations: targets currently in engaged or meeting_booked. The
+  // single number that actually means something to a job seeker. Replaces the
+  // sales-CRM-style 'pipeline value' tile (which was a synthetic dollar
+  // figure with no real meaning in a job search context).
+  const activeConversations = targets.filter(
+    (t) => t.status === "engaged" || t.status === "meeting_booked"
+  ).length;
 
   // Counters used by the briefing
   const repliesToTriage = messages.filter(
@@ -129,7 +131,7 @@ export default async function ControlCenterPage() {
     sent: trendSeries(sentLast7, 14, 0.10),
     replyRate: trendSeries(Math.max(replyRate, 8), 14, 0.18),
     meetings: trendSeries(meetingsBooked, 14, 0.20),
-    pipelineValue: trendSeries(pipelineValue / 1000, 14, 0.12)
+    activeConversations: trendSeries(activeConversations, 14, 0.16)
   };
 
   return (
@@ -166,7 +168,7 @@ export default async function ControlCenterPage() {
           sentThisWeek={sentLast7}
           replyRate={replyRate}
           meetingsBooked={meetingsBooked}
-          pipelineValue={pipelineValue}
+          activeConversations={activeConversations}
           series={series}
         />
 
