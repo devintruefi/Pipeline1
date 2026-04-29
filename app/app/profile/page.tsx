@@ -44,7 +44,7 @@ export default async function ProfilePage() {
   const thesis = user.thesis ?? null;
 
   return (
-    <div className="mx-auto max-w-[860px] px-6 py-10">
+    <div className="mx-auto max-w-[860px] px-6 py-10 page-enter">
       <header className="mb-8">
         <Link
           href="/dashboard"
@@ -64,7 +64,7 @@ export default async function ProfilePage() {
         </p>
       </header>
 
-      <div className="space-y-5">
+      <div className="space-y-6">
         <IdentitySection
           name={user.name ?? ""}
           email={user.email}

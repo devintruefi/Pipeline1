@@ -47,10 +47,10 @@ export function StatTile({
 
   return (
     <div
-      className={`relative px-6 py-5 ${
+      className={`relative px-6 py-5 transition-colors duration-smooth ease-out ${
         emphasis
-          ? "text-paper [background:radial-gradient(120%_120%_at_0%_0%,rgb(30_41_70)_0%,rgb(11_18_32)_60%,rgb(11_18_32)_100%)]"
-          : ""
+          ? "text-paper [background:radial-gradient(140%_140%_at_0%_0%,rgb(36_32_80)_0%,rgb(15_20_40)_55%,rgb(8_12_24)_100%),radial-gradient(60%_60%_at_100%_100%,rgb(99_102_241_/_0.18)_0%,transparent_70%)]"
+          : "hover:bg-accent-50/30"
       }`}
     >
       <p className={`eyebrow ${emphasis ? "!text-accent-200" : ""}`}>{eyebrow}</p>

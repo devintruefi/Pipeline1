@@ -31,7 +31,7 @@ export default async function TargetsPage({
   const counts = Object.fromEntries(STATUSES.map((s) => [s.key, s.key === "all" ? targets.length : targets.filter((t) => t.status === s.key).length]));
 
   return (
-    <div className="mx-auto max-w-page px-6 py-10">
+    <div className="mx-auto max-w-page px-6 py-10 page-enter">
       <header className="flex items-end justify-between gap-6 mb-8">
         <div>
           <p className="eyebrow">Pipeline · targets</p>

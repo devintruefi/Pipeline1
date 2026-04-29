@@ -103,7 +103,7 @@ export default function LandingPage() {
 
       {/* ─── Three audiences ─────────────────────────────────────────── */}
       <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-page px-6 py-16">
+        <div className="mx-auto max-w-page px-6 py-12 md:py-section">
           <div className="grid lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-5">
               <p className="eyebrow">Three tiers. One architecture.</p>
@@ -172,7 +172,7 @@ export default function LandingPage() {
 
       {/* ─── How it works ────────────────────────────────────────────── */}
       <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-page px-6 py-16">
+        <div className="mx-auto max-w-page px-6 py-12 md:py-section">
           <div className="grid lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-5">
               <p className="eyebrow">How it works</p>
@@ -219,7 +219,7 @@ export default function LandingPage() {
 
       {/* ─── Three voices ────────────────────────────────────────────── */}
       <section className="border-b border-ink/10 bg-paper-50">
-        <div className="mx-auto max-w-page px-6 py-16">
+        <div className="mx-auto max-w-page px-6 py-12 md:py-section">
           <p className="eyebrow text-center">Real searches. Real outcomes.</p>
           <h2 className="h-section mt-3 text-center max-w-[24ch] mx-auto">
             Different ladders. Same engine.
@@ -264,8 +264,8 @@ export default function LandingPage() {
 
       {/* ─── Numbers strip ───────────────────────────────────────────── */}
       <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-page px-6 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6">
+        <div className="mx-auto max-w-page px-6 py-10 md:py-14">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
             {[
               { value: "60+", label: "Touchpoints per active campaign, without lifting a finger" },
               { value: "24%", label: "Cohort average reply rate" },
@@ -287,7 +287,7 @@ export default function LandingPage() {
 
       {/* ─── Waitlist ────────────────────────────────────────────────── */}
       <section className="text-paper grain [background:radial-gradient(60%_120%_at_50%_0%,rgb(30_41_70)_0%,rgb(11_18_32)_55%,rgb(7_11_22)_100%)]">
-        <div className="mx-auto max-w-page px-6 py-20">
+        <div className="mx-auto max-w-page px-6 py-16 md:py-section-lg">
           <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7">
               <p className="eyebrow !text-accent-200">Founding cohort</p>

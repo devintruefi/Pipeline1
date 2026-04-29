@@ -91,7 +91,7 @@ export default function HowItWorksPage() {
   return (
     <div className="bg-paper">
       <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-page px-6 py-16">
+        <div className="mx-auto max-w-page px-6 py-12 md:py-section">
           <p className="eyebrow">How it works</p>
           <h1 className="mt-3 font-display text-[44px] md:text-[64px] leading-[0.96] tracking-tightest text-ink">
             Nine agents do the work.<br />You make the calls.
@@ -105,7 +105,7 @@ export default function HowItWorksPage() {
       </section>
 
       <section>
-        <div className="mx-auto max-w-page px-6 py-16 grid lg:grid-cols-12 gap-10">
+        <div className="mx-auto max-w-page px-6 py-12 md:py-section grid lg:grid-cols-12 gap-10">
           <ol className="lg:col-span-8 space-y-8">
             {STEPS.map(({ icon: Icon, n, title, duration, body }) => (
               <li key={n} className="card p-7">
@@ -170,7 +170,7 @@ export default function HowItWorksPage() {
       </section>
 
       <section className="border-t border-ink/10 bg-ink text-paper">
-        <div className="mx-auto max-w-page px-6 py-16">
+        <div className="mx-auto max-w-page px-6 py-12 md:py-section">
           <h3 className="font-display text-[36px] md:text-[48px] tracking-tightest leading-tight text-paper">
             Ten minutes of decisions a day. The rest runs in the background.
           </h3>

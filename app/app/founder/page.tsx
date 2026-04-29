@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function FounderPage() {
   return (
-    <article className="mx-auto max-w-[760px] px-6 py-16 md:py-24">
+    <article className="mx-auto max-w-[760px] px-6 py-16 md:py-section">
       <p className="eyebrow eyebrow-dot">Founder story</p>
       <h1 className="mt-5 font-display text-[44px] md:text-[56px] tracking-tightest leading-[1.0] font-medium text-ink text-balance">
         I built Pipeline because I needed it.

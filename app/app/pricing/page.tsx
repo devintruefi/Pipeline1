@@ -12,7 +12,7 @@ export default function PricingPage() {
   return (
     <div className="bg-paper">
       <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-page px-6 py-16">
+        <div className="mx-auto max-w-page px-6 py-12 md:py-section">
           <p className="eyebrow eyebrow-dot">Pricing · founding-cohort rates</p>
           <h1 className="mt-4 font-display text-[44px] md:text-[64px] leading-[0.96] tracking-tightest text-ink">
             Three tiers. One architecture.
@@ -155,7 +155,7 @@ export default function PricingPage() {
       </section>
 
       <section>
-        <div className="mx-auto max-w-page px-6 py-16">
+        <div className="mx-auto max-w-page px-6 py-12 md:py-section">
           <h3 className="h-section">A few notes on how this works.</h3>
           <div className="mt-6 grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-[88ch] text-[15px] text-ink-700 leading-relaxed text-pretty">
             <p>

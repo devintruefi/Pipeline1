@@ -38,7 +38,7 @@ export default async function ApprovalsPage() {
   const redCount = drafts.filter((d) => d.riskLight === "red").length;
 
   return (
-    <div className="mx-auto max-w-[960px] px-6 py-10">
+    <div className="mx-auto max-w-[960px] px-6 py-10 page-enter">
       <header className="flex items-end justify-between gap-6 mb-8">
         <div>
           <p className="eyebrow">Approval queue</p>

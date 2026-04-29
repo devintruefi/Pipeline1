@@ -38,7 +38,7 @@ export default async function InboxPage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-page px-6 py-10">
+    <div className="mx-auto max-w-page px-6 py-10 page-enter">
       <header className="flex items-end justify-between gap-4 mb-8">
         <div>
           <p className="eyebrow">Inbox · reply triage</p>

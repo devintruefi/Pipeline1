@@ -154,7 +154,9 @@ const config: Config = {
         "px-half": "0.5px",
         18: "4.5rem",
         22: "5.5rem",
-        30: "7.5rem"
+        30: "7.5rem",
+        "section":   "5.5rem",
+        "section-lg":"7rem"
       },
       opacity: {
         4: "0.04",

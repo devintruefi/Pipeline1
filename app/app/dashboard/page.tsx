@@ -135,7 +135,7 @@ export default async function ControlCenterPage() {
   };
 
   return (
-    <div className="mx-auto max-w-page px-6 py-8 md:py-10">
+    <div className="mx-auto max-w-page px-6 py-8 md:py-10 page-enter">
       <header className="flex items-end justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
           <p className="font-display tracking-tighter text-[20px] text-ink leading-none">Control Center</p>
