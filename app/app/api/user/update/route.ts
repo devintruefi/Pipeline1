@@ -87,11 +87,15 @@ const Slice = z.object({
     .optional()
 });
 
-function deepMerge<T extends Record<string, unknown> | null | undefined>(
-  base: T,
+function deepMerge(
+  base: unknown,
   patch: Record<string, unknown>
 ): Record<string, unknown> {
-  const out: Record<string, unknown> = { ...(base ?? {}) } as Record<string, unknown>;
+  const baseObj =
+    base && typeof base === "object" && !Array.isArray(base)
+      ? (base as Record<string, unknown>)
+      : {};
+  const out: Record<string, unknown> = { ...baseObj };
   for (const [k, v] of Object.entries(patch)) {
     if (v === undefined) continue;
     const existing = out[k];
@@ -103,7 +107,7 @@ function deepMerge<T extends Record<string, unknown> | null | undefined>(
       typeof existing === "object" &&
       !Array.isArray(existing)
     ) {
-      out[k] = deepMerge(existing as Record<string, unknown>, v as Record<string, unknown>);
+      out[k] = deepMerge(existing, v as Record<string, unknown>);
     } else {
       out[k] = v;
     }
